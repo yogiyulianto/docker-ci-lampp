@@ -1,0 +1,74 @@
+<%- include components/main %>
+
+<div class="page-content hide-content" id="main-content">
+    <div class="card">
+        <div class="row align-items-center text-center">
+            <div class="col-md-12">
+                <form class="form-horizontal" action="/login" method="POST">
+                    <div class="card-body">
+                        <img src="/doc/logo/icon-app.svg" alt="" class="img-fluid mb-4" width="130px">
+                        <h4 class="mb-3 f-w-400 text-mute">Aplikasi PPOB</h4>
+                        <h6 class="mb-3 f-w-400 text-mute">PT. Hexa Teknologi Indonesia</h6>
+                        <% if (st=='Sukses' ) { %>
+                            <div class="alert alert-success" role="alert" style="margin-top: 2%;">
+                                <b>Sukses</b>
+                                <%= notif %>
+                            </div>
+                            <h2></h2>
+                        <% }else if (st=='Gagal' ) { %>
+                            <div class="alert alert-danger" role="alert" style="margin-top: 2%;">
+                                <b>Gagal</b>
+                                <%= notif %>
+                            </div>
+                        <% } %>
+                        <div class="form-group mb-3">
+                            <label class="floating-label" for="Email">Email</label>
+                            <input type="email" class="form-control" id="Email" name="user_mail" placeholder="">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="floating-label" for="Password">Password</label>
+                            <input type="password" class="form-control" name="user_pass" id="Password" placeholder="">
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <img class="mt-1" src="data:image/jpeg;base64,<%= valicode %>"/>
+                                </div>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" name="captcha" style="padding-left: 10px;" placeholder="Masukan captcha">  
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-block btn-primary mb-4">Login</button>
+                        <p class="mb-2 text-muted">Lupa password? <a href="/forgetpass" class="f-w-400">Reset</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include /components/footer %>
+<script>
+    jQuery(document).ready(function ($) {
+        $('.hide-content').hide();
+    });
+
+    tabsControl('data');
+    function tabsControl(x, y, z, xz) {
+        if (x == "data") {
+            var data = document.getElementById("main-content").innerHTML
+            $(".hide-content").removeClass('hide');
+            $("#page-content").html(data);
+        }
+    }
+
+    function showPass() {
+    var x = document.getElementById("pass");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>

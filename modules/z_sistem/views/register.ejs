@@ -1,0 +1,84 @@
+<%- include components/main %>
+<div class="page-content hide-content" id="main-content">
+    <div class="card overflow-hidden ">
+        <div class="bg-login text-center">
+            <div class="bg-login-overlay"></div>
+            <div class="position-relative">
+                <h5 class="text-white font-size-20">Aplikasi Member Merchant</h5>
+                <p class="text-white-50 mb-0">BPR Adipura</p>
+                <a href="index.html" class="logo logo-admin mt-4">
+                    <img src="admin_template/assets/images/logo-sm-dark.png" alt="" height="30">
+                </a>
+            </div>
+        </div>
+        <div class="card-body pt-5">
+            <div class="p-2">
+                <form class="form-horizontal" action="/register" method="POST">
+                    <% if (st=='Sukses' ) { %>
+                        <div class="alert alert-success" role="alert" style="margin-top: 2%;">
+                            <b>Sukses</b>
+                            <%= notif %>
+                        </div>
+                        <h2></h2>
+                    <% }else if (st=='Gagal' ) { %>
+                        <div class="alert alert-danger" role="alert" style="margin-top: 2%;">
+                            <b>Gagal</b>
+                            <%= notif %>
+                        </div>
+                    <% } %>
+                    <div class="form-group">
+                        <label for="email">Nama Lengkap</label>
+                        <input type="text" class="form-control" name="nama_lengkap" required placeholder="Nama lengkap *(Kapital di setiap awal suku kata)">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">No Hp</label>
+                        <input type="number" class="form-control" name="no_hp" required placeholder="Masukan no hp">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="input-email" required class="form-control input-mask" name="user_mail" placeholder="Masukan email" data-inputmask="'alias': 'email'">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Tanggal lahir</label>
+                        <input id="tanggal_lahir" name="tanggal_lahir" required type="date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="user_pass" required placeholder="Masukan password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password_konfirmasi">Password Konfirmasi</label>
+                        <input type="password" class="form-control" name="user_pass_konfirmasi" required placeholder="Masukan ulang password">
+                    </div>
+
+                    <div class="mt-4 text-center">
+                        <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-book-open-page-variant mr-1"></i> Klik untuk baca syarat dan ketentuan.</a>
+                    </div>
+
+                    <div class="mt-3">
+                        <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Daftar</button>
+                    </div>
+                    <div class="mt-3">
+                        <a href="/login" class="btn btn-outline-secondary btn-block waves-effect waves-light">Kembali</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include /components/footer %>
+<script>
+    jQuery(document).ready(function ($) {
+            $('.hide-content').hide();
+        });
+
+        tabsControl('data');
+        function tabsControl(x, y, z, xz) {
+            if (x == "data") {
+                var data = document.getElementById("main-content").innerHTML
+                $(".hide-content").removeClass('hide');
+                $("#page-content").html(data);
+            }
+        }
+</script>

@@ -1,0 +1,210 @@
+<%- include ../components/main %>
+
+    <div class="page-content hide-content" id="main-content">
+        <!-- [ Main Content ] start -->
+        <section class="pcoded-main-container">
+            <div class="pcoded-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10"><%= title %> </h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#!"><i
+                                                class="feather icon-save"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#!">Master Data</a></li>
+                                    <li class="breadcrumb-item"><a href="#!"><%= title %> </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- [ Hover-table ] start -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-lg-11">
+                                        <h5>Data <%= title %> </h5>
+                                        <span class="d-block m-t-5">List Data <%= title %> </span>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <a href="javascript:void(0)" onclick="addData()" class="btn btn-primary"><i class="feather mr-2 icon-plus"></i>Tambah</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- tab -->
+                                <ul class="nav nav-pills mb-2 mt-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item col-lg-6 text-center">
+                                        <a class="nav-link active" id="pills-admin-tab" data-toggle="pill" href="javascript:void(0)" onclick="getData(1)" role="tab" aria-controls="pills-admin" aria-selected="true">Admin</a>
+                                    </li>
+                                    <li class="nav-item col-lg-6 text-center">
+                                        <a class="nav-link" id="pills-member-tab" data-toggle="pill" href="javascript:void(0)" onclick="getData(2)" role="tab" aria-controls="pills-member" aria-selected="false">Member</a>
+                                    </li>
+                                </ul>
+                            <div class="card-body table-border-style">
+                                <form>
+                                    Cari data
+                                    <div class="row mb-2 mt-1">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="floating-label" for="nama">Nama</label>
+                                                <input type="text" class="form-control" id="nama" >
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="floating-label" for="Email">Email</label>
+                                                <input type="email" class="form-control" id="Email" >
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button type="button" class="btn  btn-icon btn-outline-secondary"><i class="feather icon-x"></i></button>
+                                            <button type="button" class="btn  btn-icon btn-info"><i class="feather icon-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%" class="text-center">No.</th>
+                                                <th width="15%" class="text-center">Nama Lengkap</th>
+                                                <th width="15%" class="text-center">Email</th>
+                                                <th width="10%" class="text-center saldo">Saldo</th>
+                                                <th width="10%" class="text-center saldo">Pemakaian Saldo</th>
+                                                <th width="5%" class="text-center">Status</th>
+                                                <th width="10%" class="text-center"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="isi">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ Hover-table ] end -->
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </section>
+    </div>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('.hide-content').hide();
+            getData(1);
+        });
+
+        tabsControl('data');
+        function tabsControl(x, y, z, xz) {
+            if (x == "data") {
+                var data = document.getElementById("main-content").innerHTML
+                $(".hide-content").removeClass('hide');
+                $("#page-content").html(data);
+            }
+        }
+
+        // init role_id temp
+        var tmp_role_add='';
+
+        function addData() {
+            switch(tmp_role_add) {
+                case 1:
+                    window.location.replace("add_admin");
+                    break;
+                case 2:
+                    window.location.replace("add_member");
+                    break;
+                }
+        }
+
+        function deleteUser(id) {
+            Swal.fire({
+                title: 'Apa kamu yakin?',
+                text: "Ingin menghapus data ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#8687a7',
+                confirmButtonText: 'Ya Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    try {
+                        const response = axios.delete("user_delete", { data: { user_id: id } });
+                        Swal.fire(
+                            'Terhapus !',
+                            'Data berhasil dihapus.',
+                            'success'
+                        )
+                        setTimeout(function () {
+                            window.location.replace("user");
+                        }, 500);
+                    } catch (error) {
+                        console.error(error);
+                    }
+                }
+            })
+        }
+
+        // Want to use async/await? Add the `async` keyword to your outer function/method.
+        async function getData(role_id) {
+            // init var
+            tmp_role_add = role_id;
+            
+            var html = ``;
+            var no = 1;
+            try {
+                const response = await axios.get('get_list_user?role_id=' + role_id);
+                var data = response.data;
+
+                console.log(data);
+
+                for (var i = 0; i < data.length; i++) {
+                    html += '<tr>'
+                    html += '<td class="text-center">' + no++ + '</th>';
+                    html += '<td>' + data[i].nama +  '</td>';
+                    html += '<td>' + data[i].email + '</td>';
+                    html += '<td class="text-right saldo">Rp. ' + data[i].saldo + '</td>';
+                    html += '<td class="text-right saldo">Rp. ' + data[i].pemakaian_saldo + '</td>';
+                    html += '<td class="text-center">';
+                    if (data[i].user_st == '1') {
+                        html += `<span class="badge badge-pill badge-success">Aktif</span>`;
+                    } else if (data[i].user_st == '0') {
+                        html += `<span class="badge badge-pill badge-warning">Tidak Aktif</span>`;
+                    } else {
+                        html += `<span class="badge badge-pill badge-danger">Block</span>`;
+                    }
+                    html += '</td>';
+                    html += `<td class="text-center">`;
+                    html +=  `<a href="edit_user?user_id=`+data[i].user_id+`" class="btn  btn-icon btn-warning" title="Edit">
+                            <i class="feather icon-edit"></i>
+                            </a>
+                            <a href="javascript:void(0)" onclick="deleteUser(`+data[i].user_id+`)" class="btn  btn-icon btn-danger" title="Hapus">
+                            <i class="feather icon-trash"></i>
+                            </a>`;
+                    html += '</td></tr>'
+                }
+                $(".isi").html(html);
+                if (data[0].role_id == 1) {
+                    $(".saldo").hide();
+                }else{
+                    $(".saldo").show();
+                }
+                return false;
+            } catch (error) {
+                console.error(error);
+            }
+            return false;
+        }
+
+    </script>

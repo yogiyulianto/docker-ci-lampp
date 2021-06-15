@@ -1,0 +1,39 @@
+{
+  "name": "company-profile",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@faridaghili/bootstrap-filestyle": "^2.1.0",
+    "@vonage/server-sdk": "^2.10.7",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "Buffer": "^0.0.0",
+    "captchapng": "^0.0.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.6.0",
+    "ejs": "~2.6.1",
+    "ejs-blocks": "^0.1.4",
+    "express": "~4.16.1",
+    "express-recaptcha": "^5.0.2",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "isomorphic-fetch": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.5.0",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "request": "^2.88.2",
+    "sweetalert2": "^10.15.5",
+    "twilio": "^3.30.0",
+    "unirest": "^0.6.0",
+    "wbm": "^1.1.14"
+  }
+}
