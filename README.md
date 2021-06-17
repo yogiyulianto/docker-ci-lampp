@@ -1,19 +1,22 @@
+# aplikasi peminjaman barang balmon
 
-## About Express-RCV3
-Express-RCV3 adalah framework aplikasi berbasis ExpressJs dengan menggunakan HMVC. Kami percaya pengembangan harus menjadi pengalaman yang menyenangkan dan kreatif agar benar-benar memuaskan.
-ExpressJs sangan direkomendasikan karena pengembangan yang sangat bagus dan dari teknologi yang sangat cepat serta ringan.
+# credentials 
+# - super admin
+# username : administrator
+# password : semuabisa
 
-Base ini bertujuan untuk memudahkan pembuatan dan pengembangan yang digunakan di banyak proyek web dan sangat kuat, dan menyediakan alat yang diperlukan untuk aplikasi yang besar dan kuat.
+# setup server
+# php version > 7.0 
+# mysql 5.5 /5.7 (disable only_full_group_by)
 
-## Requirment
-NodeJs
-NPM
-Screen / PM2
+# setup aplikasi
+# 1. copy & rename .env.example menjadi .env
+# 2. isikan credentials database dan app_url seperti contoh di .env.example
+# 3. copy database dari export terbaru di x-database/v1/ (cari file db dump terbaru)
 
-## Installation
+# pastikan mod rewrite .htaccess aktif
 
-```
-git clone
-cp .env.example .env (Config .env sesuai dengan kebutuhan)
-nodemon or node /bin/www
+# setting SMTP 
+# pada tabel com_email
+ 
 
