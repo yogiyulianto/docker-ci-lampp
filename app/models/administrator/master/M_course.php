@@ -69,7 +69,15 @@ class M_course extends MY_Model {
 	// get course by user id
 	public function courseByid($user_id = null) {
 
-			$data = $this->db->query("SELECT b.course_id, b.title, b.slug, b.level, b.description, b.meta_keywords, b.meta_descriptions, b.course_overview_thumbnail, b.course_st from course_enroll a INNER JOIN course b ON a.course_id = b.course_id WHERE a.user_id = '$user_id' ")->result();
+			$data = $this->db->query("SELECT b.course_id, b.title, b.slug, b.level, b.description, b.meta_keywords, b.meta_descriptions, b.course_overview_thumbnail, b.banner, b.course_st from course_enroll a INNER JOIN course b ON a.course_id = b.course_id WHERE a.user_id = '$user_id' ")->result();
+
+		return $data;
+	}
+	// get course by user id
+	public function notRegisteredCourseByid($user_id = null) {
+
+			$data = $this->db->query("SELECT b.course_id, b.title, b.slug, b.level, b.description, b.meta_keywords, b.meta_descriptions, b.course_overview_thumbnail, b.banner, CASE WHEN b.course_st = 1 THEN 'active' ELSE 'not-active' END
+            AS course_st from course_enroll a INNER JOIN course b ON a.course_id = b.course_id WHERE a.user_id != '$user_id' ")->result();
 
 		return $data;
 	}

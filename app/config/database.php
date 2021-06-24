@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default';
+$active_group = 'dev';
 $query_builder = TRUE;
 
 $db['default'] = array(
@@ -99,7 +99,7 @@ $db['dev'] = array(
 	'hostname' => 'localhost:3306',
 	'username' => 'root',
 	'password' => 'root',
-	'database' => 'woundcare_v1_db',
+	'database' => 'elearning_yca_v1_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
