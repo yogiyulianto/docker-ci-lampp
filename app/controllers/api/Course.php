@@ -11,6 +11,7 @@ class Course extends RestController {
         parent::__construct();
         // load model
         $this->load->model('administrator/master/M_course', 'course');
+		$this->load->library('tupload');
     }
 
 	// get all data course & by_id
@@ -75,14 +76,12 @@ class Course extends RestController {
         $user_id = $this->post('user_id');
 		$token = $this->post('token');
 		$course_id = $this->input->post('course_id');
-		$enroll_id = $this->course->get_last_id();
 
         if($token && $course_id && $user_id) {
 
 			$checkDataExist = $this->course->check_exist($token);
 			if($checkDataExist) {
 				$params = array(
-					'enroll_id' => $enroll_id,
 					'user_id' => $user_id,
 					'course_id' => $course_id,
 					'token' => $token,
@@ -182,6 +181,63 @@ class Course extends RestController {
 				'status' => true,
 				'message' => $message,
 				'result' => $result
+			);
+			$this->response($response, 200);
+		} else {
+				$message = "Data tidak lengkap!";
+				$response = array(
+					'status' => false,
+					'message' => $message
+				);
+				$this->response($response, 404);
+		}
+    }
+
+
+	//post assignment upload file
+	public function assignment_post(){
+		$lesson_id = $this->post('lesson_id');
+		$section_id = $this->post('section_id');
+		$course_id = $this->post('course_id');
+        $user_id = $this->post('user_id');
+		$attachment = $_FILES;
+		// $deadline = $this->post('deadline');
+
+        if($course_id && $user_id && $attachment) {
+
+			 // upload config
+			 $config['upload_path'] = 'assets/video/course/';
+			 $config['allowed_types'] = 'mpeg|mpg|mp4|mpe|qt|mov|avi';
+			 $config['file_name'] = $user_id . '_' . date('Ymdhis');
+			 
+			 $this->tupload->initialize($config);
+
+			 // process upload images
+			 $this->tupload->do_upload_image('attachment', 128, false);
+				$data = $this->tupload->data();
+				
+				$params = array(
+					'lesson_id' => $lesson_id,
+					'section_id' => $section_id,
+					'course_id' => $course_id,
+					'user_id' => $user_id,
+					'attachment' => 'assets/video/course/' . $data['file_name'],
+					// 'deadline' => $deadline,
+					'attachment_type' => $_FILES['attachment']['type'],
+					'mdb' => $user_id,
+					'mdb_name' => $user_id,
+					'mdd' => date('Y-m-d H:i:s'),
+				);
+				$result = $this->course->insert('course_assignment', $params);
+				if($result){
+					$message = "Data berhasil ditambahkan!";
+				} else {
+					$message = "Data gagal ditambahkan!";
+				}
+
+			$response = array(
+				'status' => true,
+				'message' => $message,
 			);
 			$this->response($response, 200);
 		} else {

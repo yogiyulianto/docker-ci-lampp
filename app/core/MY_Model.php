@@ -77,10 +77,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			'ip_address' => $ip,
 			'user_agent' => json_encode($user_agent),
 			'mdb'	=> $this->com_user('user_id'),
-			'mdb_name'	=> $this->com_user('username'),
+			'mdb_name'	=> $this->com_user('user_name'),
 			'mdd' => now(),
 		);
 		return $this->db->insert('com_log', $params);
 	}
-
 }

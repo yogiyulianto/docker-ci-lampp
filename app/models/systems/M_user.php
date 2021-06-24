@@ -34,11 +34,9 @@ class M_user extends MY_Model {
         // process
         // get hash key
         $result = $this->get_user_detail_with_all_roles($username);
-		// echo'<pre>';
-		// 	print_r($result);
         if (!empty($result)) {
             // get user
-            if ($this->bcrypt->check_password(md5($password), $result['password'])) {
+            if ($this->bcrypt->check_password(md5($password), $result['user_pass'])) {
                 return $result;
             } else {
                 return FALSE;
@@ -50,13 +48,16 @@ class M_user extends MY_Model {
 
     // get user detail with auto role
     function get_user_detail_with_all_roles($params) {
-        $sql = "SELECT a.*, b.role_id, c.*,f.portal_id
+        $sql = "SELECT a.*, b.role_id, c.*,d.*,f.portal_id
               FROM com_user a
+              --  JOIN com_role_user b ON a.user_id = b.user_id
+              -- LEFT JOIN com_role c ON b.role_id = c.role_id
               INNER JOIN com_role_user b ON a.user_id = b.user_id
               INNER JOIN com_role c ON b.role_id = c.role_id
+			    INNER JOIN user d ON a.user_id = d.user_id
               INNER JOIN com_role_menu e ON c.role_id = e.role_id
               INNER JOIN com_menu f ON e.nav_id = f.nav_id
-              WHERE a.username = ? 
+              WHERE a.user_name = ? 
               ORDER BY b.role_default ASC
               LIMIT 0, 1 ";
         $query = $this->db->query($sql, $params);
@@ -172,7 +173,7 @@ class M_user extends MY_Model {
 
     //cek email
     public function is_exist_email($params) {
-        $query = $this->db->get_where('com_user', array('email' => $params));
+        $query = $this->db->get_where('com_user', array('user_mail' => $params));
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
             $query->free_result();
@@ -183,7 +184,7 @@ class M_user extends MY_Model {
 
     //cek username
     public function is_exist_username($params) {
-        $query = $this->db->get_where('com_user', array('username' => $params));
+        $query = $this->db->get_where('com_user', array('user_name' => $params));
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
             $query->free_result();

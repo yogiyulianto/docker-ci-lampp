@@ -19,23 +19,16 @@ class Auth extends RestController {
     }
 
     public function login_post(){
-        // cek input
-        $this->form_validation->set_rules('username', 'Identity', 'trim|required');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required');
-		// params
-		$username = trim($this->input->post('username', true));
-		$password = trim($this->input->post('password', true));
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
         // process
-        if ($this->form_validation->run() !== FALSE) {
+        if ($username && $password) {
     	    // get user detail
 			$result = $this->M_user->get_user_login_all_roles($username, $password);
-			// echo'<pre>';
-			// print_r($result);
-			// exit();
             //cek
             if (!empty($result)) {
 				// cek login attempt ( username dan ip yang sama dalam 1 jam terakhir )
-				$total_attempt = $this->db->where('username', $username)->get('com_user')->row()->attempts;
+				$total_attempt = $this->db->where('user_name', $username)->get('com_user')->row()->attempts;
 				if ($total_attempt >= 3){
                     $message = "You're tried logging in a few times, try again later.";
                     $response = array(
@@ -44,15 +37,15 @@ class Auth extends RestController {
                     );
                     $this->response($response, 404);
 				}else{
-					$this->M_user->update('com_user', array('attempts' => $total_attempt + 1),array('username' => $username ));
+					$this->M_user->update('com_user', array('attempts' => $total_attempt + 1),array('user_name' => $username ));
                     $this->session->set_userdata('com_user', array(
                         'user_id' => $result['user_id'],
-                        'email' => $result['email'],
-                        'username' => $result['username'],
-                        'nama' => $result['nama'],
+                        'user_mail' => $result['user_mail'],
+                        'user_name' => $result['user_name'],
+                        'full_name' => $result['full_name'],
                         'role_id' => $result['role_id'],
                         'portal_id' => $result['portal_id'],
-                        // 'default_page' => $result['default_page'],
+                        'default_page' => $result['default_page'],
                     ));
                     // set cookie 
                     $session_params = array(
@@ -111,15 +104,8 @@ class Auth extends RestController {
     }
 
     public function register_post(){
-        // cek input
-        $this->form_validation->set_rules('email', 'User Email', 'trim|required|valid_email|max_length[50]');
-        $this->form_validation->set_rules('username', 'User Name', 'trim|required|max_length[50]');
-        $this->form_validation->set_rules('nama', 'Full Name', 'trim|required|max_length[50]');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[50]');
-        $this->form_validation->set_rules('role_id', 'Role', 'required');
-        // $this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[255]');
-        // check email
-        $email = trim($this->input->post('email'));
+        
+		$email = $this->input->post('user_mail');
         if ($this->M_user->is_exist_email($email)) {
             $message = "Email has been registered";
             $response = array(
@@ -129,7 +115,7 @@ class Auth extends RestController {
             $this->response($response, 404);
         }
         // check username
-        $username = trim($this->input->post('username'));
+        $username = $this->input->post('user_name');
         if ($this->M_user->is_exist_username($username)) {
             $message = "Username has been registered";
             $response = array(
@@ -138,39 +124,41 @@ class Auth extends RestController {
             );
             $this->response($response, 404);
         }
+
+		$user_pass = $this->input->post('user_pass');
+        $password = $this->bcrypt->hash_password(md5($user_pass));
+    	// generate user_id
+        $prefix = date('ymd');
+        $params_prefix = $prefix . '%';
+    	$user_id = $this->M_user->generate_id($prefix, $params_prefix);
+		$role_id = $this->input->post('role_id');
+		$full_name = $this->input->post('full_name');
+
         // process
-        if ($this->form_validation->run() !== false) {
-            $user_pass = $this->input->post('password', true);
-            $password = $this->bcrypt->hash_password(md5($user_pass));
-            // generate user_id
-            $prefix = date('ymd');
-            $params_prefix = $prefix . '%';
-            $user_id = $this->M_user->generate_id($prefix, $params_prefix);
+        if ($email && $username && $user_pass && $role_id) {
+            
             $params = array(
                 'user_id' => $user_id,
-                'role_id' => $this->input->post('role_id'),
-				'nama' => $this->input->post('nama'),
-                'email' => $this->input->post('email'),
-                'username' => $this->input->post('username'),
-                'password' => $password,
+                'user_name' => $username,
+                'user_pass' => $password,
+                'user_key' => $password,
                 'user_st' => '1',
-                'mdb' => $this->session->userdata('username'),
+                'user_mail' => $email,
+                'mdb' => $this->session->userdata('user_name'),
                 'mdd' => date('Y-m-d H:i:s'),
             );
             // insert
             if ($this->M_user->insert('com_user', $params)) {
                 // insert to users
-                // $params = array(
-                //     'user_id' => $user_id,
-                //     'nama' => $this->input->post('nama'),
-                //     // 'phone' => $this->input->post('phone'),
-                //     'address' => $this->input->post('address'),
-                // );
-                // $this->M_user->insert('user', $params);
+                $params = array(
+                    'user_id' => $user_id,
+                    'full_name' => $full_name,
+                );
+                $this->M_user->insert('user', $params);
                 // insert hak akses
                 $params = array(
                     'user_id' => $user_id,
-                    'role_id' => $this->input->post('role_id'),
+                    'role_id' => $role_id,
                 );
                 $this->M_user->insert('com_role_user', $params);
                 //sukses notif
@@ -200,11 +188,9 @@ class Auth extends RestController {
     }
     // logout process
     public function logout_post(){
-        // cek input
-        $this->form_validation->set_rules('user_id', 'User ID', 'trim|required');
 		// params
-		$user_id = trim($this->input->post('user_id', true));
-        if ($this->form_validation->run() !== false) {
+		$user_id = $this->input->post('user_id');
+        if ($user_id) {
             $message = 'Anda berhasil logout';
             $this->M_user->update_user_logout($user_id);
             $response = array(
