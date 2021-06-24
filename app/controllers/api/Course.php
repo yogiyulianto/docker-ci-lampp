@@ -69,33 +69,6 @@ class Course extends RestController {
 				$this->response($response, 404);
 		}
     }
-	// get course not registered by user_id
-	public function not_registered_get(){
-        $user_id = $this->get('user_id');
-
-        if($user_id) {
-			$result = $this->course->notRegisteredCourseByid($user_id);
-
-			if($result){
-				$message = "Data ditemukan!";
-			} else {
-				$message = "Data tidak ditemukan!";
-			}
-			$response = array(
-				'status' => true,
-				'message' => $message,
-				'result' => $result
-			);
-			$this->response($response, 200);
-		} else {
-				$message = "Data tidak lengkap!";
-				$response = array(
-					'status' => false,
-					'message' => $message
-				);
-				$this->response($response, 404);
-		}
-    }
 
 
 	// post register course with token
@@ -265,6 +238,35 @@ class Course extends RestController {
 			$response = array(
 				'status' => true,
 				'message' => $message,
+			);
+			$this->response($response, 200);
+		} else {
+				$message = "Data tidak lengkap!";
+				$response = array(
+					'status' => false,
+					'message' => $message
+				);
+				$this->response($response, 404);
+		}
+    }
+
+
+	// get course not registered by user_id
+	public function not_registered_get(){
+        $user_id = $this->get('user_id');
+
+        if($user_id) {
+			$result = $this->course->notRegisteredCourseByid($user_id);
+
+			if($result){
+				$message = "Data ditemukan!";
+			} else {
+				$message = "Data tidak ditemukan!";
+			}
+			$response = array(
+				'status' => true,
+				'message' => $message,
+				'result' => $result
 			);
 			$this->response($response, 200);
 		} else {

@@ -61,3 +61,20 @@ function indoMonthCvt($getMo, $length = null) {
         $mo = empty($length) ? "Desember" : "Des";
     return $mo;
 }
+
+
+if (!function_exists('rupiah')) {
+	/**
+	 * Format rupiah
+	 * 
+	 * @param  any $number number to format
+	 * @return string         formated number
+	 */
+	function rupiah($number, $decimal = 0)
+	{
+		if (!$double = (float) $number) {
+			return $number;
+		}
+		return 'Rp.  ' . number_format($double, $decimal, ',', '.');
+	}
+}
