@@ -203,7 +203,7 @@ class Course extends RestController {
 		$attachment = $_FILES;
 		// $deadline = $this->post('deadline');
 
-        if($course_id && $user_id && $attachment) {
+        if($course_id && $user_id) {
 
 			 // upload config
 			 $config['upload_path'] = 'assets/video/course/';
