@@ -26,7 +26,7 @@ Dashboard
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Jenis Treatment</p>
+                                <p class="card-category">Peserta Terdatar</p>
                                 <h4 class="card-title">{{$total_jenis_treatment}}</h4>
                             </div>
                         </div>
@@ -45,7 +45,7 @@ Dashboard
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Jumlah Order</p>
+                                <p class="card-category">Total Course</p>
                                 <h4 class="card-title">{{$total_order}}</h4>
                             </div>
                         </div>
@@ -64,7 +64,7 @@ Dashboard
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Total Perawat</p>
+                                <p class="card-category">Total Pendapatan</p>
                                 <h4 class="card-title">{{$total_perawat}}</h4>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ Dashboard
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Total Pasien</p>
+                                <p class="card-category">Total Trainer</p>
                                 <h4 class="card-title">{{$total_pasien}}</h4>
                             </div>
                         </div>
@@ -92,7 +92,7 @@ Dashboard
             </div>
         </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12">
             <div class="card full-height">
                 <div class="card-header">
@@ -127,6 +127,6 @@ Dashboard
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 @endsection

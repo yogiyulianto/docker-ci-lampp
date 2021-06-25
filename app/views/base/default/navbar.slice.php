@@ -20,7 +20,7 @@
     <!-- Navbar Header -->
     <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
         <div class="container-fluid">
-            <div class="text-white d-none d-sm-block">YCA INDONESIA ADMIN SYSTEM </div>
+            <div class="text-white d-none d-sm-block"> </div>
             <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                 <div class="mr-2 text-white">
                     {{$com_user['full_name']}}
