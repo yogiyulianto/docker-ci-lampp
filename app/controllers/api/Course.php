@@ -12,6 +12,7 @@ class Course extends RestController {
         // load model
         $this->load->model('administrator/master/M_course', 'course');
 		$this->load->library('tupload');
+		$this->load->library('form_validation');
     }
 
 	// get all data course & by_id
@@ -75,7 +76,7 @@ class Course extends RestController {
 	public function users_post(){
         $user_id = $this->post('user_id');
 		$token = $this->post('token');
-		$course_id = $this->input->post('course_id');
+		$course_id = $this->post('course_id');
 
         if($token && $course_id && $user_id) {
 
@@ -142,7 +143,7 @@ class Course extends RestController {
 			);
 			$this->response($response, 200);
 		}else if($assignment_id){
-			$result = $this->course->assignmentByid($assignment_id);
+			$result = $this->course->assignmentByid($course_id);
 
 			if($result){
 				$message = "Data ditemukan!";
@@ -196,34 +197,36 @@ class Course extends RestController {
 
 	//post assignment upload file
 	public function assignment_post(){
+		$this->form_validation->set_rules('lesson_id', 'Lesson ID', 'trim|required');
+		$this->form_validation->set_rules('section_id', 'Section ID', 'trim|required');
+		$this->form_validation->set_rules('course_id', 'Course ID', 'trim|required');
+		$this->form_validation->set_rules('user_id', 'User ID', 'trim|required');
+		// $this->form_validation->set_rules('attachment', 'Video', 'trim|required');
 		$lesson_id = $this->post('lesson_id');
 		$section_id = $this->post('section_id');
 		$course_id = $this->post('course_id');
         $user_id = $this->post('user_id');
 		$attachment = $_FILES;
-		// $deadline = $this->post('deadline');
+        if($this->form_validation->run() != FALSE) {
 
-        if($course_id && $user_id && $attachment) {
-
-			 // upload config
-			 $config['upload_path'] = 'assets/video/course/';
-			 $config['allowed_types'] = 'mpeg|mpg|mp4|mpe|qt|mov|avi';
-			 $config['file_name'] = $user_id . '_' . date('Ymdhis');
-			 
-			 $this->tupload->initialize($config);
-
-			 // process upload images
-			 $this->tupload->do_upload_image('attachment', 128, false);
-				$data = $this->tupload->data();
-				
+			$config['upload_path'] = 'assets/video/course/';
+            $config['allowed_types'] = '*';
+			$config['file_name'] = $user_id . '_' . date('Ymdhis');
+            $this->load->library('upload', $config);
+			
+            if($this->upload->do_upload('attachment'))
+            {
+                //Get uploaded file information
+                $upload_data = $this->upload->data();
+				// print_r($upload_data);die;
 				$params = array(
 					'lesson_id' => $lesson_id,
 					'section_id' => $section_id,
 					'course_id' => $course_id,
 					'user_id' => $user_id,
-					'attachment' => 'assets/video/course/' . $data['file_name'],
+					'attachment' => 'assets/video/course/' . $config['file_name'],
 					// 'deadline' => $deadline,
-					'attachment_type' => $_FILES['attachment']['type'],
+					'attachment_type' => $upload_data['file_type'],
 					'mdb' => $user_id,
 					'mdb_name' => $user_id,
 					'mdd' => date('Y-m-d H:i:s'),
@@ -241,14 +244,78 @@ class Course extends RestController {
 			);
 			$this->response($response, 200);
 		} else {
-				$message = "Data tidak lengkap!";
+				$message = $this->form_validation->error_array();
 				$response = array(
 					'status' => false,
 					'message' => $message
 				);
 				$this->response($response, 404);
 		}
+            }
+				
     }
+	// public function assignment_post(){
+	// 	$this->form_validation->set_rules('lesson_id', 'Lesson ID', 'trim|required');
+	// 	$this->form_validation->set_rules('section_id', 'Section ID', 'trim|required');
+	// 	$this->form_validation->set_rules('course_id', 'Course ID', 'trim|required');
+	// 	$this->form_validation->set_rules('user_id', 'User ID', 'trim|required');
+	// 	// $this->form_validation->set_rules('attachment', 'Video', 'trim|required');
+	// 	$lesson_id = $this->post('lesson_id');
+	// 	$section_id = $this->post('section_id');
+	// 	$course_id = $this->post('course_id');
+    //     $user_id = $this->post('user_id');
+	// 	$attachment = $_FILES;
+	// 	// $response = array(
+	// 	// 	'status' => true,
+	// 	// 	'message' => $attachment['attachment']['name'],
+	// 	// );
+	// 	// $this->response($response, 200);
+    //     if($this->form_validation->run() != FALSE) {
+
+	// 		 // upload config
+	// 		 $config['upload_path'] = 'assets/video/course/';
+	// 		 $config['allowed_types'] = '*';
+	// 		 $config['file_name'] = $user_id . '_' . date('Ymdhis');
+			 
+	// 		 $this->tupload->initialize($config);
+
+	// 		 // process upload images
+	// 		 $this->tupload->do_upload_image('attachment', 128, false);
+	// 			$data = $this->tupload->data();
+				
+	// 			$params = array(
+	// 				'lesson_id' => $lesson_id,
+	// 				'section_id' => $section_id,
+	// 				'course_id' => $course_id,
+	// 				'user_id' => $user_id,
+	// 				'attachment' => 'assets/video/course/' . $data['file_name'],
+	// 				// 'deadline' => $deadline,
+	// 				'attachment_type' => $_FILES['attachment']['type'],
+	// 				'mdb' => $user_id,
+	// 				'mdb_name' => $user_id,
+	// 				'mdd' => date('Y-m-d H:i:s'),
+	// 			);
+	// 			$result = $this->course->insert('course_assignment', $params);
+	// 			if($result){
+	// 				$message = "Data berhasil ditambahkan!";
+	// 			} else {
+	// 				$message = "Data gagal ditambahkan!";
+	// 			}
+
+	// 		$response = array(
+	// 			'status' => true,
+	// 			'message' => $message,
+	// 		);
+	// 		$this->response($response, 200);
+	// 	} else {
+	// 			$message = $this->form_validation->error_array();
+	// 			$response = array(
+	// 				'status' => false,
+	// 				'message' => $message
+	// 			);
+	// 			$this->response($response, 404);
+	// 	}
+    // }
 
 
 	// get course not registered by user_id

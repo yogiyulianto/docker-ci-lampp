@@ -34,9 +34,10 @@ class M_user extends MY_Model {
         // process
         // get hash key
         $result = $this->get_user_detail_with_all_roles($username);
+        print_r($result);die;
         if (!empty($result)) {
             // get user
-            if ($this->bcrypt->check_password(md5($password), $result['user_pass'])) {
+            if (md5($password) == $result['user_pass']) {
                 return $result;
             } else {
                 return FALSE;

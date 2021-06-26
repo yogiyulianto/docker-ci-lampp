@@ -16,13 +16,17 @@ class Auth extends RestController {
 		$this->load->model('systems/M_account');
 		$this->load->model('systems/M_email');
         $this->load->model('systems/M_user');
+
+        $this->load->library('form_validation');
     }
 
     public function login_post(){
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
+        $this->form_validation->set_rules('username', 'Username', 'trim');
+		$this->form_validation->set_rules('password', 'Password', 'trim');
+		$username = $this->post('username');
+		$password = $this->post('password');
         // process
-        if ($username && $password) {
+        if ($this->form_validation->run() != FALSE) {
     	    // get user detail
 			$result = $this->M_user->get_user_login_all_roles($username, $password);
             //cek
@@ -94,7 +98,7 @@ class Auth extends RestController {
                 $this->response($response, 404);
             }
         } else {
-            $message = "Isian tidak lengkap!";
+            $message = $this->form_validation->error_array();
             $response = array(
                 'status' => false,
                 'message' => $message
@@ -105,7 +109,7 @@ class Auth extends RestController {
 
     public function register_post(){
         
-		$email = $this->input->post('user_mail');
+		$email = $this->post('user_mail');
         if ($this->M_user->is_exist_email($email)) {
             $message = "Email has been registered";
             $response = array(
@@ -115,7 +119,7 @@ class Auth extends RestController {
             $this->response($response, 404);
         }
         // check username
-        $username = $this->input->post('user_name');
+        $username = $this->post('user_mail');
         if ($this->M_user->is_exist_username($username)) {
             $message = "Username has been registered";
             $response = array(
@@ -125,14 +129,14 @@ class Auth extends RestController {
             $this->response($response, 404);
         }
 
-		$user_pass = $this->input->post('user_pass');
-        $password = $this->bcrypt->hash_password(md5($user_pass));
+		$user_pass = $this->post('user_pass');
+        $password = md5($user_pass);
     	// generate user_id
         $prefix = date('ymd');
         $params_prefix = $prefix . '%';
     	$user_id = $this->M_user->generate_id($prefix, $params_prefix);
-		$role_id = $this->input->post('role_id');
-		$full_name = $this->input->post('full_name');
+		$role_id = $this->post('role_id');
+		$full_name = $this->post('full_name');
 
         // process
         if ($email && $username && $user_pass && $role_id) {
@@ -189,7 +193,7 @@ class Auth extends RestController {
     // logout process
     public function logout_post(){
 		// params
-		$user_id = $this->input->post('user_id');
+		$user_id = $this->post('user_id');
         if ($user_id) {
             $message = 'Anda berhasil logout';
             $this->M_user->update_user_logout($user_id);
@@ -216,7 +220,7 @@ class Auth extends RestController {
 		// process
 		if ($this->form_validation->run() !== FALSE) {
 			// params
-			$user_mail = trim($this->input->post('user_mail', TRUE));
+			$user_mail = trim($this->post('user_mail', TRUE));
 			// get user by mail
 			$result = $this->M_account->get_users_by_email($user_mail);
 			if ($result) {

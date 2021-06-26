@@ -249,7 +249,10 @@ class M_course extends MY_Model {
 	// get course assignment by course id
 	public function assignment($course_id = null) {
 
-		$data = $this->db->query("SELECT  b.title as bab, c.title as sub_bab, a.attachment, a.attachment, a.attachment_type, a.catatan, a.status, a.nilai from course_assignment a INNER JOIN course_section b ON a.section_id = b.section_id INNER JOIN course_lesson c ON b.section_id = c.section_id WHERE a.course_id = '$course_id' ")->result();
+		$data = $this->db->query("SELECT  b.title as bab, a.course_id, a.lesson_id, a.section_id, a.title as sub_bab, c.attachment, c.attachment, c.attachment_type, c.catatan, c.status, c.nilai from course_lesson a 
+        INNER JOIN course_section b ON a.section_id = b.section_id 
+        LEFT JOIN course_assignment c ON b.section_id = c.section_id 
+        WHERE a.course_id = '$course_id' ")->result();
 
 	return $data;
 	}
