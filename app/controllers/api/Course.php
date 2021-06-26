@@ -207,6 +207,7 @@ class Course extends RestController {
 		$course_id = $this->post('course_id');
         $user_id = $this->post('user_id');
 		$attachment = $_FILES;
+<<<<<<< HEAD
         if($this->form_validation->run() != FALSE) {
 
 			$config['upload_path'] = 'assets/video/course/';
@@ -219,6 +220,23 @@ class Course extends RestController {
                 //Get uploaded file information
                 $upload_data = $this->upload->data();
 				// print_r($upload_data);die;
+=======
+		// $deadline = $this->post('deadline');
+
+        if($course_id && $user_id) {
+
+			 // upload config
+			 $config['upload_path'] = 'assets/video/course/';
+			 $config['allowed_types'] = 'mpeg|mpg|mp4|mpe|qt|mov|avi';
+			 $config['file_name'] = $user_id . '_' . date('Ymdhis');
+			 
+			 $this->tupload->initialize($config);
+
+			 // process upload images
+			 $this->tupload->do_upload_image('attachment', 128, false);
+				$data = $this->tupload->data();
+				
+>>>>>>> feb694f6005196e10bcae51d8398bfe7d728242e
 				$params = array(
 					'lesson_id' => $lesson_id,
 					'section_id' => $section_id,

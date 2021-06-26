@@ -2,7 +2,7 @@
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="blue">       
         <a href="{{url($com_user['default_page'])}}" class="logo">
-            <img src="{{asset('images/logo-woundcare-white.png')}}" alt="navbar brand" class="navbar-brand" style="width:90%">
+            <img src="{{asset('images/logo1.png')}}" alt="navbar brand" class="navbar-brand" style="width:90%">
         </a>
         <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
@@ -20,7 +20,7 @@
     <!-- Navbar Header -->
     <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
         <div class="container-fluid">
-            <div class="text-white d-none d-sm-block">WOUNDCARE ADMIN SYSTEM </div>
+            <div class="text-white d-none d-sm-block"> </div>
             <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                 <div class="mr-2 text-white">
                     {{$com_user['full_name']}}

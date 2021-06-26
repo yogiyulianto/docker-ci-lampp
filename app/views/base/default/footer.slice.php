@@ -3,7 +3,7 @@
         <nav class="pull-left">
             <ul class="nav">
                 <li class="nav-item">
-                    {{date('Y')}} © Woundcare &nbsp;<br>
+                    {{date('Y')}} © YCA INDONESIA &nbsp;<br>
                 </li>
             </ul>
         </nav>
