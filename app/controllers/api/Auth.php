@@ -28,7 +28,7 @@ class Auth extends RestController {
         // process
         if ($this->form_validation->run() != FALSE) {
     	    // get user detail
-			$result = $this->M_user->get_user_login_all_roles($username, $password);
+			$result = $this->M_user->get_user_login_all_roles_api($username, $password);
             //cek
             if (!empty($result)) {
 				// cek login attempt ( username dan ip yang sama dalam 1 jam terakhir )
@@ -48,8 +48,8 @@ class Auth extends RestController {
                         'user_name' => $result['user_name'],
                         'full_name' => $result['full_name'],
                         'role_id' => $result['role_id'],
-                        'portal_id' => $result['portal_id'],
-                        'default_page' => $result['default_page'],
+                        'portal_id' => 30,
+                        'default_page' => 'peserta/dashboard',
                     ));
                     // set cookie 
                     $session_params = array(
@@ -106,6 +106,7 @@ class Auth extends RestController {
             $this->response($response, 404);
         }
     }
+
 
     public function register_post(){
         

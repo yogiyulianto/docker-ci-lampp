@@ -34,10 +34,27 @@ class M_user extends MY_Model {
         // process
         // get hash key
         $result = $this->get_user_detail_with_all_roles($username);
-        print_r($result);die;
+        // print_r($result);die;
         if (!empty($result)) {
             // get user
-            if (md5($password) == $result['user_pass']) {
+            if (md5($password) === $result['user_pass']) {
+                return $result;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return FALSE;
+        }
+    }
+    //get all roles
+    public function get_user_login_all_roles_api($username, $password) {
+        // process
+        // get hash key
+        $result = $this->get_user_role($username);
+        // print_r($result);die;
+        if (!empty($result)) {
+            // get user
+            if (md5($password) === $result['user_pass']) {
                 return $result;
             } else {
                 return FALSE;
@@ -61,6 +78,23 @@ class M_user extends MY_Model {
               WHERE a.user_name = ? 
               ORDER BY b.role_default ASC
               LIMIT 0, 1 ";
+        $query = $this->db->query($sql, $params);
+        // echo "<pre>"; echo $this->db->last_query();exit;
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            $query->free_result();
+            return $result;
+        } else {
+            return array();
+        }
+    }
+    function get_user_role($params) {
+        $sql = "SELECT a.*, b.role_id, c.*, d.* FROM com_user a 
+        INNER JOIN com_role_user b ON a.user_id = b.user_id 
+        LEFT JOIN com_role c ON b.role_id = c.role_id 
+        LEFT JOIN user d ON d.user_id = a.user_id 
+        WHERE a.user_name = ? ORDER BY b.role_default ASC
+        LIMIT 0, 1 ";
         $query = $this->db->query($sql, $params);
         // echo "<pre>"; echo $this->db->last_query();exit;
         if ($query->num_rows() > 0) {
