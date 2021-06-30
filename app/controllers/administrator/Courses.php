@@ -33,7 +33,7 @@ class Courses extends PrivateBase {
         // get search
         $sess_search = $this->session->userdata(self::SESSION_SEARCH);
         $search['category_id'] = $sess_search['category_id'];
-        $search['teacher_id'] = $sess_search['teacher_id'];
+        $search['fasilitator_id'] = $sess_search['fasilitator_id'];
         $search['course_st']    = $sess_search['course_st'];
         $search['sort_by']    = ($sess_search['sort_by']) ? $sess_search['sort_by'] : "title-asc";
         // create pagination
