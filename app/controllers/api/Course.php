@@ -92,7 +92,7 @@ class Course extends RestController {
 
 				$result = $this->course->insert('course_enroll', $params);
 				if($result){
-					$message = "Data berhasil ditambahkan!";
+					$message = "Pendaftaran berhasil!";
 					$params_token = array(
 						'token_sts' => 1,
 					);
@@ -101,7 +101,7 @@ class Course extends RestController {
 					);
 					$this->course->update('token', $params_token, $where);
 				} else {
-					$message = "Data gagal ditambahkan!";
+					$message = "Pendaftaran gagal!";
 				}
 
 			} else {
@@ -114,7 +114,7 @@ class Course extends RestController {
 			);
 			$this->response($response, 200);
 		} else {
-				$message = "Data tidak lengkap!";
+				$message = "Pendaftaran tidak lengkap!";
 				$response = array(
 					'status' => false,
 					'message' => $message
@@ -224,7 +224,7 @@ class Course extends RestController {
 					'section_id' => $section_id,
 					'course_id' => $course_id,
 					'user_id' => $user_id,
-					'attachment' => 'assets/video/course/' . $config['file_name'],
+					'attachment' => base_url(). 'assets/video/course/' . $config['file_name']. $upload_data['file_ext'],
 					// 'deadline' => $deadline,
 					'attachment_type' => $upload_data['file_type'],
 					'mdb' => $user_id,

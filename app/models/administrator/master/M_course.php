@@ -134,7 +134,7 @@ class M_course extends MY_Model {
                 JOIN com_user d on a.user_id = d.user_id 
                 JOIN course_lesson e ON a.course_id = e.course_id
                 JOIN course_assignment f ON f.lesson_id = e.lesson_id 
-                WHERE e.lesson_id = ? AND status= '1'
+                WHERE e.lesson_id = ?
                 ORDER BY a.enroll_id ASC";
         $query = $this->db->query($sql,$params);
         if ($query->num_rows() > 0) {
@@ -157,7 +157,7 @@ class M_course extends MY_Model {
                 JOIN com_user d on a.user_id = d.user_id 
                 JOIN course_lesson e ON a.course_id = e.course_id
                 JOIN course_assignment f ON f.lesson_id = e.lesson_id 
-                WHERE e.lesson_id = ? AND status= '1'
+                WHERE e.lesson_id = ? 
                 GROUP BY a.enroll_id 
                 ORDER BY a.enroll_id ASC) rst
                 GROUP BY rst.assignment_id  LIMIT ? , ?";

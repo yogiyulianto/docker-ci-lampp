@@ -40,7 +40,7 @@
                             <td style="vertical-align: middle" class="text-center">{{$item['user_mail']}}</td>
                             <td style="vertical-align: middle" class="text-center">{{$item['attachment_type']}}</td>
                             <td style="vertical-align: middle" class="text-center">
-                            <a href="{{base_url($item['attachment'])}}" class="btn"  data-toggle="tooltip" data-placement="top" title="Download Tugas">
+                            <a href="{{$item['attachment']}}" class="btn"  data-toggle="tooltip" data-placement="top" title="Download Tugas">
                                     <i class="fas fa-download" ></i>
                             </a>
                             {{substr($item['attachment'], 0, 20)}} ...

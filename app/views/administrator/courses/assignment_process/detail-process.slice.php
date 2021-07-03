@@ -47,8 +47,20 @@
 				<div class="form-group row">
 					<div class="col-lg-12">
 						<label>Nilai*</label>
-						<input type="text" name="nilai" class="form-control {{error_form_class('nilai')}}"
-							placeholder="Masukan Nilai" value="{{$rs_assignment['nilai'] ?? ''}}">
+						<select name="type" class="select-2" style="width:100%" data-placeholder="Masukan Nilai">
+                            <option value="">Masukan Nilai</option>
+                            <option value="nilai" {{ set_select(old_input('nilai') , '60') }}>60</option>
+                            <option value="nilai" {{ set_select(old_input('nilai') , '65') }}>65</option>
+                            <option value="nilai" {{ set_select(old_input('nilai') , '70') }}>70</option>
+                            <option value="nilai" {{ set_select(old_input('nilai') , '75') }}>75</option>
+                            <option value="nilai" {{ set_select(old_input('nilai') , '80') }}>80</option>
+                            <option value="nilai" {{ set_select(old_input('nilai') , '85') }}>85</option>
+                            <option value="nilai" {{ set_select(old_input('nilai') , '90') }}>90</option>
+                            <option value="nilai" {{ set_select(old_input('nilai') , '95') }}>95</option>
+                            <option value="nilai" {{ set_select(old_input('nilai') , '100') }}>100</option>
+                        </select>
+						<!-- <input type="text" name="nilai" class="form-control {{error_form_class('nilai')}}"
+							placeholder="Masukan Nilai" value="{{$rs_assignment['nilai'] ?? ''}}"> -->
 						<div class="error text-danger">{{error_form('nilai') ?? ''}}</div>
 					</div>
 				</div>
