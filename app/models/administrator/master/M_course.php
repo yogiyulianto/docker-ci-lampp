@@ -34,9 +34,9 @@ class M_course extends MY_Model {
         $sql =  "SELECT COUNT(a.course_id) as 'total'
                 FROM course a ";
                 
-                if ($args['teacher_id'] != "") {
-                    $sql .= " AND a.teacher_id LIKE ?";
-                    array_push($params, "%{$args['teacher_id']}%");
+                if ($args['fasilitator_id'] != "") {
+                    $sql .= " WHERE a.fasilitator_id LIKE ?";
+                    array_push($params, "%{$args['fasilitator_id']}%");
                 }
                 if ($args['course_st'] != "") {
                     $sql .= " AND a.course_st LIKE ?";
@@ -59,9 +59,9 @@ class M_course extends MY_Model {
                 FROM course a 
                 JOIN user d on a.fasilitator_id = d.user_id";
 
-                if ($args['teacher_id'] != "") {
-                    $sql .= " AND a.teacher_id LIKE ?";
-                    array_push($params, "%{$args['teacher_id']}%");
+                if ($args['fasilitator_id'] != "") {
+                    $sql .= " AND a.fasilitator_id LIKE ?";
+                    array_push($params, "%{$args['fasilitator_id']}%");
                 }
                 if ($args['course_st'] != "") {
                     $sql .= " AND a.course_st LIKE ?";
