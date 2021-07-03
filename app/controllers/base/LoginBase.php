@@ -21,7 +21,7 @@ class LoginBase extends CI_Controller
 	{
 		$params = array(
 			'pref_group' => 'logo',
-			'pref_nm'	=> 'logo_codeinaja'
+			'pref_nm'	=> 'logo'
 		);
 		$logo = $this->M_site->get_com_reference_by_pref_nm($params);
 		$this->slice->with('logo', $logo);
