@@ -249,10 +249,10 @@ class M_course extends MY_Model {
 	// get course assignment by course id
 	public function assignment($course_id = null) {
 
-		$data = $this->db->query("SELECT  b.title as bab, a.course_id, a.lesson_id, a.section_id, a.title as sub_bab, c.attachment, c.attachment, c.attachment_type, c.catatan, c.status, c.nilai from course_lesson a 
-        INNER JOIN course_section b ON a.section_id = b.section_id 
-        LEFT JOIN course_assignment c ON b.section_id = c.section_id 
-        WHERE a.course_id = '$course_id' ")->result();
+		$data = $this->db->query("SELECT * FROM course_lesson a 
+        LEFT JOIN (
+        SELECT a.lesson_id, SUM(CASE WHEN b.attachment != NULL THEN 1 ELSE 0 END) as status_assignment FROM `course_lesson` a LEFT JOIN course_assignment b ON a.lesson_id = b.lesson_id WHERE a.course_id = '1') rst ON rst.lesson_id = a.lesson_id
+        WHERE course_id = '$course_id' ")->result();
 
 	return $data;
 	}
