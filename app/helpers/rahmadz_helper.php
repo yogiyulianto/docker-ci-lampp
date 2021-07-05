@@ -78,3 +78,16 @@ if (!function_exists('rupiah')) {
 		return 'Rp.  ' . number_format($double, $decimal, ',', '.');
 	}
 }
+
+if ( ! function_exists('slugify'))
+{
+    function slugify($text) {
+        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+        $text = trim($text, '-');
+        $text = strtolower($text);
+        //$text = preg_replace('~[^-\w]+~', '', $text);
+        if (empty($text))
+        return 'n-a';
+        return $text;
+	}
+}

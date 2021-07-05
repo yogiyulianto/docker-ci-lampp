@@ -1,0 +1,54 @@
+// color
+$white: #ffffff;
+$blue: #365FD9;
+$navy: #171526;
+$orange: #F2A74B;
+$red: #F21313;
+$salmon: #F27F3D;
+$orange-transparent: rgba(255, 142, 13, .1);
+$transparent: rgba(255, 255, 255, 0);
+$colors: (
+    "navy": $navy,
+    "salmon": $salmon,
+    "orange-transparent": $orange-transparent,
+    "transparent": $transparent
+);
+
+$primary:       $blue;
+$secondary:     $orange;
+$tertiary:      $salmon;
+$dark:          $navy;
+$white:         $white;
+$transparent:   $transparent;
+
+$theme-colors: (
+    "tertiary": $tertiary,
+    "white": $white,
+    "transparent": $transparent
+);
+
+$enable-gradients: false;
+
+//font
+@font-face {
+    font-family: gotham-rounded;
+    font-style: normal;
+    font-weight: 300;
+    src: url(../fonts/Gotham-Rounded.ttf) format('woff')
+  }
+  
+  @font-face {
+    font-family: gotham-rounded;
+    font-style: bold;
+    font-weight: 600;
+    src: url(../fonts/Gotham-Rounded-Medium.ttf) format('woff');
+  }
+  
+  @font-face {
+    font-family: gotham-rounded;
+    font-style: bolder;
+    font-weight: 700;
+    src: url(../fonts/Gotham-Rounded-Bold.ttf) format('woff');
+  }
+
+  $enable-responsive-font-sizes: true;

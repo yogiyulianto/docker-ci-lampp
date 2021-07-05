@@ -19,7 +19,6 @@ class Token extends PrivateBase {
         $this->slice->with('PAGE_TITLE', self::PAGE_TITLE);
         $this->slice->with('PAGE_HEADER', self::PAGE_HEADER);
         $this->slice->with('PAGE_URL', base_url(self::PAGE_URL));
-        $this->load->model('administrator/master/M_pasien');
 		$this->load->model('administrator/master/M_token', 'token');
     }
 
@@ -50,7 +49,7 @@ class Token extends PrivateBase {
 
     public function add() {
         $this->_set_page_rule('C');
-        $all_role = $this->M_pasien->get_all_role();
+        $all_role = $this->token->get_all_role();
         $data = array(
             'rs_roles' => $all_role,
         );

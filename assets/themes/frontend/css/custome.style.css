@@ -1,0 +1,66 @@
+/*nav*/
+.nav-scroller {
+	position: relative;
+	z-index: 2;
+	height: 3.75rem;
+	overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	padding-bottom: 1rem;
+	overflow-x: auto;
+	text-align: center;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch;
+}
+
+/*background*/
+.bg-gradient-primary-light {
+	background: linear-gradient(180deg, rgba(54, 95, 217, 0.1), rgba(255, 255, 255, 0)) repeat-x !important;
+}
+
+.bg-gradient-secondary-light {
+	background: linear-gradient(180deg, rgba(255, 142, 13, 0.1), rgba(255, 255, 255, 0)) repeat-x !important;
+}
+
+.bg-gradient-red-light {
+	background: linear-gradient(to top, rgba(254, 69, 53, 0.1), rgba(255, 255, 255, 0)) repeat-x !important;
+}
+
+/*border*/
+.border-rounded {
+	border-radius: 1rem;
+}
+
+.border-color-secondary {
+	border: 1px solid orange;
+}
+
+/*Component*/
+
+/*card*/
+.row div a:hover,
+#courseTabContent .tab-pane .row div a:hover {
+    text-decoration: none;
+}
+
+/*Footer*/
+.footer-links li a {
+    line-height: 1.75rem;
+    text-decoration: none;
+}
+
+/*Jumbotron*/
+.page-cover {
+    background-position: center center;
+    background-position: center;
+    border-bottom-left-radius: 1.75rem;
+    border-bottom-right-radius: 1.75rem;
+}
+
+/*Course Focus*/

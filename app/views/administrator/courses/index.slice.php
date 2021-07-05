@@ -9,7 +9,7 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">Daftar {{$PAGE_TITLE }}
-                <a onclick="swal('Perhatian !', 'Maaf fitur dalam tahap pengembangan!', 'warning')" class="float-right btn btn-info btn-border btn-round btn-sm">
+			<a href="{{$PAGE_URL.'add'}}" class="float-right btn btn-info btn-border btn-round btn-sm">
                     <span class="btn-label">
                         <i class="las la-plus"></i>
                     </span>
@@ -93,9 +93,11 @@
                                 <a href="{{ $PAGE_URL.'assignment/'.$item['course_id']}}" class="btn btn-primary btn-sm"  data-toggle="tooltip" data-placement="top" title="Lihat Hasil">
                                     <i class="fas fa-book" ></i>
                                 </a>
-                                <a onclick="swal('Perhatian !', 'Maaf fitur dalam tahap pengembangan!', 'warning')" class="btn btn-danger text-white btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus Pelatihan">
-                                    <i class="fas fa-trash"></i>
+								<a href="{{ $PAGE_URL.'edit/'.$item['course_id']}}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Pelatihan">
+                                    <i class="fas fa-pencil-alt"></i>
                                 </a>
+								<a onclick="actControl('delete', '{{$item['course_id']}}', '{{$item['title']}}');" role="button" class="btn btn-danger text-white btn-sm " data-toggle="tooltip" data-placement="bottom" data-original-title="Hapus" style="cursor:pointer"><i class="fa fa-trash"></i></a>
+
 
                             </td>
                         </tr>
@@ -121,5 +123,40 @@
 </div>
 @endsection
 @section('scripts')
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+
+
+	async function actControl(x, y, z) {
+		if (x == "delete") {
+
+			swal({
+				title: "Konfirmasi",
+				text: "Apakah anda akan menghapus data " + z + " ?",
+				icon: "warning",
+				dangerMode: true,
+				buttons: ["Batalkan!", "Ok, Lanjutkan!"],
+				})
+				.then((willDelete) => {
+				if (willDelete) {
+					try {
+                        const response = axios.get('<?= base_url()?>administrator/courses/delete?course_id=' + y);
+                        var data = response.data;
+						swal("Terhapus !", "Data berhasil dihapus.", "success");
+
+                        setTimeout(function () {
+                            window.location.replace("<?= base_url()?>administrator/courses/");
+                        }, 500);
+
+                    } catch (error) {
+                        console.error(error);
+                    }
+				}
+				});
+
+		}
+			}
+</script>
 @endsection

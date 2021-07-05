@@ -28,6 +28,20 @@ class M_token extends MY_Model {
         return array();
     }
 
+      //all role
+      public function get_all_role() {
+        $this->db->select('*');
+        $this->db->from('com_role');
+        $this->db->where("(role_id='02002' OR role_id='02003')", NULL, FALSE);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+
 	//get all
     public function get_all($rs_search, $number, $offset) {
 		// echo'<pre>';

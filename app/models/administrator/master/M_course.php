@@ -273,6 +273,125 @@ class M_course extends MY_Model {
 	return $data;
 	}
 
+	// get all parent
+    public function get_all_teacher() {
+		$data = $this->db->query("SELECT d.full_name,a.user_id FROM com_user a JOIN com_role_user b ON a.user_id = b.user_id JOIN com_role c ON c.role_id = b.role_id JOIN user d ON d.user_id = a.user_id WHERE c.role_id = '2005'")->result();
+
+		return $data;
+    }
+
+	// get all parent
+    public function get_all_teachers() {
+        $sql = "SELECT d.full_name,a.user_id FROM com_user a JOIN com_role_user b ON a.user_id = b.user_id JOIN com_role c ON c.role_id = b.role_id JOIN user d ON d.user_id = a.user_id WHERE c.role_id = '2005'";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+
+	public function get_all_section($params){
+        $sql = "SELECT *  FROM course_section WHERE course_id =  ? ORDER BY order_no ASC";
+        $query = $this->db->query($sql,$params);
+        if ($query->num_rows() > 0){
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+
+	public function get_lesson_by_section_id($params)
+    {
+        $sql = "SELECT * FROM course_lesson WHERE section_id = ? ORDER BY order_no ASC";
+        $query = $this->db->query($sql,$params);
+        if ($query->num_rows() > 0){
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+
+	 //get by id
+	 public function get_by_id($params) {
+        $sql = "SELECT a.*,b.full_name as 'trainer_name' 
+            FROM course a JOIN user b ON a.fasilitator_id = b.user_id 
+            WHERE a.course_id = ?";
+        $query = $this->db->query($sql,$params);
+        if ($query->num_rows() > 0){
+            $result = $query->row_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+
+	public function get_last_section_order($params) {
+        $sql = "SELECT order_no
+                FROM course_section
+                WHERE course_id = ?
+                ORDER BY mdd DESC 
+                LIMIT 1";
+        $query = $this->db->query($sql, $params);
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            $query->free_result();
+            // create next number
+            $number = intval($result['order_no']) + 1;
+            return $number;
+        } else {
+            // create new number
+            return 1;
+        }
+    }
+
+	// get section_by_id
+    public function get_section_by_id($params){
+        $sql = "SELECT * FROM course_section WHERE section_id = ?";
+        $query = $this->db->query($sql,$params);
+        if ($query->num_rows() > 0){
+            $result = $query->row_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+
+	 // get_last_lesson_order
+	 public function get_last_lesson_order($params) {
+        $sql = "SELECT order_no
+                FROM course_lesson
+                WHERE section_id = ?
+                ORDER BY mdd DESC 
+                LIMIT 1";
+        $query = $this->db->query($sql, $params);
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            $query->free_result();
+            // create next number
+            $number = intval($result['order_no']) + 1;
+            return $number;
+        } else {
+            // create new number
+            return 1;
+        }
+    }
+
+
+	public function get_lesson_by_id($params){
+        $sql = "SELECT * FROM course_lesson WHERE lesson_id = ?";
+        $query = $this->db->query($sql,$params);
+        if ($query->num_rows() > 0){
+            $result = $query->row_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+
 
 
 }
