@@ -21,13 +21,13 @@ Dashboard
                     <div class="row align-items-center">
                         <div class="col-icon">
                             <div class="icon-big text-center icon-primary bubble-shadow-small">
-                                <i class="flaticon-imac"></i>
+                                <i class="flaticon-users"></i>
                             </div>
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Peserta Terdatar</p>
-                                <h4 class="card-title">{{$total_jenis_treatment}}</h4>
+                                <p class="card-category">Total Users</p>
+                                <h4 class="card-title">{{$total_pasien}}</h4>
                             </div>
                         </div>
                     </div>
@@ -45,8 +45,8 @@ Dashboard
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Total Course</p>
-                                <h4 class="card-title">{{$total_order}}</h4>
+                                <p class="card-category">Total Blog</p>
+                                <h4 class="card-title">{{$total_blog}}</h4>
                             </div>
                         </div>
                     </div>
@@ -64,8 +64,8 @@ Dashboard
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Total Pendapatan</p>
-                                <h4 class="card-title">{{$total_perawat}}</h4>
+                                <p class="card-category">Total Webinar</p>
+                                <h4 class="card-title">{{$total_webinar}}</h4>
                             </div>
                         </div>
                     </div>
@@ -78,13 +78,13 @@ Dashboard
                     <div class="row align-items-center">
                         <div class="col-icon">
                             <div class="icon-big text-center icon-secondary bubble-shadow-small">
-                                <i class="flaticon-users"></i>
+                                <i class="flaticon-imac"></i>
                             </div>
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Total Trainer</p>
-                                <h4 class="card-title">{{$total_pasien}}</h4>
+                                <p class="card-category">Total Video</p>
+                                <h4 class="card-title">{{$total_video}}</h4>
                             </div>
                         </div>
                     </div>

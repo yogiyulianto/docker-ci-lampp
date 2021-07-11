@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>YCA Indonesia</title>
+		<title>GENDHIS</title>
 		<!-- FAVICON LINK -->
 		<link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicons/favicon.ico" type="image/x-icon">
 		<!-- STYLESHEETS -->
