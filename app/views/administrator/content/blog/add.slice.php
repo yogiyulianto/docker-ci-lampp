@@ -1,9 +1,9 @@
 @extends('base.default.app')
-@section('ext_css')
+
 <link href="{{$asset_url}}plugins/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css" />
 <link href="{{$asset_url}}plugins/bootstrap4-tagsinput/tagsinput.css" rel="stylesheet" type="text/css" />
 <link href="{{$asset_url}}plugins/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
-@endsection
+
 @section('content')
 <div class="page-inner">
 	<div class="page-header d-none d-sm-flex">
@@ -115,13 +115,15 @@
 </div>
 @endsection
 
-@section('ext_js')
+@section('scripts')
 <script src="{{$asset_url}}plugins/dropify/dist/js/dropify.js" type="text/javascript"></script>
 <script src="{{$asset_url}}plugins/summernote/summernote-bs4.min.js" type="text/javascript"></script>
 <script src="{{$asset_url}}plugins/bootstrap4-tagsinput/tagsinput.js" type="text/javascript"></script>
 <script>
 	$(document).ready(function () {
-		$('#summernote').summernote();
+		$('#summernote').summernote({
+            height: 150
+        });  
 		$('.dropify').dropify();
 	});
 </script>
