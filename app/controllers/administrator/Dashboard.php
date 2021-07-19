@@ -23,19 +23,13 @@ class Dashboard extends PrivateBase {
         // set page rules
         $this->_set_page_rule('R');
         // get data
-        // $total_jenis_treatment      = $this->M_dashboard->get_total_jenis_treatment();
-        // $total_order                = $this->M_dashboard->get_total_order();
-        // $total_perawat              = $this->M_dashboard->get_total_perawat();
-        // $total_pasien               = $this->M_dashboard->get_total_pasien();
-        // $rs_last_order              = $this->M_dashboard->get_last_order();
-
-        $total_webinar      = 0;
-        $total_blog         = 0;
-        $total_video        = 0;
-        $total_pasien       = 0;
+        $total_webinar      = $this->M_dashboard->get_total_webinar();
+        $total_blog        = $this->M_dashboard->get_total_blog();
+        $total_video        = $this->M_dashboard->get_total_video();
+        $total_users       = $this->M_dashboard->get_total_users();
         // $rs_last_order              = $this->M_dashboard->get_last_order();
         // print_r($rs_last_order);die;
         // render view
-        return view(self::PAGE_URL.'index',compact(['total_webinar','total_blog','total_video','total_pasien']));
+        return view(self::PAGE_URL.'index',compact(['total_webinar','total_blog','total_video','total_users']));
     }
 }

@@ -27,7 +27,7 @@ Dashboard
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
                                 <p class="card-category">Total Users</p>
-                                <h4 class="card-title">{{$total_pasien}}</h4>
+                                <h4 class="card-title">{{$total_users}}</h4>
                             </div>
                         </div>
                     </div>
