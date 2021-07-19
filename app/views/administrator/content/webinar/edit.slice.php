@@ -2,6 +2,8 @@
 <link href="{{$asset_url}}plugins/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css" />
 <link href="{{$asset_url}}plugins/bootstrap4-tagsinput/tagsinput.css" rel="stylesheet" type="text/css" />
 <link href="{{$asset_url}}plugins/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 @section('content')
 <div class="page-inner">
 	<div class="page-header d-none d-sm-flex">
@@ -52,8 +54,8 @@
 						<div class="form-group row">
 							<div class="col-md-12">
 								<label>Jadwal*</label>
-								<input type="date" class="form-control" name="jadwal"
-									value="{{date('d-M-y', strtotime($result['jadwal']))}}">
+								<input type="text" class="form-control datetime" name="jadwal"
+									value="{{$result['jadwal']}}">
 								<div class="error text-danger">{{error_form('jadwal') ?? ''}}</div>
 							</div>
 						</div>
@@ -102,17 +104,27 @@
 	</div>
 	<!--end::Form-->
 </div>
-</div>
+
 @endsection
 
 @section('scripts')
 <script src="{{$asset_url}}plugins/dropify/dist/js/dropify.js" type="text/javascript"></script>
 <script src="{{$asset_url}}plugins/summernote/summernote-bs4.min.js" type="text/javascript"></script>
 <script src="{{$asset_url}}plugins/bootstrap4-tagsinput/tagsinput.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <script>
 	$(document).ready(function () {
-		$('#summernote').summernote();
+		$('#summernote').summernote({
+            height: 150
+        });  
 		$('.dropify').dropify();
+		$(".datetime").flatpickr({
+			enableTime: true,
+		    dateFormat: "Y-m-d H:i",
+		    minToday: true,
+			altFormat: "F j, Y H:i"
+		});
 	});
 </script>
 @endsection

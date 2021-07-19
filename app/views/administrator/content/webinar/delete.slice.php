@@ -2,6 +2,7 @@
 <link href="{{$asset_url}}plugins/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css" />
 <link href="{{$asset_url}}plugins/bootstrap4-tagsinput/tagsinput.css" rel="stylesheet" type="text/css" />
 <link href="{{$asset_url}}plugins/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @section('content')
 <div class="page-inner">
     <div class="page-header d-none d-sm-flex">
@@ -31,14 +32,14 @@
 						<div class="col-lg-12">
 							<label>Judul*</label>
 							<input type="text" name="title" class="form-control {{error_form_class('title')}}"
-								placeholder="Masukan Judul" value="{{$result['title'] ?? ''}}">
+								placeholder="Masukan Judul"  disabled value="{{$result['title'] ?? ''}}">
 							<div class="error text-danger">{{error_form('title') ?? ''}}</div>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-lg-12">
 							<label>Deskripsi *</label>
-							<textarea class="form-control disabled {{error_form_class('description')}}" id="summernote" name="description" cols="30" rows="10" placeholder="Masukan Deskripsi" >{{$result['description'] ?? ''}}</textarea>
+							<textarea class="form-control {{error_form_class('description')}}" id="summernote" name="description" cols="30" rows="10" placeholder="Masukan Deskripsi" >{{$result['description'] ?? ''}}</textarea>
 							<div class="error text-danger">{{error_form('description') ?? ''}}</div>
 						</div>
 					</div>
@@ -52,8 +53,8 @@
 					<div class="form-group row">
 						<div class="col-md-12">
 							<label>Jadwal*</label>
-							<input type="date" disabled class="form-control" name="jadwal"
-								value="{{date('d-M-y', strtotime($result['jadwal']))}}">
+							<input type="text" disabled class="form-control datetime" name="jadwal"
+									value="{{$result['jadwal']}}">
 							<div class="error text-danger">{{error_form('jadwal') ?? ''}}</div>
 						</div>
 					</div>
@@ -106,11 +107,22 @@
 <script src="{{$asset_url}}plugins/dropify/dist/js/dropify.js" type="text/javascript"></script>
 <script src="{{$asset_url}}plugins/summernote/summernote-bs4.min.js" type="text/javascript"></script>
 <script src="{{$asset_url}}plugins/bootstrap4-tagsinput/tagsinput.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <script>
 	$(document).ready(function () {
-		$('#summernote').summernote();
+		// $('#summernote').summernote({
+        //     height: 150
+        // });  
 		$('#summernote').summernote('disable');
+
 		$('.dropify').dropify();
+		$(".datetime").flatpickr({
+			enableTime: true,
+		    dateFormat: "Y-m-d H:i",
+		    minToday: true,
+			altFormat: "F j, Y H:i"
+		});
 	});
 </script>
 @endsection

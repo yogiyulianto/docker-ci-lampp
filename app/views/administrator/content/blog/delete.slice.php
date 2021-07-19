@@ -103,7 +103,8 @@
 <script src="{{$asset_url}}plugins/bootstrap4-tagsinput/tagsinput.js" type="text/javascript"></script>
 <script>
 	$(document).ready(function () {
-		$('#summernote').summernote();
+		// $('#summernote').summernote();
+		$('#summernote').summernote('disable');
 		$('.dropify').dropify();
 	});
 </script>

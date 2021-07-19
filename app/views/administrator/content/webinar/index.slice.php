@@ -42,7 +42,7 @@
                             <td>{{$item['description']}}</td>
                             <td><img src="{{base_url($item['image'])}}" alt="" width="50px"></td>
                             <td>{{$item['link']}}</td>
-                            <td>{{date('j F, Y', strtotime($item['jadwal']))}}</td>
+                            <td>{{date('j F, Y H:i', strtotime($item['jadwal']))}}</td>
                             <td>
                                 <button class="btn btn-primary btn-border btn-sm btn-round">
                                     @if($item['webinar_st'] == 'published')
