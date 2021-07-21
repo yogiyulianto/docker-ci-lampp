@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 use chriskacerguis\RestServer\RestController;
+use \Firebase\JWT\JWT;
 
 class Users extends RestController {
 
@@ -13,26 +14,29 @@ class Users extends RestController {
         $this->load->model('administrator/master/M_users', 'users');
     }
 
-	// get data user by_id
-	public function data_get(){
-        $user_id = $this->get('user_id');
-		$result = $this->users->get_user_id($user_id);
-
-		if($result){
-            $message = "Data ditemukan!";
-            $response = array(
-                'status' => true,
-                'message' => $message,
-                'result' => $result
-            );
-            $this->response($response, 200);
-        } else {
-            $message = "Data tidak lengkap!";
-            $response = array(
+    public function decode()
+    {
+        $this->methods['users_get']['limit'] = 500; 
+        $this->methods['users_post']['limit'] = 100; 
+        $this->methods['users_delete']['limit'] = 50; 
+        //JWT Auth middleware
+        $headers = $this->input->get_request_header('Authorization');
+        $kunci = $this->config->item('jwt_key');
+        $token= "token";
+       	if (!empty($headers)) {
+        	if (preg_match('/Bearer\s(\S+)/', $headers , $matches)) {
+            $token = $matches[1];
+        	}
+    	}
+        try {
+           $decoded = JWT::decode($token, $kunci, array('HS256'));
+           $this->user_data = $decoded;
+        } catch (Exception $e) {
+            $invalid = [
                 'status' => false,
-                'message' => $message
-            );
-            $this->response($response, 404);
+                'message' => $e->getMessage(),
+            ]; 
+            $this->response($invalid, 401);
         }
     }
 

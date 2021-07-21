@@ -37,6 +37,10 @@ class ComposerStaticInit59fe7d3e73737e3f4dd2fc9c44f58021
             'Prophecy\\' => 9,
             'PhpOption\\' => 10,
         ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
         'D' => 
         array (
             'Dotenv\\' => 7,
@@ -83,6 +87,10 @@ class ComposerStaticInit59fe7d3e73737e3f4dd2fc9c44f58021
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Dotenv\\' => 
         array (

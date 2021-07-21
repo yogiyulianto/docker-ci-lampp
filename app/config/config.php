@@ -545,3 +545,4 @@ $config['proxy_ips'] = '';
 
 // registered portal
 $config['portal_id'] = '10';
+$config['jwt_key']='genDhisApP!'; 

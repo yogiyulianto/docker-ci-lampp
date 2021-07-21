@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 use chriskacerguis\RestServer\RestController;
-// require(APPPATH.'/libraries/RestController.php');  
+use \Firebase\JWT\JWT;
 
 class Auth extends RestController {
 
@@ -18,6 +18,30 @@ class Auth extends RestController {
         $this->load->model('systems/M_user');
 
         $this->load->library('form_validation');
+    }
+
+    // get data user by_id
+	public function index_get(){
+        $key = $this->config->item('jwt_key');
+        $date = new DateTime();
+        $iat = $date->getTimestamp();
+        $exp = $date->getTimestamp() + 60*60;
+
+        $token = array(
+            "username" => 'yogi',
+            "user_id" => '1001',
+            "iat" => $iat,
+            "exp" => $exp
+        );
+
+        $jwt = JWT::encode($token, $key);
+        $message = "Data ditemukan!";
+        $response = array(
+            'status' => true,
+            'message' => $jwt
+        );
+
+        $this->response($response, 200);
     }
 
     public function login_post(){

@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '4823374be27e496a7be7aa97545dc6bc7e99e923',
+    'reference' => 'd93197dc6124cc00ed66e70f0c1be3cc0aeb019a',
     'name' => 'codeigniter/framework',
   ),
   'versions' => 
@@ -50,7 +50,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '4823374be27e496a7be7aa97545dc6bc7e99e923',
+      'reference' => 'd93197dc6124cc00ed66e70f0c1be3cc0aeb019a',
     ),
     'doctrine/instantiator' => 
     array (
@@ -60,6 +60,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'd56bf6102915de5702778fe20f2de3b2fe570b5b',
+    ),
+    'firebase/php-jwt' => 
+    array (
+      'pretty_version' => 'v5.4.0',
+      'version' => '5.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd2113d9b2e0e349796e72d2a63cf9319100382d2',
     ),
     'mikey179/vfsstream' => 
     array (
@@ -94,12 +103,12 @@ private static $installed = array (
     ),
     'paragonie/sodium_compat' => 
     array (
-      'pretty_version' => 'v1.15.4',
-      'version' => '1.15.4.0',
+      'pretty_version' => 'v1.16.1',
+      'version' => '1.16.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8a93bfe047c7f699f819459de8ddda144cd636a4',
+      'reference' => '2e856afe80bfc968b47da1f4a7e1ea8f03d06b38',
     ),
     'phpdocumentor/reflection-common' => 
     array (
@@ -319,21 +328,21 @@ private static $installed = array (
     ),
     'symfony/polyfill-ctype' => 
     array (
-      'pretty_version' => 'v1.22.1',
-      'version' => '1.22.1.0',
+      'pretty_version' => 'v1.23.0',
+      'version' => '1.23.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c6c942b1ac76c82448322025e084cadc56048b4e',
+      'reference' => '46cd95797e9df938fdd2b03693b5fca5e64b01ce',
     ),
     'symfony/yaml' => 
     array (
-      'pretty_version' => 'v4.4.22',
-      'version' => '4.4.22.0',
+      'pretty_version' => 'v4.4.26',
+      'version' => '4.4.26.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1c2fd24147961525eaefb65b11987cab75adab59',
+      'reference' => 'e096ef4b4c4c9a2f72c2ac660f54352cd31c60f8',
     ),
     'vlucas/phpdotenv' => 
     array (
