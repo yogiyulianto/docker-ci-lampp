@@ -23,10 +23,11 @@
                     <thead >
                         <tr>
                             <th width="5%">No</th>
-                            <th width="30%">Judul</th>
-                            <th width="30%">Isi</th>
-                            <th width="20%">Status</th>
-                            <th width="15%">Aksi</th>
+                            <th width="35%">Judul</th>
+                            <th width="20%">Slug</th>
+                            <th width="20%">Icon</th>
+                            <th width="20%">Gambar</th>
+                            <th width="20%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,20 +35,15 @@
                         @forelse ($rs_id as $item)
                         <tr>
                             <td>{{$no++}}</td>
-                            <td>{{$item['judul']}}</td>
-                            <td>{{$item['isi']}}</td>
-                            <td>
-                            @if ($item['stat'] == 'unpublished')
-                                <small class="badge badge-danger text-white">Belum dipublish</small>
-                                @elseif ($item['stat'] == 'published')
-                                <small class="badge badge-success text-white">Dipublish</small>
-                            @endif
-                            </td>
-                            <td class="text-center">
-                                <a href="{{ $PAGE_URL.'edit/'.$item['id_faq']}}" class="btn"  data-toggle="tooltip" data-placement="top" title="Ubah {{$PAGE_TITLE}}">
+                            <td>{{$item['title']}}</td>
+                            <td>{{$item['slug']}}</td>
+                            <td>{{$item['icon']}}</td>
+                            <td><img src="{{base_url($item['thumbnail'])}}" alt="" width="50px"></td>
+                            <td class="text-right">
+                                <a href="{{ $PAGE_URL.'edit/'.$item['category_id']}}" class="btn"  data-toggle="tooltip" data-placement="top" title="Ubah {{$PAGE_TITLE}}">
                                     <i class="fas fa-pencil-alt" ></i>
                                 </a>
-                                <a href="{{ $PAGE_URL.'delete/'.$item['id_faq']}}" class="btn" data-toggle="tooltip" data-placement="top" title="Hapus {{$PAGE_TITLE}}" >
+                                <a href="{{ $PAGE_URL.'delete/'.$item['category_id']}}" class="btn" data-toggle="tooltip" data-placement="top" title="Hapus {{$PAGE_TITLE}}" >
                                     <i class="fas fa-trash" ></i>
                                 </a>
                             </td>

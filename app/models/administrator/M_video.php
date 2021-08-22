@@ -96,7 +96,7 @@ class M_video extends MY_Model {
 
     //get all
     public function get_all($from ,$page) {
-        $sql = "SELECT a.*, b.title as 'category_title' FROM video a JOIN category b ON a.category_id = b.category_id LIMIT $from ,$page";
+        $sql = "SELECT a.*, b.title as 'category_title' FROM video a JOIN category_video b ON a.category_id = b.category_id LIMIT $from ,$page";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -109,7 +109,7 @@ class M_video extends MY_Model {
     public function get_all_blog($base_url) {
         $sql = "SELECT a.blog_id, a.title as blog_title, 
         a.slug, a.content, concat('$base_url', a.image) as image,
-        b.title as 'category_title' FROM blogs a JOIN category b ON a.category_id = b.category_id 
+        b.title as 'category_title' FROM blogs a JOIN category_video b ON a.category_id = b.category_id 
         WHERE blog_st != 'draft'";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
@@ -149,7 +149,7 @@ class M_video extends MY_Model {
     // get all parent
     public function get_all_category() {
         $this->db->select('*');
-        $this->db->from('category');
+        $this->db->from('category_video');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();

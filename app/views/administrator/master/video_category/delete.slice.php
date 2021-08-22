@@ -25,32 +25,35 @@
         <!--begin::Form-->
         <form class="" method="POST" action="{{$PAGE_URL.'delete_process'}}" onsubmit="return confirm('Apakah anda yakin akan menghapus data dibawah ini?');">
             {{ csrf_token() }}
-            <input type="hidden" name="id_faq" value="{{$result['id_faq']}}">
+            <input type="hidden" name="category_id" value="{{$result['category_id']}}">
             <div class="card-body">
 				<div class="row">
 					<div class="col-12">
-						<div class="form-group row">
-							<div class="col-lg-6">
-								<label>Judul*</label>
-								<input type="text" name="judul" readonly class="form-control {{error_form_class('judul')}}"
-									placeholder="Masukan Judul" value="{{$result['judul'] ?? ''}}">
-								<div class="error text-danger">{{error_form('judul') ?? ''}}</div>
+						<div class="col-12">
+							<div class="form-group row">
+								<div class="col-lg-12">
+									<label>Judul*</label>
+									<input type="text" disabled name="title" class="form-control {{error_form_class('title')}}"
+										placeholder="Masukan Judul" value="{{$result['title'] ?? ''}}">
+									<div class="error text-danger">{{error_form('title') ?? ''}}</div>
+								</div>
 							</div>
-							<div class="col-lg-6">
-								<label class="">Status *</label>
-								<select name="stat" disabled class="select-2 " style="width:100%">
-									<option value="0"> Pilih Status </option>
-									<option value="published" {{ set_select($result['stat'] , 'published') }}> Publish </option>
-									<option value="unpublished" {{ set_select($result['stat'] , 'unpublished') }}> Belum dipublish </option>
-								</select>
-								<div class="error text-danger">{{error_form('stat') ?? ''}}</div>
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label>Icon*</label>
+									<input type="text" disabled class="form-control" name="icon" value="{{$result['icon']}}"
+										data-role="tagsinput">
+									<div class="error text-danger">{{error_form('icon') ?? ''}}</div>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-lg-12">
-								<label>Isi *</label>
-								<textarea readonly class="form-control {{error_form_class('isi')}}" id="summernote" name="isi" cols="30" rows="10" placeholder="Masukan Isi" >{{$result['isi'] ?? ''}}</textarea>
-								<div class="error text-danger">{{error_form('isi') ?? ''}}</div>
+							<div class="form-group row">
+								<div class="col-md-5">
+									<label>Gambar*</label><small> Hanya Gambar (jpg, jpeg, png) maks. 3MB Resolusi
+										1000x1000px</small>
+									<br>
+									<img src="{{base_url($result['thumbnail'])}}" alt="" width="100%">
+									<div class="error text-danger">{{error_form('image') ?? ''}}</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -70,7 +73,7 @@
 <script src="{{$asset_url}}plugins/bootstrap4-tagsinput/tagsinput.js" type="text/javascript"></script>
 <script>
 	$(document).ready(function () {
-		$('#summernote').summernote('disable');
+		$('#summernote').summernote();
 		$('.dropify').dropify();
 	});
 </script>

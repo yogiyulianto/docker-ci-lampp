@@ -50,8 +50,9 @@ class M_user extends MY_Model {
     public function get_user_login_all_roles_api($username, $password) {
         // process
         // get hash key
-        $result = $this->get_user_role($username, '2004');
+        $result = $this->get_user_role($username);
         if (!empty($result)) {
+            // print_r(md5($password) === $result['user_pass']);die;
             // get user
             if (md5($password) === $result['user_pass']) {
                 return $result;
@@ -65,15 +66,13 @@ class M_user extends MY_Model {
 
     // get user detail with auto role
     function get_user_detail_with_all_roles($params) {
-        $sql = "SELECT a.*, b.role_id, c.*,d.*,f.portal_id
+        $sql = "SELECT a.user_name, a.user_mail, b.role_id, c.group_id, c.role_name,d.*
               FROM com_user a
               --  JOIN com_role_user b ON a.user_id = b.user_id
               -- LEFT JOIN com_role c ON b.role_id = c.role_id
               INNER JOIN com_role_user b ON a.user_id = b.user_id
               INNER JOIN com_role c ON b.role_id = c.role_id
-			    INNER JOIN user d ON a.user_id = d.user_id
-              INNER JOIN com_role_menu e ON c.role_id = e.role_id
-              INNER JOIN com_menu f ON e.nav_id = f.nav_id
+			  INNER JOIN user d ON a.user_id = d.user_id
               WHERE a.user_name = ? 
               ORDER BY b.role_default ASC
               LIMIT 0, 1 ";

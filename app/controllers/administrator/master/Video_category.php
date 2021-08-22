@@ -4,11 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once( APPPATH . 'controllers/base/PrivateBase.php' );
 
-class Video extends PrivateBase {
+class Video_category extends PrivateBase {
 
-    const PAGE_TITLE = 'Video';
-    const PAGE_HEADER = 'Video';
-    const PAGE_URL = 'administrator/content/video/';
+    const PAGE_TITLE = 'Video Category';
+    const PAGE_HEADER = 'Video Category';
+    const PAGE_URL = 'administrator/master/video_category/';
 
     protected $page_limit = 10;
     // constructor
@@ -19,7 +19,7 @@ class Video extends PrivateBase {
         $this->slice->with('PAGE_HEADER', self::PAGE_HEADER);
         $this->slice->with('PAGE_URL', base_url(self::PAGE_URL));
         // LOAD MODEL
-        $this->load->model('administrator/M_video');
+        $this->load->model('administrator/master/M_video_category');
         // LOAD LIBRARY
         $this->load->library('tupload');
     }
@@ -31,14 +31,14 @@ class Video extends PrivateBase {
         $this->load->library('pagination');
         $this->load->config('pagination');
         $config = $this->config->item('pagination_config');
-        $total_row = $this->M_video->count_all();
+        $total_row = $this->M_video_category->count_all();
         $config['base_url'] = base_url(self::PAGE_URL.'index/');
         $config['total_rows'] = $total_row;
         $config['per_page'] = $this->page_limit;
         $from = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->pagination->initialize($config);
         //get data 
-        $rs_id = $this->M_video->get_all($from ,$config['per_page']);
+        $rs_id = $this->M_video_category->get_all($from ,$config['per_page']);
         $data = array(
             'rs_id' => $rs_id,
             'pagination' => $this->pagination->create_links()
@@ -50,9 +50,8 @@ class Video extends PrivateBase {
         $this->_set_page_rule('C');
         // get data & parse
         $data = array(
-            'rs_category' => $this->M_video->get_all_category(), 
+            'rs_category' => $this->M_video_category->get_all_category(), 
         );
-        // print_r($data);die;
         // render view
         view(self::PAGE_URL . 'add', $data);
     }
@@ -60,59 +59,39 @@ class Video extends PrivateBase {
     public function add_process() {
         $this->_set_page_rule('C');
         // cek input
-        $this->form_validation->set_rules('category_id','Kategori Pelatihan','trim|required');
         $this->form_validation->set_rules('title','Title','trim|required');
-        $this->form_validation->set_rules('video_st','Status Video','trim|required');
+        $this->form_validation->set_rules('icon','Konten','trim|required');
         if (empty($_FILES['image']['tmp_name'])){
             $this->form_validation->set_rules('image', 'Image', 'required');
         }
-        // get last di role
-        $video_id = generate_id().date('His');
         // process
         if ($this->form_validation->run() !== FALSE) {
             if (!empty($_FILES['image']['tmp_name'])) {
                 // upload config
-                $config['upload_path'] = 'assets/images/video/';
+                $config['upload_path'] = 'assets/images/video_category/';
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                $config['file_name'] = $video_id . '_video_' . date('Ymdhis');
+                $config['file_name'] = 'photo' . '_category_' . date('Ymdhis');
                 $this->tupload->initialize($config);
                 // process upload images
                 if ($this->tupload->do_upload_image('image', 128, false)) {
                     $data_upload = $this->tupload->data();
-                    $file_name = 'assets/images/video/'.$data_upload['file_name'];
+                    $file_name = 'assets/images/video_category/'.$data_upload['file_name'];
                 }
                 $this->notification->send(self::PAGE_URL.'add', 'error',  $this->tupload->display_errors());
             }
-
-            if (!empty($_FILES['video']['tmp_name'])) {
-                // upload config
-                $config_video['upload_path'] = 'assets/video/';
-                $config_video['allowed_types'] = '*';
-                $config_video['file_name'] = $video_id . '_video_' . date('Ymdhis');
-                $this->load->library('upload', $config_video);
-                // process upload images
-                if ($this->upload->do_upload('video')) {
-                    $data_upload_video = $this->upload->data();
-                    $file_name_video = 'assets/video/'.$data_upload_video['file_name'];
-                }
-                $this->notification->send(self::PAGE_URL.'add', 'error',  $this->upload->display_errors());
-            }
             // update params
             $params = array(
-                'video_id' => $video_id,
-                'category_id' => $this->input->post('category_id',TRUE), 
+                'parent_id' => 001,
+                'icon' => $this->input->post('icon',TRUE), 
                 'title' => $this->input->post('title',TRUE), 
-                'image' => (isset($file_name)) ? $file_name : '',
-                'path' => (isset($file_name_video)) ? $file_name_video : '',
-                'views' => 0, 
+                'thumbnail' => (isset($file_name)) ? $file_name : '',
                 'slug' => $this->slugify(html_escape($this->input->post('title',TRUE))), 
-                'video_st' => $this->input->post('video_st',TRUE), 
                 'mdb' => $this->com_user('user_id'),
                 'mdb_name' => $this->com_user('user_name'),
                 'mdd' => now(),
             );
             // insert
-            if ($this->M_video->insert('video', $params)) {
+            if ($this->M_video_category->insert('category_video', $params)) {
                 //sukses notif
                 $this->notification->send(self::PAGE_URL, 'success', 'Data berhasil ditambahkan!');
             } else {
@@ -123,17 +102,17 @@ class Video extends PrivateBase {
             $this->notification->send(self::PAGE_URL.'add', 'error', 'Ada Field Yang Tidak Sesuai. !');
         }
     }
-    public function edit($video_id = '') {
+    public function edit($category_id = '') {
         $this->_set_page_rule('U');
         //cek data
-        if (empty($video_id)) {
+        if (empty($category_id)) {
             // default error
             $this->notification->send(self::PAGE_URL, 'error', 'Data tidak ditemukan!');
         }
         //parsing
         $data = array(
-            'rs_category' => $this->M_video->get_all_category(), 
-            'result' => $this->M_video->get_by_id($video_id),
+            'rs_category' => $this->M_video_category->get_all_category(), 
+            'result' => $this->M_video_category->get_by_id($category_id),
         );
         //parsing and view content
         view(self::PAGE_URL.'edit', $data);
@@ -143,92 +122,87 @@ class Video extends PrivateBase {
     public function edit_process() {
         $this->_set_page_rule('U');
         // cek input
-        $this->form_validation->set_rules('category_id','Kategori Pelatihan','trim|required');
         $this->form_validation->set_rules('title','Title','trim|required');
-        $this->form_validation->set_rules('video_st','Status Video','trim|required');
+        $this->form_validation->set_rules('icon','Icon','trim|required');
+        // cek files
         if (empty($_FILES['image']['tmp_name'])){
             $this->form_validation->set_rules('image', 'Image', 'trim');
-            $this->form_validation->set_rules('video', 'Video', 'trim');
         }
         // check data
-        $video_id = $this->input->post('video_id',TRUE);
-        if (empty($video_id)) {
+        $category_id = $this->input->post('category_id',TRUE);
+        if (empty($category_id)) {
             //sukses notif
             $this->notification->send(self::PAGE_URL.'edit', 'error', 'Data not found !');
         }
         // process
         if ($this->form_validation->run() !== FALSE) {
-            // update params
-            $params = array(
-                'video_id' => $video_id,
-                'category_id' => $this->input->post('category_id',TRUE), 
-                'title' => $this->input->post('title',TRUE), 
-                'views' => 0, 
-                'slug' => $this->slugify(html_escape($this->input->post('title',TRUE))), 
-                'video_st' => $this->input->post('video_st',TRUE), 
-                'mdb' => $this->com_user('user_id'),
-                'mdb_name' => $this->com_user('user_name'),
-                'mdd' => now(),
-            );
             if (!empty($_FILES['image']['tmp_name'])) {
                 // upload config
-                $config['upload_path'] = 'assets/images/video/';
+                $config['upload_path'] = 'assets/images/video_category/';
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                $config['file_name'] = $video_id . '_video_' . date('Ymdhis');
+                $config['file_name'] = $category_id . '_category_' . date('Ymdhis');
                 $this->tupload->initialize($config);
                 // process upload images
                 if ($this->tupload->do_upload_image('image', 128, false)) {
                     $data_upload = $this->tupload->data();
-                    $file_name = 'assets/images/video/'.$data_upload['file_name'];
+                    $file_name = 'assets/images/video_category/'.$data_upload['file_name'];
                 }
-                $params['image'] = $file_name;
                 $this->notification->send(self::PAGE_URL.'add', 'error',  $this->tupload->display_errors());
-            }
 
-            if (!empty($_FILES['video']['tmp_name'])) {
-                // upload config
-                $config_video['upload_path'] = 'assets/video/';
-                $config_video['allowed_types'] = 'mp4|avi';
-                $config_video['file_name'] = $video_id . '_video_' . date('Ymdhis');
-                $this->load->library('upload', $config_video);
-                // process upload images
-                if ($this->upload->do_upload('video')) {
-                    $data_upload_video = $this->upload->data();
-                    $file_name_video = 'assets/video/'.$data_upload_video['file_name'];
-                }
-                $params['path'] = $file_name_video;
-                $this->notification->send(self::PAGE_URL.'add', 'error',  $this->upload->display_errors());
+                 // update params
+                $params = array(
+                    'category_id' => $category_id,
+                    'parent_id' => 001,
+                    'icon' => $this->input->post('icon',TRUE), 
+                    'title' => $this->input->post('title',TRUE), 
+                    'thumbnail' => (isset($file_name)) ? $file_name : $this->input->post('image',TRUE),
+                    'slug' => $this->slugify(html_escape($this->input->post('title',TRUE))), 
+                    'mdb' => $this->com_user('user_id'),
+                    'mdb_name' => $this->com_user('user_name'),
+                    'mdd' => now(),
+                );
+            } else {
+                $params = array(
+                    'category_id' => $category_id,
+                    'parent_id' => 001,
+                    'icon' => $this->input->post('icon',TRUE), 
+                    'title' => $this->input->post('title',TRUE), 
+                    'slug' => $this->slugify(html_escape($this->input->post('title',TRUE))), 
+                    'mdb' => $this->com_user('user_id'),
+                    'mdb_name' => $this->com_user('user_name'),
+                    'mdd' => now(),
+                );
             }
-            // print_r($params);die;
             // where
             $where = array(
-                'video_id' => $video_id,
+                'category_id' => $category_id,
             );
             // insert
-            if ($this->M_video->update('video', $params, $where)) {
+            if ($this->M_video_category->update('category_video', $params, $where)) {
                 //sukses notif
                 $this->notification->send(self::PAGE_URL, 'success', 'Data berhasil diubah!');
             } else {
                 // default error
-                $this->notification->send(self::PAGE_URL.'edit' . $video_id, 'error', 'Data gagal diubah!');
+                $this->notification->send(self::PAGE_URL.'edit' . $category_id, 'error', 'Data gagal diubah!');
             }
         } else {
+            print_r(validation_errors());doe;
             // default error
-            $this->notification->send(self::PAGE_URL.'edit/' . $video_id, 'error', 'Ada Field Yang Tidak Sesuai. !');
+            $this->notification->send(self::PAGE_URL.'edit/' . $category_id, 'error', 'Ada Field Yang Tidak Sesuai. !');
         }
     }
 
-    public function delete($video_id = '') {
+    public function delete($category_id = '') {
         $this->_set_page_rule('D');
         //cek data
-        if (empty($video_id)) {
+        if (empty($category_id)) {
             // default error
             $this->notification->send(self::PAGE_URL, 'error', 'Data tidak ditemukan!');
         }
         //parsing
         $data = array(
-            'rs_category' => $this->M_video->get_all_category(), 
-            'result' => $this->M_video->get_by_id($video_id),
+            'rs_category' => $this->M_video_category->get_all_category(), 
+            'result' => $this->M_video_category->get_by_id($category_id),
         );
         //parsing and view content
         view(self::PAGE_URL . 'delete', $data);
@@ -236,22 +210,22 @@ class Video extends PrivateBase {
 
     public function delete_process() {
         $this->_set_page_rule('D');
-        $video_id = $this->input->post('video_id',TRUE, true);
+        $category_id = $this->input->post('category_id',TRUE, true);
         //cek data
-        if (empty($video_id)) {
+        if (empty($category_id)) {
             // default error
             $this->notification->send(self::PAGE_URL, 'error', 'Data tidak ditemukan!');
         }
         $where = array(
-            'video_id' => $video_id
+            'category_id' => $category_id
         );
         //process
-        if ($this->M_video->delete('video', $where)) {
+        if ($this->M_video_category->delete('category_video', $where)) {
             //sukses notif
             $this->notification->send(self::PAGE_URL, 'success', 'Data berhasil dihapus!');
         } else {
             //default error
-            $this->notification->send(self::PAGE_URL.'delete/' . $video_id, 'error', 'Data gagal dihapus!');
+            $this->notification->send(self::PAGE_URL.'delete/' . $category_id, 'error', 'Data gagal dihapus!');
         }
     }
 }

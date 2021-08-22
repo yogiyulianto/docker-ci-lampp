@@ -1,6 +1,6 @@
 <?php
 
-class M_webinar extends MY_Model {
+class M_audio_category extends MY_Model {
 
     //generate id terakhir
     public function generate_id($prefixdate) {
@@ -70,9 +70,9 @@ class M_webinar extends MY_Model {
 
     //generate id terakhir
     function get_last_id() {
-        $sql = "SELECT LEFT(webinar_id, 1) as 'last_number'
-                FROM webinar 
-                ORDER BY webinar_id DESC 
+        $sql = "SELECT RIGHT(category_id, 1) as 'last_number'
+                FROM category_audio
+                ORDER BY category_id DESC 
                 LIMIT 1";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
@@ -80,23 +80,23 @@ class M_webinar extends MY_Model {
             $query->free_result();
             // create next number
             $number = intval($result['last_number']) + 1;
-            if ($number >= 10) {
+            if ($number >= 100) {
                 return false;
             }
             $zero = '';
-            for ($i = strlen($number); $i < 2; $i++) {
+            for ($i = strlen($number); $i < 3; $i++) {
                 $zero .= '0';
             }
-            return $number . $zero;
+            return  $zero. $number;
         } else {
             // create new number
-            return '10';
+            return '001';
         }
     }
 
     //get all
     public function get_all($from ,$page) {
-        $sql = "SELECT a.* FROM webinar a LIMIT $from ,$page";
+        $sql = "SELECT * FROM category_audio a LIMIT $from ,$page";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -106,11 +106,11 @@ class M_webinar extends MY_Model {
         return array();
     }
     //get all
-    public function get_all_webinar($base_url) {
-        $sql = "SELECT a.webinar_id, a.title as webinar_title, 
+    public function get_all_blog($base_url) {
+        $sql = "SELECT a.blog_id, a.title as blog_title, 
         a.slug, a.content, concat('$base_url', a.image) as image,
-        FROM webinar a
-        WHERE webinar_st != 'draft'";
+        b.title as 'category_title' FROM blogs a JOIN category b ON a.category_id = b.category_id 
+        WHERE blog_st != 'draft'";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -121,10 +121,10 @@ class M_webinar extends MY_Model {
     }
 
     //get by id
-    public function get_by_id($webinar_id) {
+    public function get_by_id($category_id) {
         $this->db->select('*');
-        $this->db->from('webinar');
-        $this->db->where('webinar.webinar_id', $webinar_id);
+        $this->db->from('category_audio');
+        $this->db->where('category_audio.category_id', $category_id);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
@@ -137,7 +137,7 @@ class M_webinar extends MY_Model {
     //count all
     public function count_all() {
         $this->db->select('*');
-        $this->db->from('webinar');
+        $this->db->from('category_audio');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -149,7 +149,7 @@ class M_webinar extends MY_Model {
     // get all parent
     public function get_all_category() {
         $this->db->select('*');
-        $this->db->from('category_webinar');
+        $this->db->from('category_audio');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();

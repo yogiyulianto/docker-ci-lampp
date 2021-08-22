@@ -87,10 +87,36 @@ class Auth extends RestController {
                     // update user attempt
                     $this->M_user->update('com_user', array('attempts'=> 0),array('user_id'=> $result['user_id']));
                     $message = "Anda berhasil login!";
+
+                    $key = $this->config->item('jwt_key');
+                    $date = new DateTime();
+                    $iat = $date->getTimestamp();
+                    $exp = $date->getTimestamp() + 60*60;
+                    // print_r($result);die;
+                    $token = array(
+                        'user_id' => $result['user_id'],
+                        'user_mail' => $result['user_mail'],
+                        'user_name' => $result['user_name'],
+                        'full_name' => $result['full_name'],
+                        'role_id' => $result['role_id'],
+                        "iat" => $iat,
+                        "exp" => $exp
+                    );
+                
+                    $jwt = JWT::encode($token, $key);
+                    $data_response = array(
+                        'user_id' => $result['user_id'],
+                        'user_mail' => $result['user_mail'],
+                        'user_name' => $result['user_name'],
+                        'full_name' => $result['full_name'],
+                        'role_id' => $result['role_id'],
+                        'token' => $jwt
+                    );
+
                     $response = array(
                         'status' => true,
                         'message' => $message,
-                        'data' => $session_params
+                        'data' => $data_response
                     );
                     $this->response($response, 200);
 				}

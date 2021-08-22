@@ -29,27 +29,29 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group row">
-							<div class="col-lg-6">
+							<div class="col-lg-12">
 								<label>Judul*</label>
-								<input type="text" name="judul" class="form-control {{error_form_class('judul')}}"
-									placeholder="Masukan Judul" value="{{old_input('judul') ?? ''}}">
-								<div class="error text-danger">{{error_form('judul') ?? ''}}</div>
-							</div>
-							<div class="col-lg-6">
-								<label class="">Status *</label>
-								<select name="stat" class="select-2 " style="width:100%">
-									<option value="0"> Pilih Status </option>
-									<option value="published" {{ set_select(old_input('stat') , 'published') }}> Publish </option>
-									<option value="unpublished" {{ set_select(old_input('stat') , 'unpublished') }}> Belum dipublish </option>
-								</select>
-								<div class="error text-danger">{{error_form('stat') ?? ''}}</div>
+								<input type="text" name="title" class="form-control {{error_form_class('title')}}"
+									placeholder="Masukan Judul" value="{{old_input('title') ?? ''}}">
+								<div class="error text-danger">{{error_form('title') ?? ''}}</div>
 							</div>
 						</div>
 						<div class="form-group row">
-							<div class="col-lg-12">
-								<label>Isi *</label>
-								<textarea class="form-control {{error_form_class('isi')}}" id="summernote" name="isi" cols="30" rows="10" placeholder="Masukan Isi" >{{old_input('isi') ?? ''}}</textarea>
-								<div class="error text-danger">{{error_form('isi') ?? ''}}</div>
+							<div class="col-md-12">
+								<label>Icon*</label>
+								<input type="text" class="form-control" name="icon" value="{{old_input('icon')}}"
+									data-role="tagsinput">
+								<div class="error text-danger">{{error_form('icon') ?? ''}}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-12">
+								<label>Gambar*</label><small> Hanya Gambar (jpg, jpeg, png) maks. 3MB Resolusi
+									1000x1000px</small>
+								<input type="file" class="dropify {{error_form_class('image')}}" name="image"
+									data-show-errors="true" data-allowed-file-extensions="jpeg jpg png" data-max-file-size="10M"
+									data-max-width="3000" data-max-height="3000">
+								<div class="error text-danger">{{error_form('image') ?? ''}}</div>
 							</div>
 						</div>
 					</div>
@@ -58,7 +60,6 @@
 					<button type="submit" class="btn btn-primary">Simpan</button>
 					<button type="reset" class="btn btn-warning">Reset</button>
 				</div>
-			</div>
 		</form>
 	</div>
 </div>

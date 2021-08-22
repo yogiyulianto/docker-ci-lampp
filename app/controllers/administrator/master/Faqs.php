@@ -59,53 +59,21 @@ class Faqs extends PrivateBase {
     public function add_process() {
         $this->_set_page_rule('C');
         // cek input
-        $this->form_validation->set_rules('category_id','Kategori Pelatihan','trim|required');
-        $this->form_validation->set_rules('title','Title','trim|required');
-        $this->form_validation->set_rules('content','Konten','trim|required');
-        $this->form_validation->set_rules('meta_title','Meta Title','trim|required');
-        $this->form_validation->set_rules('meta_keywords','Meta Keywords','trim|required');
-        $this->form_validation->set_rules('meta_description','Meta Description','trim|required');
-        $this->form_validation->set_rules('faqs_st','Status faqs','trim|required');
-        if (empty($_FILES['image']['tmp_name'])){
-            $this->form_validation->set_rules('image', 'Image', 'required');
-        }
+        $this->form_validation->set_rules('judul','Judul','trim|required');
+        $this->form_validation->set_rules('isi','Isi','trim|required');
+        $this->form_validation->set_rules('stat','Status','trim|required');
         // get last di role
         $chat_id = generate_id();
         // process
         if ($this->form_validation->run() !== FALSE) {
-            if (!empty($_FILES['image']['tmp_name'])) {
-                // upload config
-                $config['upload_path'] = 'assets/images/blog/';
-                $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                $config['file_name'] = $chat_id . '_blog_' . date('Ymdhis');
-                $this->tupload->initialize($config);
-                // process upload images
-                if ($this->tupload->do_upload_image('image', 128, false)) {
-                    $data_upload = $this->tupload->data();
-                    $file_name = 'assets/images/blog/'.$data_upload['file_name'];
-                }
-                $this->notification->send(self::PAGE_URL.'add', 'error',  $this->tupload->display_errors());
-            }
             // update params
             $params = array(
-                'chat_id' => $chat_id,
-                'category_id' => $this->input->post('category_id',TRUE), 
-                'title' => $this->input->post('title',TRUE), 
-                'user_id' => $this->com_user('user_id'), 
-                'content' => $this->input->post('content',TRUE), 
-                'image' => (isset($file_name)) ? $file_name : '',
-                'views' => 0, 
-                'meta_title' => $this->input->post('meta_title',TRUE), 
-                'meta_description' => $this->input->post('meta_description',TRUE),
-                'meta_keywords' => $this->input->post('meta_keywords',TRUE), 
-                'slug' => $this->slugify(html_escape($this->input->post('title',TRUE))), 
-                'blog_st' => $this->input->post('blog_st',TRUE), 
-                'mdb' => $this->com_user('user_id'),
-                'mdb_name' => $this->com_user('user_name'),
-                'mdd' => now(),
+                'judul' => $this->input->post('judul',TRUE), 
+                'isi' => $this->input->post('isi',TRUE), 
+                'stat' => $this->input->post('stat',TRUE),
             );
             // insert
-            if ($this->M_faqs->insert('chat', $params)) {
+            if ($this->M_faqs->insert('faq', $params)) {
                 //sukses notif
                 $this->notification->send(self::PAGE_URL, 'success', 'Data berhasil ditambahkan!');
             } else {
@@ -136,10 +104,12 @@ class Faqs extends PrivateBase {
     public function edit_process() {
         $this->_set_page_rule('U');
         // cek input
-        $this->form_validation->set_rules('answer','Jawaban','trim|required');
+        $this->form_validation->set_rules('judul','Judul','trim|required');
+        $this->form_validation->set_rules('isi','Isi','trim|required');
+        $this->form_validation->set_rules('stat','Status','trim|required');
         // check data
-        $chat_id = $this->input->post('chat_id',TRUE);
-        if (empty($chat_id)) {
+        $id_faq = $this->input->post('id_faq',TRUE);
+        if (empty($id_faq)) {
             //sukses notif
             $this->notification->send(self::PAGE_URL.'edit', 'error', 'Data not found !');
         }
@@ -147,29 +117,25 @@ class Faqs extends PrivateBase {
         if ($this->form_validation->run() !== FALSE) {
             // update params
             $params = array(
-                'answer' => $this->input->post('answer'),
-                'answer_date' => date('Y-m-d H:i:s'), 
-                'chat_st' => 'answered', 
-                'dokter_id' => $this->com_user('user_id'), 
-                'mdb' => $this->com_user('user_id'),
-                'mdb_name' => $this->com_user('user_name'),
-                'mdd' => now(),
+                'judul' => $this->input->post('judul',TRUE), 
+                'isi' => $this->input->post('isi',TRUE), 
+                'stat' => $this->input->post('stat',TRUE),
             );
             // where
             $where = array(
-                'chat_id' => $chat_id,
+                'id_faq' => $id_faq,
             );
             // insert
-            if ($this->M_faqs->update('chat', $params, $where)) {
+            if ($this->M_faqs->update('faq', $params, $where)) {
                 //sukses notif
                 $this->notification->send(self::PAGE_URL, 'success', 'Data berhasil diubah!');
             } else {
                 // default error
-                $this->notification->send(self::PAGE_URL.'edit' . $chat_id, 'error', 'Data gagal diubah!');
+                $this->notification->send(self::PAGE_URL.'edit' . $id_faq, 'error', 'Data gagal diubah!');
             }
         } else {
             // default error
-            $this->notification->send(self::PAGE_URL.'edit/' . $chat_id, 'error', 'Ada Field Yang Tidak Sesuai. !');
+            $this->notification->send(self::PAGE_URL.'edit/' . $id_faq, 'error', 'Ada Field Yang Tidak Sesuai. !');
         }
     }
 
@@ -191,22 +157,22 @@ class Faqs extends PrivateBase {
 
     public function delete_process() {
         $this->_set_page_rule('D');
-        $chat_id = $this->input->post('chat_id',TRUE, true);
+        $id_faq = $this->input->post('id_faq',TRUE, true);
         //cek data
-        if (empty($chat_id)) {
+        if (empty($id_faq)) {
             // default error
             $this->notification->send(self::PAGE_URL, 'error', 'Data tidak ditemukan!');
         }
         $where = array(
-            'chat_id' => $chat_id
+            'id_faq' => $id_faq
         );
         //process
-        if ($this->M_faqs->delete('chat', $where)) {
+        if ($this->M_faqs->delete('faq', $where)) {
             //sukses notif
             $this->notification->send(self::PAGE_URL, 'success', 'Data berhasil dihapus!');
         } else {
             //default error
-            $this->notification->send(self::PAGE_URL.'delete/' . $chat_id, 'error', 'Data gagal dihapus!');
+            $this->notification->send(self::PAGE_URL.'delete/' . $id_faq, 'error', 'Data gagal dihapus!');
         }
     }
 }

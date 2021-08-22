@@ -96,13 +96,7 @@ class M_faqs extends MY_Model {
 
     //get all
     public function get_all($from ,$page) {
-        $sql = "SELECT a.*, b.full_name as dokter_name, c.full_name as user_name FROM chat a
-                LEFT JOIN (select a.*, b.role_id from user a
-                JOIN com_role_user b on a.user_id = b.user_id) b
-                ON a.dokter_id = b.user_id
-                LEFT JOIN (select a.*, b.role_id from user a
-                JOIN com_role_user b on a.user_id = b.user_id WHERE b.role_id = '2004') c
-                ON a.user_id = c.user_id LIMIT $from ,$page";
+        $sql = "SELECT * FROM faq LIMIT $from ,$page";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -127,10 +121,10 @@ class M_faqs extends MY_Model {
     }
 
     //get by id
-    public function get_by_id($chat_id) {
+    public function get_by_id($id_faq) {
         $this->db->select('*');
-        $this->db->from('chat');
-        $this->db->where('chat.chat_id', $chat_id);
+        $this->db->from('faq');
+        $this->db->where('faq.id_faq', $id_faq);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
@@ -143,7 +137,7 @@ class M_faqs extends MY_Model {
     //count all
     public function count_all() {
         $this->db->select('*');
-        $this->db->from('chat');
+        $this->db->from('faq');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();

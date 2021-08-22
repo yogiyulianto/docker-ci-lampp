@@ -1,6 +1,6 @@
 <?php
 
-class M_webinar extends MY_Model {
+class M_faqs extends MY_Model {
 
     //generate id terakhir
     public function generate_id($prefixdate) {
@@ -70,9 +70,9 @@ class M_webinar extends MY_Model {
 
     //generate id terakhir
     function get_last_id() {
-        $sql = "SELECT LEFT(webinar_id, 1) as 'last_number'
-                FROM webinar 
-                ORDER BY webinar_id DESC 
+        $sql = "SELECT LEFT(blog_id, 1) as 'last_number'
+                FROM blogs 
+                ORDER BY blog_id DESC 
                 LIMIT 1";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
@@ -96,7 +96,13 @@ class M_webinar extends MY_Model {
 
     //get all
     public function get_all($from ,$page) {
-        $sql = "SELECT a.* FROM webinar a LIMIT $from ,$page";
+        $sql = "SELECT a.*, b.full_name as dokter_name, c.full_name as user_name FROM chat a
+                LEFT JOIN (select a.*, b.role_id from user a
+                JOIN com_role_user b on a.user_id = b.user_id) b
+                ON a.dokter_id = b.user_id
+                LEFT JOIN (select a.*, b.role_id from user a
+                JOIN com_role_user b on a.user_id = b.user_id WHERE b.role_id = '2004') c
+                ON a.user_id = c.user_id LIMIT $from ,$page";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -106,11 +112,11 @@ class M_webinar extends MY_Model {
         return array();
     }
     //get all
-    public function get_all_webinar($base_url) {
-        $sql = "SELECT a.webinar_id, a.title as webinar_title, 
+    public function get_all_blog($base_url) {
+        $sql = "SELECT a.blog_id, a.title as blog_title, 
         a.slug, a.content, concat('$base_url', a.image) as image,
-        FROM webinar a
-        WHERE webinar_st != 'draft'";
+        b.title as 'category_title' FROM blogs a JOIN category b ON a.category_id = b.category_id 
+        WHERE blog_st != 'draft'";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -121,10 +127,10 @@ class M_webinar extends MY_Model {
     }
 
     //get by id
-    public function get_by_id($webinar_id) {
+    public function get_by_id($chat_id) {
         $this->db->select('*');
-        $this->db->from('webinar');
-        $this->db->where('webinar.webinar_id', $webinar_id);
+        $this->db->from('chat');
+        $this->db->where('chat.chat_id', $chat_id);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
@@ -137,7 +143,7 @@ class M_webinar extends MY_Model {
     //count all
     public function count_all() {
         $this->db->select('*');
-        $this->db->from('webinar');
+        $this->db->from('chat');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -149,7 +155,7 @@ class M_webinar extends MY_Model {
     // get all parent
     public function get_all_category() {
         $this->db->select('*');
-        $this->db->from('category_webinar');
+        $this->db->from('category');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
