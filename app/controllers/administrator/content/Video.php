@@ -199,7 +199,7 @@ class Video extends PrivateBase {
                 $params['path'] = $file_name_video;
                 $this->notification->send(self::PAGE_URL.'add', 'error',  $this->upload->display_errors());
             }
-            // print_r($params);die;
+            // print_r($_FILES);die;
             // where
             $where = array(
                 'video_id' => $video_id,

@@ -51,6 +51,7 @@ class M_user extends MY_Model {
         // process
         // get hash key
         $result = $this->get_user_role($username, '2004');
+        // print_r($result);die;
         if (!empty($result)) {
             // get user
             if (md5($password) === $result['user_pass']) {

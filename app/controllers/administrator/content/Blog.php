@@ -66,6 +66,8 @@ class Blog extends PrivateBase {
         $this->form_validation->set_rules('meta_keywords','Meta Keywords','trim|required');
         $this->form_validation->set_rules('meta_description','Meta Description','trim|required');
         $this->form_validation->set_rules('blog_st','Status Blog','trim|required');
+        $this->form_validation->set_rules('is_weekly_content','Is Weekly Content','trim|required');
+        $this->form_validation->set_rules('weekly_content','Weekly Content','trim');
         if (empty($_FILES['image']['tmp_name'])){
             $this->form_validation->set_rules('image', 'Image', 'required');
         }
@@ -100,6 +102,8 @@ class Blog extends PrivateBase {
                 'meta_keywords' => $this->input->post('meta_keywords',TRUE), 
                 'slug' => $this->slugify(html_escape($this->input->post('title',TRUE))), 
                 'blog_st' => $this->input->post('blog_st',TRUE), 
+                'is_weekly_content' => $this->input->post('is_weekly_content',TRUE), 
+                'weekly_content' => $this->input->post('weekly_content',TRUE), 
                 'mdb' => $this->com_user('user_id'),
                 'mdb_name' => $this->com_user('user_name'),
                 'mdd' => now(),
@@ -143,6 +147,8 @@ class Blog extends PrivateBase {
         $this->form_validation->set_rules('meta_keywords','Meta Keywords','trim|required');
         $this->form_validation->set_rules('meta_description','Meta Description','trim|required');
         $this->form_validation->set_rules('blog_st','Status Blog','trim|required');
+        $this->form_validation->set_rules('is_weekly_content','Is Weekly Content','trim|required');
+        $this->form_validation->set_rules('weekly_content','Weekly Content','trim');
         if (empty($_FILES['image']['tmp_name'])){
             $this->form_validation->set_rules('image', 'Image', 'required');
         }
@@ -175,11 +181,12 @@ class Blog extends PrivateBase {
                 'user_id' => $this->com_user('user_id'), 
                 'content' => $this->input->post('content',TRUE), 
                 'image' => (isset($file_name)) ? $file_name : $this->input->post('image',TRUE),
-                'views' => 0, 
                 'meta_title' => $this->input->post('meta_title',TRUE), 
                 'meta_description' => $this->input->post('meta_description',TRUE),
                 'meta_keywords' => $this->input->post('meta_keywords',TRUE), 
                 'blog_st' => $this->input->post('blog_st',TRUE), 
+                'is_weekly_content' => $this->input->post('is_weekly_content',TRUE), 
+                'weekly_content' => $this->input->post('weekly_content',TRUE), 
                 'slug' => slugify(html_escape($this->input->post('title',TRUE))), 
                 'mdb' => $this->com_user('user_id'),
                 'mdb_name' => $this->com_user('user_name'),

@@ -70,9 +70,9 @@
 								<div class="error text-danger">{{error_form('image') ?? ''}}</div>
 							</div>
 							<div class="col-md-6">
-								<label>Video*</label><small> Hanya Video (avi, mp4) maks. 10MB </small>
+								<label>Video*</label><small> Hanya Video (mp4) maks. 10MB </small>
 								<input type="file" class="dropify {{error_form_class('video')}}" name="video"
-									data-show-errors="true" data-allowed-file-extensions="avi mp4" data-max-file-size="10M" data-default-file="{{base_url($result['path'])}}">
+									data-show-errors="true" data-allowed-file-extensions="mp4" data-max-file-size="10M" data-default-file="{{base_url($result['path'])}}">
 								<div class="error text-danger">{{error_form('video') ?? ''}}</div>
 							</div>
 						</div>

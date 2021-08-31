@@ -1,6 +1,6 @@
 <?php
 
-class M_video extends MY_Model {
+class M_chat extends MY_Model {
 
     //generate id terakhir
     public function generate_id($prefixdate, $params) {
@@ -32,11 +32,11 @@ class M_video extends MY_Model {
     //get all roles
 
     //get by id
-    public function get_by_id($video_id) {
-        $this->db->select('video.*, category_video.title as category_title');
-        $this->db->from('video');
-        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
-        $this->db->where('video.video_id', $video_id);
+    public function get_by_id($blog_id) {
+        $this->db->select('blogs.*, category.title as category_title');
+        $this->db->from('blogs');
+        $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
+        $this->db->where('blogs.blog_id', $blog_id);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
@@ -45,14 +45,53 @@ class M_video extends MY_Model {
         }
         return array();
     }
-    public function get_all() {
-        $this->db->select('video.video_id, video.title, video.image, category_video.title as category_title');
-        $this->db->from('video')->limit(4)->order_by('video.mdd',"DESC");
-        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
-        $this->db->where('video.video_st', 'published');
+    public function get_all($user_id) {
+        $this->db->select('*');
+        $this->db->from('chat')->order_by('message_date',"DESC");
+        $this->db->where('user_id', $user_id);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+    public function get_all_detail($chat_id) {
+        $this->db->select('*');
+        $this->db->from('chat_detail')->order_by('order_by',"ASC");
+        $this->db->where('chat_id', $chat_id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+    public function get_random_weekly_blogs($week) {
+        $this->db->select('blogs.blog_id, blogs.title, blogs.image, category.title as category_title');
+        $this->db->from('blogs')->limit(1)->order_by('blogs.blog_id',"RANDOM");
+        $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
+        $this->db->where('blogs.weekly_content', $week);
+        $this->db->where('blogs.is_weekly_content', 'yes');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+
+    //get by id
+    public function get_last_by_id($chat_id) {
+        $this->db->select('*');
+        $this->db->from('chat_detail')->limit(1)->order_by('chat_detail.order_by','DESC');;
+        $this->db->where('chat_detail.chat_id', $chat_id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
             $query->free_result();
             return $result;
         }
@@ -60,64 +99,10 @@ class M_video extends MY_Model {
     }
 
     //count all
-    public function count_all() {
+    public function count_all($user_id) {
         $this->db->select('*');
-        $this->db->from('video')->limit(4)->order_by('video.mdd',"DESC");
-        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
-        $this->db->where('video.video_st', 'published');
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            $result = $query->num_rows();
-            return $result;
-        }
-        return 0;
-    }
-
-    public function get_by_category($category_id) {
-        $this->db->select("video.video_id, video.title, video.image, 'video' as type");
-        $this->db->from('video')->order_by('video.mdd',"DESC");
-        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
-        $this->db->where('video.video_st', 'published');
-        $this->db->where('video.category_id', $category_id);
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            $result = $query->result_array();
-            $query->free_result();
-            return $result;
-        }
-        return array();
-    }
-    public function search_by_title($title) {
-        $this->db->select("video.video_id, video.title, video.image, 'video' as type");
-        $this->db->from('video')->order_by('video.mdd',"DESC");
-        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
-        $this->db->where('video.video_st', 'published');
-        $this->db->like('video.title', $title, 'both'); 
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            $result = $query->result_array();
-            $query->free_result();
-            return $result;
-        }
-        return array();
-    }
-
-    public function get_all_category() {
-        $this->db->select('*');
-        $this->db->from('category_video')->order_by('mdd',"DESC");
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            $result = $query->result_array();
-            $query->free_result();
-            return $result;
-        }
-        return array();
-    }
-
-    //count all
-    public function count_all_category() {
-        $this->db->select('*');
-        $this->db->from('category_video')->order_by('mdd',"DESC");
+        $this->db->from('chat')->order_by('message_date',"DESC");
+        $this->db->where('user_id', $user_id);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -126,12 +111,10 @@ class M_video extends MY_Model {
         return 0;
     }
     //count all
-    public function count_search($title) {
-        $this->db->select("video.video_id, video.title, video.image, 'video' as type");
-        $this->db->from('video')->order_by('video.mdd',"DESC");
-        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
-        $this->db->where('video.video_st', 'published');
-        $this->db->like('video.title', $title, 'both'); 
+    public function count_all_detail($chat_id) {
+        $this->db->select('*');
+        $this->db->from('chat_detail')->order_by('order_by',"ASC");
+        $this->db->where('chat_id', $chat_id);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
