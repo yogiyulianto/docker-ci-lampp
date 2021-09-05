@@ -92,6 +92,13 @@ class Auth extends RestController {
                     $date = new DateTime();
                     $iat = $date->getTimestamp();
                     $exp = $date->getTimestamp() + 60*60;
+                    $enroll_data = $this->M_user->check_user_enroll(array($result['user_id']));
+
+                    if($enroll_data){
+                        $enroll_st = 'premium';
+                    } else {
+                        $enroll_st = 'free';
+                    }
                     // print_r($result);die;
                     $token = array(
                         'user_id' => $result['user_id'],
@@ -99,6 +106,7 @@ class Auth extends RestController {
                         'user_name' => $result['user_name'],
                         'full_name' => $result['full_name'],
                         'role_id' => $result['role_id'],
+                        'enroll_st' => $enroll_st,
                         "iat" => $iat,
                         "exp" => $exp
                     );
@@ -110,6 +118,7 @@ class Auth extends RestController {
                         'user_name' => $result['user_name'],
                         'full_name' => $result['full_name'],
                         'role_id' => $result['role_id'],
+                        'enroll_st' => $enroll_st,
                         'token' => $jwt
                     );
 

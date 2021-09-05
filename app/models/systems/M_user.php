@@ -283,5 +283,19 @@ class M_user extends MY_Model {
             return '';
         }
     }
+
+    function check_user_enroll($params) {
+        $sql = "SELECT * FROM user_enroll a
+                WHERE user_id = ? AND now() BETWEEN start_date AND end_date";
+        $query = $this->db->query($sql, $params);
+        // echo "<pre>"; echo $this->db->last_query();exit;
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            $query->free_result();
+            return $result;
+        } else {
+            return array();
+        }
+    }
     
 }

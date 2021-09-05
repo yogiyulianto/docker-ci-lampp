@@ -69,7 +69,7 @@ class Webinar extends PrivateBase {
             $this->form_validation->set_rules('image', 'Image', 'required');
         }
         // get last di role
-        $webinar_id = generate_id();
+        $webinar_id = time().'-'.mt_rand();
         // process
         if ($this->form_validation->run() !== FALSE) {
             if (!empty($_FILES['image']['tmp_name'])) {

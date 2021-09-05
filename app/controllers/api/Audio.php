@@ -130,7 +130,6 @@ class Audio extends RestController {
     	}
         try {
            $decoded = JWT::decode($token, $kunci, array('HS256'));
-           $this->user_data = $decoded;
         } catch (Exception $e) {
             $invalid = [
                 'status' => false,
