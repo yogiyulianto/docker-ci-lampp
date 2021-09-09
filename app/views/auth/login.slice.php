@@ -24,7 +24,7 @@ Login
 				</div>
 				<div class="form-group ">
 					<label>Password</label>
-					<a href="{{url('forgot_password')}}" class="link float-right">Lupa Password ?</a>
+					<!-- <a href="{{url('forgot_password')}}" class="link float-right">Lupa Password ?</a> -->
 					<div class="position-relative">
 						<input name="password" id="password" type="password" class="form-control" placeholder="Masukkan Password" required minlength="8">
 						<div class="show-password">

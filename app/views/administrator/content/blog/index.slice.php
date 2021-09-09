@@ -28,6 +28,7 @@
                             <th width="15%">Gambar</th>
                             <th width="10%">Dilihat</th>
                             <th width="10%">Status</th>
+                            <th width="10%">Pricing Status</th>
                             <th width="15%">Aksi</th>
                         </tr>
                     </thead>
@@ -46,6 +47,15 @@
                                     Terbit
                                     @elseif($item['blog_st'] == 'draft')
                                     Draft
+                                    @endif
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-border btn-sm btn-round">
+                                    @if($item['pricing_st'] == 'premium')
+                                    Premium
+                                    @elseif($item['pricing_st'] == 'free')
+                                    Free
                                     @endif
                                 </button>
                             </td>

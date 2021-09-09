@@ -97,6 +97,17 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-lg-12">
+								<label class="">Pricing status *</label>
+								<select name="pricing_st" class="select-2 " style="width:100%">
+									<option value="0"> Pilih Status </option>
+									<option value="free" {{ set_select($result['pricing_st'] , 'free') }}> Free </option>
+									<option value="premium" {{ set_select($result['pricing_st'] , 'premium') }}> Premium </option>
+								</select>
+								<div class="error text-danger">{{error_form('pricing_st') ?? ''}}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-12">
 								<label class="">Apakah termasuk artikel mingguan kehamilan? *</label>
 								<select name="is_weekly_content" id="is_weekly_content" class="select-2 " style="width:100%">
 									<option value=""> Pilih Artikel Mingguan</option>

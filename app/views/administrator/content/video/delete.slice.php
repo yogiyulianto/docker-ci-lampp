@@ -30,11 +30,20 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group row">
-							<div class="col-lg-12">
+							<div class="col-lg-6">
 								<label>Judul*</label>
 								<input type="text" disabled name="title" class="form-control {{error_form_class('title')}}"
 									placeholder="Masukan Judul" value="{{$result['title'] ?? ''}}">
 								<div class="error text-danger">{{error_form('title') ?? ''}}</div>
+							</div>
+							<div class="col-lg-6">
+								<label class="">Pricing Status *</label>
+								<select name="pricing_st" disabled class="select-2 " style="width:100%">
+									<option value="0"> Pilih Status </option>
+									<option value="free" {{ set_select($result['pricing_st'] , 'free') }}> Free </option>
+									<option value="premium" {{ set_select($result['pricing_st'] , 'premium') }}> Premium </option>
+								</select>
+								<div class="error text-danger">{{error_form('pricing_st') ?? ''}}</div>
 							</div>
 						</div>
 						<div class="form-group row">

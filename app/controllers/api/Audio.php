@@ -25,73 +25,155 @@ class Audio extends RestController {
         $audio_id = $this->get('audio_id');
         $search = $this->get('search');
         if(empty($audio_id)){
-            $category = $this->M_audio->get_all_category();
-            $temp_category = array();
-            $item_blog = array();
-            $count = 0;
-            // if search not null
-            if($search){
-                $data = $this->M_audio->search_by_title($search);
-                $count = $this->M_audio->count_search($search);
-                if($count > 0){
-                    $result = array(
-                        'status' => true,
-                        'message' => 'Sukses Mengambil Data!',
-                        'jumlah_blog' => $count,
-                        'data' => $data
-                        );
-                    $this->response($result, 200); 
-                } else {
-                    $result = array(
-                        'status' => true,
-                        'message' => 'Data tidak ditemukan!',
-                        'jumlah_blog' => $count,
-                        'data' => $data
-                        );
-                    $this->response($result, 200); 
-                }
-            // if search null
-            } else {
-                for($i = 0; $i < count($category);$i++){
-                    $data = $this->M_audio->get_by_category($category[$i]['category_id']);
-                    // print_r($category);die;
-                    $count = $this->M_audio->count_all_category();
-                    $count_blog = $this->M_audio->count_all();
-                    $tmp = array(
-                        'category_title' => $category[$i]['title'],
-                    );
-                    if($data){
-                        $tmp['content'] = $data;
-                        $tmp2[$i] = $tmp;
-                        $temp_category[$i] = $tmp2;
-                        $item_blog =  $temp_category[$i];
+            if($user->enroll_st == 'premium'){
+                $category = $this->M_audio->get_all_category();
+                $temp_category = array();
+                $item_blog = array();
+                $count = 0;
+                // if search not null
+                if($search){
+                    $data = $this->M_audio->search_by_title($search);
+                    $count = $this->M_audio->count_search($search);
+                    if($count > 0){
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Sukses Mengambil Data!',
+                            'jumlah_blog' => $count,
+                            'data' => $data
+                            );
+                        $this->response($result, 200); 
                     } else {
-                        $tmp['content'] = [];
-                        $tmp2[$i] = $tmp;
-                        $temp_category[$i] = $tmp2;
-                        $item_blog =  $temp_category[$i];
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Data tidak ditemukan!',
+                            'jumlah_blog' => $count,
+                            'data' => $data
+                            );
+                        $this->response($result, 200); 
+                    }
+                // if search null
+                } else {
+                    for($i = 0; $i < count($category);$i++){
+                        $data = $this->M_audio->get_by_category($category[$i]['category_id']);
+                        // print_r($category);die;
+                        $count = $this->M_audio->count_all_category();
+                        $count_blog = $this->M_audio->count_all();
+                        // print_r($count_blog);die;
+                        $tmp = array(
+                            'category_title' => $category[$i]['title'],
+                        );
+                        if($data){
+                            $tmp['content'] = $data;
+                            $tmp2[$i] = $tmp;
+                            $temp_category[$i] = $tmp2;
+                            $item_blog =  $temp_category[$i];
+                        } else {
+                            $tmp['content'] = [];
+                            $tmp2[$i] = $tmp;
+                            $temp_category[$i] = $tmp2;
+                            $item_blog =  $temp_category[$i];
+                        }
+                    }
+
+                    // if data exist
+                    if($item_blog){
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Sukses Mengambil Data!',
+                            'jumlah_category' => $count,
+                            'jumlah_blog' => $count_blog,
+                            'data' => $item_blog
+                            );
+                        $this->response($result, 200); 
+                    } else {
+                        $result = array(
+                            'status' => false,
+                            'message' => 'Data Tidak ditemukan!'
+                        );
+                        $this->response($result, 200);
                     }
                 }
-
-                // if data exist
-                if($item_blog){
-                    $result = array(
-                        'status' => true,
-                        'message' => 'Sukses Mengambil Data!',
-                        'jumlah_category' => $count,
-                        'jumlah_blog' => $count_blog,
-                        'data' => $item_blog
-                        );
-                    $this->response($result, 200); 
+            }else{
+                $category = $this->M_audio->get_all_category();
+                $temp_category = array();
+                $item_blog = array();
+                $count = 0;
+                // if search not null
+                if($search){
+                    $data = $this->M_audio->search_free_by_title($search);
+                    $count = $this->M_audio->count_free_search($search);
+                    if($count > 0){
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Sukses Mengambil Data!',
+                            'jumlah_blog' => $count,
+                            'data' => $data
+                            );
+                        $this->response($result, 200); 
+                    } else {
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Data tidak ditemukan!',
+                            'jumlah_blog' => $count,
+                            'data' => $data
+                            );
+                        $this->response($result, 200); 
+                    }
+                // if search null
                 } else {
-                    $result = array(
-                        'status' => false,
-                        'message' => 'Data Tidak ditemukan!'
-                    );
-                    $this->response($result, 200);
+                    for($i = 0; $i < count($category);$i++){
+                        $data = $this->M_audio->get_free_by_category($category[$i]['category_id']);
+                        // print_r($category);die;
+                        $count = $this->M_audio->count_all_category();
+                        $count_blog = $this->M_audio->count_all_free();
+                        if($data){
+                            $tmp = array(
+                                'category_title' => $category[$i]['title'],
+                            );
+                            if($data){
+                                $tmp['content'] = $data;
+                                $tmp2[$i] = $tmp;
+                                $temp_category[$i] = $tmp2;
+                                $item_blog =  $temp_category[$i];
+                            } else {
+                                $tmp['content'] = [];
+                                $tmp2[$i] = $tmp;
+                                $temp_category[$i] = $tmp2;
+                                $item_blog =  $temp_category[$i];
+                            }
+                        }
+                    }
+
+                    // if data exist
+                    if($item_blog){
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Sukses Mengambil Data!',
+                            'jumlah_category' => $count,
+                            'jumlah_blog' => $count_blog,
+                            'data' => $item_blog
+                            );
+                        $this->response($result, 200); 
+                    } else {
+                        $result = array(
+                            'status' => false,
+                            'message' => 'Data Tidak ditemukan!'
+                        );
+                        $this->response($result, 200);
+                    }
                 }
             }
         } else {
+            $data = $this->M_audio->get_by_id($audio_id);
+            // add + 1 views every hit api details
+            $params = array(
+                'views' => $data['views'] + 1
+            );
+            $where = array(
+                'audio_id' => $data['audio_id']
+            );
+            $update_views = $this->M_audio->update('audio', $params, $where);
+            
             $data = $this->M_audio->get_by_id($audio_id);
             // if data exist
             if($data){
@@ -130,6 +212,7 @@ class Audio extends RestController {
     	}
         try {
            $decoded = JWT::decode($token, $kunci, array('HS256'));
+           $this->user_data = $decoded;
         } catch (Exception $e) {
             $invalid = [
                 'status' => false,

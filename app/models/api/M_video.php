@@ -62,9 +62,23 @@ class M_video extends MY_Model {
     //count all
     public function count_all() {
         $this->db->select('*');
-        $this->db->from('video')->limit(4)->order_by('video.mdd',"DESC");
+        $this->db->from('video')->order_by('video.mdd',"DESC");
         $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
         $this->db->where('video.video_st', 'published');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->num_rows();
+            return $result;
+        }
+        return 0;
+    }
+
+    public function count_all_free() {
+        $this->db->select('*');
+        $this->db->from('video')->order_by('video.mdd',"DESC");
+        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
+        $this->db->where('video.video_st', 'published');
+        $this->db->where('video.pricing_st', 'free');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -87,11 +101,41 @@ class M_video extends MY_Model {
         }
         return array();
     }
+    public function get_free_by_category($category_id) {
+        $this->db->select("video.video_id, video.title, video.image, 'video' as type");
+        $this->db->from('video')->order_by('video.mdd',"DESC");
+        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
+        $this->db->where('video.video_st', 'published');
+        $this->db->where('video.pricing_st', 'free');
+        $this->db->where('video.category_id', $category_id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
     public function search_by_title($title) {
         $this->db->select("video.video_id, video.title, video.image, 'video' as type");
         $this->db->from('video')->order_by('video.mdd',"DESC");
         $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
         $this->db->where('video.video_st', 'published');
+        $this->db->like('video.title', $title, 'both'); 
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+    public function search_free_by_title($title) {
+        $this->db->select("video.video_id, video.title, video.image, 'video' as type");
+        $this->db->from('video')->order_by('video.mdd',"DESC");
+        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
+        $this->db->where('video.video_st', 'published');
+        $this->db->where('video.pricing_st', 'free');
         $this->db->like('video.title', $title, 'both'); 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
@@ -131,6 +175,20 @@ class M_video extends MY_Model {
         $this->db->from('video')->order_by('video.mdd',"DESC");
         $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
         $this->db->where('video.video_st', 'published');
+        $this->db->like('video.title', $title, 'both'); 
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->num_rows();
+            return $result;
+        }
+        return 0;
+    }
+    public function count_free_search($title) {
+        $this->db->select("video.video_id, video.title, video.image, 'video' as type");
+        $this->db->from('video')->order_by('video.mdd',"DESC");
+        $this->db->join('category_video', 'category_video.category_id = video.category_id', 'inner');
+        $this->db->where('video.video_st', 'published');
+        $this->db->where('video.pricing_st', 'free');
         $this->db->like('video.title', $title, 'both'); 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {

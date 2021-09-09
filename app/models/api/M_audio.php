@@ -73,11 +73,41 @@ class M_audio extends MY_Model {
         }
         return array();
     }
+    public function get_free_by_category($category_id) {
+        $this->db->select("audio.audio_id, audio.title, audio.image, 'audio' as type");
+        $this->db->from('audio')->order_by('audio.mdd',"DESC");
+        $this->db->join('category_audio', 'category_audio.category_id = audio.category_id', 'inner');
+        $this->db->where('audio.audio_st', 'published');
+        $this->db->where('audio.pricing_st', 'free');
+        $this->db->where('audio.category_id', $category_id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
     public function search_by_title($title) {
         $this->db->select("audio.audio_id, audio.title, audio.image, 'audio' as type");
         $this->db->from('audio')->order_by('audio.mdd',"DESC");
         $this->db->join('category_audio', 'category_audio.category_id = audio.category_id', 'inner');
         $this->db->where('audio.audio_st', 'published');
+        $this->db->like('audio.title', $title, 'both'); 
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+    public function search_free_by_title($title) {
+        $this->db->select("audio.audio_id, audio.title, audio.image, 'audio' as type");
+        $this->db->from('audio')->order_by('audio.mdd',"DESC");
+        $this->db->join('category_audio', 'category_audio.category_id = audio.category_id', 'inner');
+        $this->db->where('audio.audio_st', 'published');
+        $this->db->where('audio.pricing_st', 'free');
         $this->db->like('audio.title', $title, 'both'); 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
@@ -113,6 +143,19 @@ class M_audio extends MY_Model {
         }
         return 0;
     }
+    public function count_all_free() {
+        $this->db->select('audio.*, category_audio.title as category_title');
+        $this->db->from('audio')->order_by('audio.mdd',"DESC");
+        $this->db->join('category_audio', 'category_audio.category_id = audio.category_id', 'inner');
+        $this->db->where('audio.audio_st', 'published');
+        $this->db->where('audio.pricing_st', 'free');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->num_rows();
+            return $result;
+        }
+        return 0;
+    }
 
     //count all
     public function count_all_category() {
@@ -131,6 +174,20 @@ class M_audio extends MY_Model {
         $this->db->from('audio')->order_by('audio.mdd',"DESC");
         $this->db->join('category_audio', 'category_audio.category_id = audio.category_id', 'inner');
         $this->db->where('audio.audio_st', 'published');
+        $this->db->like('audio.title', $title, 'both'); 
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->num_rows();
+            return $result;
+        }
+        return 0;
+    }
+    public function count_free_search($title) {
+        $this->db->select("audio.audio_id, audio.title, audio.image, 'audio' as type");
+        $this->db->from('audio')->order_by('audio.mdd',"DESC");
+        $this->db->join('category_audio', 'category_audio.category_id = audio.category_id', 'inner');
+        $this->db->where('audio.audio_st', 'published');
+        $this->db->where('audio.pricing_st', 'free');
         $this->db->like('audio.title', $title, 'both'); 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {

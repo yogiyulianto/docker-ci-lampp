@@ -24,72 +24,139 @@ class Blogs extends RestController {
         $blog_id = $this->get('blog_id');
         $search = $this->get('search');
         if(empty($blog_id)){
-            $category = $this->M_blogs->get_all_category();
-            $temp_category = array();
-            $item_blog = array();
-            $count = 0;
-            // if search not null
-            if($search){
-                $data = $this->M_blogs->search_by_title($search);
-                $count = $this->M_blogs->count_search($search);
-                if($count > 0){
-                    $result = array(
-                        'status' => true,
-                        'message' => 'Sukses Mengambil Data!',
-                        'jumlah_blog' => $count,
-                        'data' => $data
-                        );
-                    $this->response($result, 200); 
-                } else {
-                    $result = array(
-                        'status' => true,
-                        'message' => 'Data tidak ditemukan!',
-                        'jumlah_blog' => $count,
-                        'data' => $data
-                        );
-                    $this->response($result, 200); 
-                }
-            // if search null
-            } else {
-                for($i = 0; $i < count($category);$i++){
-                    $data = $this->M_blogs->get_by_category($category[$i]['category_id']);
-                    $count = $this->M_blogs->count_all_category();
-                    $count_blog = $this->M_blogs->count_all();
-                    $tmp = array(
-                        'category_title' => $category[$i]['title'],
-                    );
-                    if($data){
-                        $tmp['content'] = $data;
-                        $tmp2[$i] = $tmp;
-                        $temp_category[$i] = $tmp2;
-                        $item_blog =  $temp_category[$i];
+            if($user->enroll_st == 'premium'){
+                $category = $this->M_blogs->get_all_category();
+                $temp_category = array();
+                $item_blog = array();
+                $count = 0;
+                // if search not null
+                if($search){
+                    $data = $this->M_blogs->search_by_title($search);
+                    $count = $this->M_blogs->count_search($search);
+                    if($count > 0){
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Sukses Mengambil Data!',
+                            'jumlah_blog' => $count,
+                            'data' => $data
+                            );
+                        $this->response($result, 200); 
                     } else {
-                        $tmp['content'] = [];
-                        $tmp2[$i] = $tmp;
-                        $temp_category[$i] = $tmp2;
-                        $item_blog =  $temp_category[$i];
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Data tidak ditemukan!',
+                            'jumlah_blog' => $count,
+                            'data' => $data
+                            );
+                        $this->response($result, 200); 
+                    }
+                // if search null
+                } else {
+                    for($i = 0; $i < count($category);$i++){
+                        $data = $this->M_blogs->get_by_category($category[$i]['category_id']);
+                        $count = $this->M_blogs->count_all_category();
+                        $count_blog = $this->M_blogs->count_all();
+                        $tmp = array(
+                            'category_title' => $category[$i]['title'],
+                        );
+                        if($data){
+                            $tmp['content'] = $data;
+                            $tmp2[$i] = $tmp;
+                            $temp_category[$i] = $tmp2;
+                            $item_blog =  $temp_category[$i];
+                        } else {
+                            $tmp['content'] = [];
+                            $tmp2[$i] = $tmp;
+                            $temp_category[$i] = $tmp2;
+                            $item_blog =  $temp_category[$i];
+                        }
+                    }
+
+                    // if data exist
+                    if($item_blog){
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Sukses Mengambil Data!',
+                            'jumlah_category' => $count,
+                            'jumlah_blog' => $count_blog,
+                            'data' => $item_blog
+                            );
+                        $this->response($result, 200); 
+                    } else {
+                        $result = array(
+                            'status' => false,
+                            'message' => 'Data Tidak ditemukan!'
+                        );
+                        $this->response($result, 200);
                     }
                 }
-
-                // if data exist
-                if($item_blog){
-                    $result = array(
-                        'status' => true,
-                        'message' => 'Sukses Mengambil Data!',
-                        'jumlah_category' => $count,
-                        'jumlah_blog' => $count_blog,
-                        'data' => $item_blog
-                        );
-                    $this->response($result, 200); 
+            } else {
+                $category = $this->M_blogs->get_all_category();
+                $temp_category = array();
+                $item_blog = array();
+                $count = 0;
+                // if search not null
+                if($search){
+                    $data = $this->M_blogs->search_free_by_title($search);
+                    $count = $this->M_blogs->count_free_search($search);
+                    if($count > 0){
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Sukses Mengambil Data!',
+                            'jumlah_blog' => $count,
+                            'data' => $data
+                            );
+                        $this->response($result, 200); 
+                    } else {
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Data tidak ditemukan!',
+                            'jumlah_blog' => $count,
+                            'data' => $data
+                            );
+                        $this->response($result, 200); 
+                    }
+                // if search null
                 } else {
-                    $result = array(
-                        'status' => false,
-                        'message' => 'Data Tidak ditemukan!'
-                    );
-                    $this->response($result, 200);
+                    for($i = 0; $i < count($category);$i++){
+                        $data = $this->M_blogs->get_free_by_category($category[$i]['category_id']);
+                        $count = $this->M_blogs->count_all_category();
+                        $count_blog = $this->M_blogs->count_all_free();
+                        $tmp = array(
+                            'category_title' => $category[$i]['title'],
+                        );
+                        if($data){
+                            $tmp['content'] = $data;
+                            $tmp2[$i] = $tmp;
+                            $temp_category[$i] = $tmp2;
+                            $item_blog =  $temp_category[$i];
+                        } else {
+                            $tmp['content'] = [];
+                            $tmp2[$i] = $tmp;
+                            $temp_category[$i] = $tmp2;
+                            $item_blog =  $temp_category[$i];
+                        }
+                    }
+
+                    // if data exist
+                    if($item_blog){
+                        $result = array(
+                            'status' => true,
+                            'message' => 'Sukses Mengambil Data!',
+                            'jumlah_category' => $count,
+                            'jumlah_blog' => $count_blog,
+                            'data' => $item_blog
+                            );
+                        $this->response($result, 200); 
+                    } else {
+                        $result = array(
+                            'status' => false,
+                            'message' => 'Data Tidak ditemukan!'
+                        );
+                        $this->response($result, 200);
+                    }
                 }
             }
-            
         } else {
             $data = $this->M_blogs->get_by_id($blog_id);
             // if data exist
@@ -103,6 +170,7 @@ class Blogs extends RestController {
                     'blog_id' => $response['blog_id']
                 );
                 $update_views = $this->M_blogs->update('blogs', $params, $where);
+                $response = $this->M_blogs->get_by_id($data['blog_id']);
                 if($update_views){
                     $response = $this->M_blogs->get_by_id($data['blog_id']);
                     $result = array(
@@ -144,7 +212,11 @@ class Blogs extends RestController {
         $base_url = base_url();
         $week = $this->get('week');
         if(!empty($week)){
-            $data = $this->M_blogs->get_random_weekly_blogs($week);
+            if($user->enroll_st == 'premium'){
+                $data = $this->M_blogs->get_random_weekly_blogs($week);
+            } else {
+                $data = $this->M_blogs->get_free_random_weekly_blogs($week);
+            }
             // if data exist
             if($data){
                 $response = $this->M_blogs->get_by_id($data[0]['blog_id']);
