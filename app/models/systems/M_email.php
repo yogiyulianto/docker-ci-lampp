@@ -52,14 +52,18 @@ class M_email extends CI_Model {
         // clear email
         $this->email->clear(TRUE);
         // config
-        $config['mailtype'] = 'html';
-        $config['charset'] = 'utf-8';
-        $config['protocol'] = 'smtp';
-        // $config['smtp_crypto'] = 'ssl';
-        $config['smtp_host'] = 'smtp.gmail.com';    
-        $config['smtp_port'] = '465';
-        $config['smtp_user'] = 'yogi.y@excelindo.co.id';
-        $config['smtp_pass'] = 'x';
+        $config = [
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'protocol'  => 'smtp',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_user' => $this->email_settings[$email_id]['smtp_username'],
+            'smtp_pass'   => $this->email_settings[$email_id]['smtp_password'],
+            'smtp_crypto' => 'ssl',
+            'smtp_port'   => $this->email_settings[$email_id]['smtp_port'],
+            'crlf'    => "\r\n",
+            'newline' => "\r\n"
+        ];
         // $config['smtp_crypto'] = 'ssl';
         $this->email->initialize($config);
         $this->email->from($this->email_settings[$email_id]['email_address'], $this->email_settings[$email_id]['email_name']);
@@ -95,9 +99,9 @@ class M_email extends CI_Model {
         $data['details'] = !empty($email['message']['details']) ? $email['message']['details'] : '';
         $data['actions']['title'] = !empty($email['message']['actions']['title']) ? $email['message']['actions']['title'] : '';
         $data['actions']['link'] = !empty($email['message']['actions']['link']) ? $email['message']['actions']['link'] : '';
-        $data['footer'] = !empty($email['message']['footer']) ? $email['message']['footer'] : 'Best Regards, <br /> Balmon Yogyakarta';
-        $data['disclaimer'] = !empty($email['message']['disclaimer']) ? $email['message']['disclaimer'] : 'You got this email because you are using the Integrated Balmon Yogyakarta Information System  [ No Reply ]';
-        $data['copyright'] = !empty($email['message']['copyright']) ? $email['message']['copyright'] : '© ' . date('Y') . ' IT Team. Balmon Yogyakarta.';
+        $data['footer'] = !empty($email['message']['footer']) ? $email['message']['footer'] : 'Best Regards, <br /> Gendhis';
+        $data['disclaimer'] = !empty($email['message']['disclaimer']) ? $email['message']['disclaimer'] : 'You got this email because you are using the Integrated Gendhis App  [ No Reply ]';
+        $data['copyright'] = !empty($email['message']['copyright']) ? $email['message']['copyright'] : '© ' . date('Y') . ' IT Team. Gendhis.';
         // parse message
         $this->mail_message = $this->slice->view('base.email.default', $data, true);
     }

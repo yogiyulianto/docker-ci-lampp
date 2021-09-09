@@ -274,4 +274,18 @@ class Auth extends LoginBase{
 		return $this->M_email->send_mail('01');
 	}
 
+	function activation($request_key){
+        // set page title
+		$data = $this->M_user->get_user($request_key);
+		$params = array(
+			'user_st' => 1
+		);
+		$where = array(
+			'user_id' => $data['user_id']
+		);
+		$this->M_user->update('com_user', $params, $where);
+		// render view
+		view('auth/activation');
+    }
+
 }

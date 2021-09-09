@@ -57,6 +57,15 @@ class Auth extends RestController {
             if (!empty($result)) {
 				// cek login attempt ( username dan ip yang sama dalam 1 jam terakhir )
 				$total_attempt = $this->db->where('user_name', $username)->get('com_user')->row()->attempts;
+
+                if($result['user_st'] == 0){
+                    $message = "Akun anda belum di aktifkan!";
+                    $response = array(
+                        'status' => false,
+                        'message' => $message
+                    );
+                    $this->response($response, 404);
+                }
 				if ($total_attempt >= 3){
                     $message = "You're tried logging in a few times, try again later.";
                     $response = array(
@@ -169,7 +178,7 @@ class Auth extends RestController {
 
     public function register_post(){
         
-		$email = $this->post('user_mail');
+		$email = $this->post('email');
         if ($this->M_user->is_exist_email($email)) {
             $message = "Email has been registered";
             $response = array(
@@ -179,7 +188,7 @@ class Auth extends RestController {
             $this->response($response, 404);
         }
         // check username
-        $username = $this->post('user_mail');
+        $username = $this->post('email');
         if ($this->M_user->is_exist_username($username)) {
             $message = "Username has been registered";
             $response = array(
@@ -189,24 +198,25 @@ class Auth extends RestController {
             $this->response($response, 404);
         }
 
-		$user_pass = $this->post('user_pass');
+		$user_pass = $this->post('password');
         $password = md5($user_pass);
     	// generate user_id
         $prefix = date('ymd');
         $params_prefix = $prefix . '%';
     	$user_id = $this->M_user->generate_id($prefix, $params_prefix);
-		$role_id = $this->post('role_id');
-		$full_name = $this->post('full_name');
+		$role_id = '2004';
+		$full_name = $this->post('name');
+		$adress = $this->post('address');
+		$phone = $this->post('phone');
 
         // process
-        if ($email && $username && $user_pass && $role_id) {
-            
+        if ($email && $username && $user_pass && $role_id) { 
             $params = array(
                 'user_id' => $user_id,
                 'user_name' => $username,
                 'user_pass' => $password,
                 'user_key' => $password,
-                'user_st' => '1',
+                'user_st' => '0',
                 'user_mail' => $email,
                 'mdb' => $this->session->userdata('user_name'),
                 'mdd' => date('Y-m-d H:i:s'),
@@ -217,6 +227,8 @@ class Auth extends RestController {
                 $params = array(
                     'user_id' => $user_id,
                     'full_name' => $full_name,
+                    'address' => $adress,
+                    'phone' => $phone,
                 );
                 $this->M_user->insert('user', $params);
                 // insert hak akses
@@ -224,7 +236,13 @@ class Auth extends RestController {
                     'user_id' => $user_id,
                     'role_id' => $role_id,
                 );
+                $params_activate = array(
+                    'user_id' => $user_id,
+                    'hash' => md5($user_id)
+                );
+                $this->M_user->insert('register', $params_activate);
                 $this->M_user->insert('com_role_user', $params);
+                $this->email_register($email,$full_name,md5($user_id));
                 //sukses notif
                 $message = "User berhasil ditambahkan!";
                 $response = array(
@@ -377,5 +395,24 @@ class Auth extends RestController {
 		$this->M_email->set_mail($email_params);
 		// send
 		return $this->M_email->send_mail('01');
+	}
+
+    // email forgot password
+	private function email_register($email,$full_name,$request_key){
+		// config
+		$email_params['to'] = $email;
+		$email_params['cc'] = array();
+		$email_params['subject'] = 'Activate Account!';
+		$email_params['message']['title'] = 'Request to activate account!';
+		$email_params['message']['greetings'] = 'Hi ' . $full_name . ',';
+		$email_params['message']['intro'] = 'You want to reset the password on this application. Use the following link and follow the next steps:';
+		$email_params['message']['actions']['link'] = base_url('auth/activation/' . $request_key);
+		$email_params['message']['actions']['title'] = 'Yes, I will activate account.';
+		$email_params['attachments'] = array();
+		// set email parameters
+		$this->M_email->set_mail($email_params);
+		// send
+		return $this->M_email->send_mail('01');
+		
 	}
 }

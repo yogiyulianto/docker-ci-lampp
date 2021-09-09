@@ -51,6 +51,7 @@ class M_user extends MY_Model {
         // process
         // get hash key
         $result = $this->get_user_role($username);
+        // print_r($result);die;
         if (!empty($result)) {
             // print_r(md5($password) === $result['user_pass']);die;
             // get user
@@ -73,7 +74,7 @@ class M_user extends MY_Model {
               INNER JOIN com_role_user b ON a.user_id = b.user_id
               INNER JOIN com_role c ON b.role_id = c.role_id
 			  INNER JOIN user d ON a.user_id = d.user_id
-              WHERE a.user_name = ? 
+              WHERE a.user_name = ?
               ORDER BY b.role_default ASC
               LIMIT 0, 1 ";
         $query = $this->db->query($sql, $params);

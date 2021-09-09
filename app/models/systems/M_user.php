@@ -88,12 +88,44 @@ class M_user extends MY_Model {
             return array();
         }
     }
+    // get user detail with auto role
+    function get_user($params) {
+        $sql = "SELECT *
+              FROM register WHERE hash = '$params'
+              LIMIT 0, 1 ";
+        $query = $this->db->query($sql);
+        // echo "<pre>"; echo $this->db->last_query();exit;
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            $query->free_result();
+            return $result;
+        } else {
+            return array();
+        }
+    }
     function get_user_role($params) {
         $sql = "SELECT a.*, b.role_id, c.*, d.* FROM com_user a 
         INNER JOIN com_role_user b ON a.user_id = b.user_id 
         LEFT JOIN com_role c ON b.role_id = c.role_id 
         LEFT JOIN user d ON d.user_id = a.user_id 
         WHERE a.user_name = ? ORDER BY b.role_default ASC
+        LIMIT 0, 1 ";
+        $query = $this->db->query($sql, $params);
+        // echo "<pre>"; echo $this->db->last_query();exit;
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            $query->free_result();
+            return $result;
+        } else {
+            return array();
+        }
+    }
+    function get_user_role_api($params) {
+        $sql = "SELECT a.*, b.role_id, c.*, d.* FROM com_user a 
+        INNER JOIN com_role_user b ON a.user_id = b.user_id 
+        LEFT JOIN com_role c ON b.role_id = c.role_id 
+        LEFT JOIN user d ON d.user_id = a.user_id 
+        WHERE a.user_name = ? AND a.user_id = '1' ORDER BY b.role_default ASC
         LIMIT 0, 1 ";
         $query = $this->db->query($sql, $params);
         // echo "<pre>"; echo $this->db->last_query();exit;
