@@ -89,44 +89,67 @@ class Chat extends RestController {
         if($user->enroll_st == 'premium'){
             $this->form_validation->set_rules('message','Message','trim|required');
             $this->form_validation->set_rules('title','Title','trim|required');
+            $this->form_validation->set_rules('tinggi_badan','Tinggi Badan','trim|required');
+            $this->form_validation->set_rules('berat_badan','Berat Badan','trim|required');
+            $this->form_validation->set_rules('usia','Usia','trim|required');
+            $attachment = $_FILES;
             
             if($this->form_validation->run() !== FALSE){
-                $user = $this->user_data;
-                $chat_id = $user->user_id.hexdec(uniqid());
-                // insert chat
-                $params = array(
-                    'chat_id' => $chat_id,
-                    'user_id' => $user->user_id,
-                    'chat_st' => 'waiting',
-                    'title' => $this->post('title'),
-                    'message_date' => date('Y-m-d H:i:s'),
-                    'mdb' => $user->user_id,
-                    'mdb_name' => $user->full_name,
-                    'mdd' => date('Y-m-d H:i:s'),
-                );
-                $insert_chat = $this->M_chat->insert('chat', $params);
-                if($insert_chat){
-                    $chat_detail_id = uniqid();
-                    // insert detail chat
+                $config['upload_path'] = 'assets/chat/';
+                $config['allowed_types'] = '*';
+                $config['file_name'] = $user->user_id . '_' . date('Ymdhis');
+                $dname = explode(".", $_FILES['attachment']['name']);
+                $path = $config['upload_path'].'/'.$config['file_name'].'.'.end($dname);
+                $this->load->library('upload', $config);
+                if($this->upload->do_upload('attachment'))
+                {
+                    $user = $this->user_data;
+                    $chat_id = $user->user_id.hexdec(uniqid());
+                    // insert chat
                     $params = array(
-                        'chat_detail_id' => $chat_detail_id,
                         'chat_id' => $chat_id,
-                        'message' => $this->post('message'),
+                        'user_id' => $user->user_id,
+                        'chat_st' => 'waiting',
+                        'title' => $this->post('title'),
+                        'tinggi_badan' => $this->post('tinggi_badan'),
+                        'berat_badan' => $this->post('berat_badan'),
+                        'usia' => $this->post('usia'),
+                        'lampiran' => $path,
                         'message_date' => date('Y-m-d H:i:s'),
-                        'order_by' => 1,
-                        'message_type' => 'question',
                         'mdb' => $user->user_id,
                         'mdb_name' => $user->full_name,
                         'mdd' => date('Y-m-d H:i:s'),
                     );
-                    $insert_detail = $this->M_chat->insert('chat_detail', $params);
-                    if($insert_detail){
-                        $result = array(
-                            'status' => true,
-                            'message' => 'Pesan berhasil terkirim!',
-                            'message_value' => $this->post('message'),
+                    $insert_chat = $this->M_chat->insert('chat', $params);
+                    if($insert_chat){
+                        $chat_detail_id = uniqid();
+                        // insert detail chat
+                        $params = array(
+                            'chat_detail_id' => $chat_detail_id,
+                            'chat_id' => $chat_id,
+                            'message' => $this->post('message'),
+                            'message_date' => date('Y-m-d H:i:s'),
+                            'order_by' => 1,
+                            'message_type' => 'question',
+                            'mdb' => $user->user_id,
+                            'mdb_name' => $user->full_name,
+                            'mdd' => date('Y-m-d H:i:s'),
                         );
-                        $this->response($result, 200); 
+                        $insert_detail = $this->M_chat->insert('chat_detail', $params);
+                        if($insert_detail){
+                            $result = array(
+                                'status' => true,
+                                'message' => 'Pesan berhasil terkirim!',
+                                'message_value' => $this->post('message'),
+                            );
+                            $this->response($result, 200); 
+                        } else {
+                            $result = array(
+                                'status' => false,
+                                'message' => 'Pesan gagal dikirim! coba beberapa saat lagi!'
+                            );
+                            $this->response($result, 404); 
+                        }
                     } else {
                         $result = array(
                             'status' => false,
@@ -137,9 +160,9 @@ class Chat extends RestController {
                 } else {
                     $result = array(
                         'status' => false,
-                        'message' => 'Pesan gagal dikirim! coba beberapa saat lagi!'
+                        'message' => 'Gagal upload data'
                     );
-                    $this->response($result, 404); 
+                    $this->response($result, 200);
                 }
             } else {
                 $result = array(
@@ -216,6 +239,7 @@ class Chat extends RestController {
                     );
                     $this->response($result, 404); 
                 }
+                
             } else {
                 $result = array(
                     'status' => false,

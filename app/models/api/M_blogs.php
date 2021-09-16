@@ -33,7 +33,8 @@ class M_blogs extends MY_Model {
 
     //get by id
     public function get_by_id($blog_id) {
-        $this->db->select('blogs.*, category.title as category_title');
+        $base_url = base_url();
+        $this->db->select("blogs.*, category.title as category_title, concat('$base_url','welcome/webview/',blogs.blog_id) as content_webview");
         $this->db->from('blogs');
         $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
         $this->db->where('blogs.blog_id', $blog_id);
@@ -59,6 +60,21 @@ class M_blogs extends MY_Model {
         }
         return array();
     }
+    public function get_all_limit() {
+        $this->db->select('blogs.blog_id, blogs.title, blogs.image, category.title as category_title');
+        $this->db->from('blogs')->order_by('blogs.mdd',"DESC");
+        $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
+        $this->db->where('blogs.blog_st', 'published');
+        $this->db->where('blogs.is_weekly_content', 'no');
+        $this->db->limit(5,0);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
 
     public function get_by_category($category_id) {
         $this->db->select("blogs.blog_id, blogs.title, blogs.image, 'blog' as type");
@@ -66,6 +82,7 @@ class M_blogs extends MY_Model {
         $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
         $this->db->where('blogs.blog_st', 'published');
         $this->db->where('blogs.category_id', $category_id);
+        $this->db->where('blogs.is_weekly_content', 'no');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -81,6 +98,7 @@ class M_blogs extends MY_Model {
         $this->db->where('blogs.blog_st', 'published');
         $this->db->where('blogs.pricing_st', 'free');
         $this->db->where('blogs.category_id', $category_id);
+        $this->db->where('blogs.is_weekly_content', 'no');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -94,7 +112,9 @@ class M_blogs extends MY_Model {
         $this->db->from('blogs')->order_by('blogs.mdd',"DESC");
         $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
         $this->db->where('blogs.blog_st', 'published');
+        $this->db->where('blogs.is_weekly_content', 'no');
         $this->db->like('blogs.title', $title, 'both'); 
+        
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -109,6 +129,7 @@ class M_blogs extends MY_Model {
         $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
         $this->db->where('blogs.blog_st', 'published');
         $this->db->where('blogs.pricing_st', 'free');
+        $this->db->where('blogs.is_weekly_content', 'no');
         $this->db->like('blogs.title', $title, 'both'); 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
@@ -166,6 +187,7 @@ class M_blogs extends MY_Model {
         $this->db->from('blogs')->order_by('blogs.mdd',"DESC");
         $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
         $this->db->where('blogs.blog_st', 'published');
+        $this->db->where('blogs.is_weekly_content', 'no');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -179,6 +201,7 @@ class M_blogs extends MY_Model {
         $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
         $this->db->where('blogs.blog_st', 'published');
         $this->db->where('blogs.pricing_st', 'free');
+        $this->db->where('blogs.is_weekly_content', 'no');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -204,6 +227,7 @@ class M_blogs extends MY_Model {
         $this->db->from('blogs')->order_by('blogs.mdd',"DESC");
         $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
         $this->db->where('blogs.blog_st', 'published');
+        $this->db->where('blogs.is_weekly_content', 'no');
         $this->db->like('blogs.title', $title, 'both'); 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
@@ -218,6 +242,7 @@ class M_blogs extends MY_Model {
         $this->db->join('category', 'category.category_id = blogs.category_id', 'inner');
         $this->db->where('blogs.blog_st', 'published');
         $this->db->where('blogs.pricing_st', 'free');
+        $this->db->where('blogs.is_weekly_content', 'no');
         $this->db->like('blogs.title', $title, 'both'); 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {

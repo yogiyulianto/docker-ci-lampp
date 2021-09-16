@@ -15,10 +15,20 @@ class Welcome extends CI_Controller {
         $this->slice->with('PAGE_TITLE', self::PAGE_TITLE);
         $this->slice->with('PAGE_HEADER', self::PAGE_HEADER);
         $this->slice->with('PAGE_URL', base_url(self::PAGE_URL));
+
+        $this->load->model('api/M_blogs');
     }
 
     public function index() {
         // render view
         return view(self::PAGE_URL.'/index');
+    }
+
+    public function webview($id){
+        $data = array('response' => $this->M_blogs->get_by_id($id));
+        return view(self::PAGE_URL.'/blog', $data);
+    }
+    public function privacy_policy(){
+        return view(self::PAGE_URL.'/privacy');
     }
 }

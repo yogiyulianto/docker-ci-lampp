@@ -22,11 +22,7 @@ class Webinar extends RestController {
        
         $user = $this->user_data;
         $base_url = base_url();
-        if($user->enroll_st == 'premium'){
-            $data = $this->M_webinar->get_all();
-        }else{
-            $data = $this->M_webinar->get_all_free();
-        }
+        $data = $this->M_webinar->get_all();
         
         // if data exist
         if($data){

@@ -35,7 +35,7 @@ class Blog extends PrivateBase {
         $config['base_url'] = base_url(self::PAGE_URL.'index/');
         $config['total_rows'] = $total_row;
         $config['per_page'] = $this->page_limit;
-        $from = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $from = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
         $this->pagination->initialize($config);
         //get data 
         $rs_id = $this->M_blog->get_all($from ,$config['per_page']);

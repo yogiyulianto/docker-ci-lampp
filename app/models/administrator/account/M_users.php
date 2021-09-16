@@ -120,6 +120,7 @@ class M_users extends MY_Model {
             $this->db->where('com_user.user_st', $rs_search['user_st']);
         }
         $this->db->where('com_role_user.role_id', '2004');
+        $this->db->where('com_user.user_mail !=', 'gendis@mail.com');
 
         $this->db->limit($number, $offset);
         $query = $this->db->get();
@@ -200,6 +201,7 @@ class M_users extends MY_Model {
         $this->db->join('com_role_user', 'com_role_user.user_id = user.user_id', 'left');
         $this->db->join('com_role', 'com_role_user.role_id = com_role.role_id', 'left');
         $this->db->where('com_role_user.role_id', '2004');
+        $this->db->where('com_user.user_mail !=', 'gendis@mail.com');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();

@@ -22,7 +22,7 @@
                 <table class="table table-head-bg-primary mt-1">
                     <thead >
                         <tr>
-                            <th width="5%">No</th>
+                            <th width="5%">ID</th>
                             <th width="15%">Kategori</th>
                             <th width="15%">Judul</th>
                             <th width="15%">Gambar</th>
@@ -36,7 +36,7 @@
                         @php $no = 1; @endphp
                         @forelse ($rs_id as $item)
                         <tr>
-                            <td>{{$no++}}</td>
+                            <td>{{$item['blog_id']}}</td>
                             <td>{{$item['category_title']}}</td>
                             <td>{{$item['title']}}</td>
                             <td><img src="{{base_url($item['image'])}}" alt="" width="50px"></td>

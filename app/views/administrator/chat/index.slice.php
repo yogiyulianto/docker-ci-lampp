@@ -24,9 +24,13 @@
                         <tr>
                             <th width="5%">No</th>
                             <th width="10%">Nama Pasien</th>
-                            <th width="20%">Tanggal Pesan dibuat</th>
-                            <th width="20%">Judul Pesan</th>
-                            <th width="20%">Status</th>
+                            <th width="10%">Tanggal Pesan dibuat</th>
+                            <th width="10%">Judul Pesan</th>
+                            <th width="10%">Lampiran</th>
+                            <th width="10%">Usia</th>
+                            <th width="10%">Berat Badan</th>
+                            <th width="10%">Tinggi Badan</th>
+                            <th width="10%">Status</th>
                             <th class="text-center" width="15%">Aksi</th>
                         </tr>
                     </thead>
@@ -38,6 +42,19 @@
                             <td>{{$item['mdb_name']}}</td>
                             <td>{{$item['message_date']}}</td>
                             <td>{{$item['title']}}</td>
+                            <td>
+                                @if($item['lampiran'] != '')
+                                <a href="{{ $PAGE_URL.$item['lampiran']}}" download>
+                                <i class="fa fa-eye"></i>
+                                Klik untuk download
+                                </a>
+                                @else
+                                <span class="badge badge-warning">Berkas tidak ditemukan</span>
+                                @endif
+                            </td>
+                            <td>{{$item['usia']}} Tahun</td>
+                            <td>{{$item['berat_badan']}} KG</td>
+                            <td>{{$item['tinggi_badan']}} CM</td>
                             <td>
                                 @if($item['chat_st'] === 'waiting')
                                 <span class="badge badge-warning">Menunggu Balasan</span>

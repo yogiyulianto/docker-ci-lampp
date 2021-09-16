@@ -122,7 +122,8 @@ class M_blog extends MY_Model {
 
     //get by id
     public function get_by_id($blog_id) {
-        $this->db->select('*');
+        $base_url = base_url();
+        $this->db->select("*, concat('$base_url'.'/welcome/webview/'. blogs.blog_id as content_webview) ");
         $this->db->from('blogs');
         $this->db->where('blogs.blog_id', $blog_id);
         $query = $this->db->get();

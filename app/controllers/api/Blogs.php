@@ -202,6 +202,27 @@ class Blogs extends RestController {
             }
         }
     }
+
+    public function all_get(){
+        $user = $this->user_data;
+        $base_url = base_url();
+        // if data exist
+        if($user){
+            $response = $this->M_blogs->get_all_limit();
+            $result = array(
+                'status' => true,
+                'message' => 'Sukses Mengambil Data!',
+                'data' => $response
+                );
+            $this->response($result, 200); 
+        } else {
+            $result = array(
+                'status' => false,
+                'message' => 'Data Tidak ditemukan!'
+            );
+            $this->response($result, 200);
+        }
+    }
     /**
     * 
     */
@@ -220,6 +241,7 @@ class Blogs extends RestController {
             // if data exist
             if($data){
                 $response = $this->M_blogs->get_by_id($data[0]['blog_id']);
+                // $response['content_refactor'] = ''
                 $result = array(
                     'status' => true,
                     'message' => 'Sukses Mengambil Data!',

@@ -39,6 +39,7 @@ class Chat extends PrivateBase {
         $this->pagination->initialize($config);
         //get data 
         $rs_id = $this->M_chat->get_all($from ,$config['per_page']);
+        // print_r($rs_id);die;
         $data = array(
             'rs_id' => $rs_id,
             'pagination' => $this->pagination->create_links()

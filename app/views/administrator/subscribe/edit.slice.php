@@ -47,13 +47,10 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-lg-12">
-								<label class="">Status Enroll *</label>
-								<select name="payment_st" class="select-2 " style="width:100%">
-									<option value="0"> Pilih Kategori </option>
-									<option value="paid" {{ set_select($result['payment_st'] , 'paid') }}> Paid </option>
-									<option value="unpaid" {{ set_select($result['payment_st'] , 'unpaid') }}> Unpaid </option>
-								</select>
-								<div class="error text-danger">{{error_form('payment_st') ?? ''}}</div>
+								<label>Total Payment *</label>
+								<input disabled type="number" name="total_payment" class="form-control {{error_form_class('total_payment')}}"
+									value="{{$result['total_payment'] ?? ''}}">
+								<div class="error text-danger">{{error_form('total_payment') ?? ''}}</div>
 							</div>
 						</div>
 					</div>
@@ -72,6 +69,17 @@
 								<input type="date" name="end_date" class="form-control {{error_form_class('end_date')}}"
 									value="{{$result['end_date'] ?? ''}}">
 								<div class="error text-danger">{{error_form('end_date') ?? ''}}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-12">
+								<label class="">Status Enroll *</label>
+								<select name="payment_st" class="select-2 " style="width:100%">
+									<option value="0"> Pilih Kategori </option>
+									<option value="paid" {{ set_select($result['payment_st'] , 'paid') }}> Paid </option>
+									<option value="unpaid" {{ set_select($result['payment_st'] , 'unpaid') }}> Unpaid </option>
+								</select>
+								<div class="error text-danger">{{error_form('payment_st') ?? ''}}</div>
 							</div>
 						</div>
 					</div>

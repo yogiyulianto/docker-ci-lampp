@@ -28,6 +28,31 @@ class M_user extends MY_Model {
             return $prefixdate . '0001';
         }
     }
+    //generate id terakhir
+    public function generate_uniq_number() {
+        $sql = "SELECT RIGHT(unique_number, 2) as 'last_number'
+                FROM user_enroll
+                ORDER BY unique_number DESC
+                LIMIT 1";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            $query->free_result();
+            // create next number
+            $number = intval($result['last_number']) + 1;
+            if ($number > 99) {
+                return false;
+            }
+            $zero = '';
+            for ($i = strlen($number); $i < 2; $i++) {
+                $zero .= '0';
+            }
+            return $zero . $number;
+        } else {
+            // create new number
+            return '01';
+        }
+    }
 
     //get all roles
     public function get_user_login_all_roles($username, $password) {
@@ -150,6 +175,30 @@ class M_user extends MY_Model {
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+    public function get_all_enrollment($user_id) {
+        $this->db->select('*');
+        $this->db->from('user_enroll');
+        $this->db->where('user_id', $user_id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+    public function check_enrollment($id) {
+        $this->db->select('*');
+        $this->db->from('user_enroll');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
             $query->free_result();
             return $result;
         }
