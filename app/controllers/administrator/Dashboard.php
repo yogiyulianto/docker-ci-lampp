@@ -23,13 +23,11 @@ class Dashboard extends PrivateBase {
         // set page rules
         $this->_set_page_rule('R');
         // get data
-        $total_webinar      = $this->M_dashboard->get_total_webinar();
-        $total_blog        = $this->M_dashboard->get_total_blog();
-        $total_video        = $this->M_dashboard->get_total_video();
+        $total_materi      = $this->M_dashboard->get_total_materi();
+        $total_kehamilan        = $this->M_dashboard->get_total_kehamilan();
+        $total_konsultasi        = $this->M_dashboard->get_total_konsultasi();
         $total_users       = $this->M_dashboard->get_total_users();
-        // $rs_last_order              = $this->M_dashboard->get_last_order();
-        // print_r($rs_last_order);die;
         // render view
-        return view(self::PAGE_URL.'index',compact(['total_webinar','total_blog','total_video','total_users']));
+        return view(self::PAGE_URL.'index',compact(['total_materi','total_kehamilan','total_konsultasi','total_users']));
     }
 }

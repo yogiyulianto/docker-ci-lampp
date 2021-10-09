@@ -10,7 +10,7 @@ class Users extends PrivateBase {
     const PAGE_TITLE = 'Users';
     const PAGE_HEADER = 'Users';
     const PAGE_URL = 'administrator/account/users/';
-    protected $page_limit = 10;
+    protected $page_limit = 100;
 
     // constructor
     public function __construct() {

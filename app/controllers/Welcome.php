@@ -31,4 +31,7 @@ class Welcome extends CI_Controller {
     public function privacy_policy(){
         return view(self::PAGE_URL.'/privacy');
     }
+    public function about(){
+        return view(self::PAGE_URL.'/about');
+    }
 }

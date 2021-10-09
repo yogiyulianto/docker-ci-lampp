@@ -66,78 +66,61 @@ class Auth extends RestController {
                     );
                     $this->response($response, 404);
                 }
-				if ($total_attempt >= 3){
-                    $message = "You're tried logging in a few times, try again later.";
-                    $response = array(
-                        'status' => false,
-                        'message' => $message
-                    );
-                    $this->response($response, 404);
-				}else{
-					$this->M_user->update('com_user', array('attempts' => $total_attempt + 1),array('user_name' => $username ));
-                    $this->session->set_userdata('com_user', array(
-                        'user_id' => $result['user_id'],
-                        'user_mail' => $result['user_mail'],
-                        'user_name' => $result['user_name'],
-                        'full_name' => $result['full_name'],
-                        'role_id' => $result['role_id'],
-                        'portal_id' => 30,
-                        'default_page' => 'peserta/dashboard',
-                    ));
-                    // set cookie 
-                    $session_params = array(
-                        'log_id' => generate_id(),
-                        'user_id' => $result['user_id'], 
-                        'login_date' => now(),
-                        'ip_address' => get_client_ip(),
-                    );
-                    // insert login time
-                    $this->M_user->insert('com_user_login',$session_params);
-                    // update user attempt
-                    $this->M_user->update('com_user', array('attempts'=> 0),array('user_id'=> $result['user_id']));
-                    $message = "Anda berhasil login!";
+				$this->M_user->update('com_user', array('attempts' => $total_attempt + 1),array('user_name' => $username ));
+                $this->session->set_userdata('com_user', array(
+                    'user_id' => $result['user_id'],
+                    'user_mail' => $result['user_mail'],
+                    'user_name' => $result['user_name'],
+                    'full_name' => $result['full_name'],
+                    'role_id' => $result['role_id'],
+                    'portal_id' => 30,
+                    'default_page' => 'peserta/dashboard',
+                ));
+                // set cookie 
+                $session_params = array(
+                    'log_id' => generate_id(),
+                    'user_id' => $result['user_id'], 
+                    'login_date' => now(),
+                    'ip_address' => get_client_ip(),
+                );
+                // insert login time
+                $this->M_user->insert('com_user_login',$session_params);
+                // update user attempt
+                $this->M_user->update('com_user', array('attempts'=> 0),array('user_id'=> $result['user_id']));
+                $message = "Anda berhasil login!";
 
-                    $key = $this->config->item('jwt_key');
-                    $date = new DateTime();
-                    $iat = $date->getTimestamp();
-                    $exp = $date->getTimestamp() + 60*60;
-                    $enroll_data = $this->M_user->check_user_enroll(array($result['user_id']));
-
-                    if($enroll_data){
-                        $enroll_st = 'premium';
-                    } else {
-                        $enroll_st = 'free';
-                    }
-                    // print_r($result);die;
-                    $token = array(
-                        'user_id' => $result['user_id'],
-                        'user_mail' => $result['user_mail'],
-                        'user_name' => $result['user_name'],
-                        'full_name' => $result['full_name'],
-                        'role_id' => $result['role_id'],
-                        'enroll_st' => $enroll_st,
-                        "iat" => $iat,
-                        "exp" => $exp
-                    );
+                $key = $this->config->item('jwt_key');
+                $date = new DateTime();
+                $iat = $date->getTimestamp();
+                $exp = $date->getTimestamp() + 60*60;
                 
-                    $jwt = JWT::encode($token, $key);
-                    $data_response = array(
-                        'user_id' => $result['user_id'],
-                        'user_mail' => $result['user_mail'],
-                        'user_name' => $result['user_name'],
-                        'full_name' => $result['full_name'],
-                        'role_id' => $result['role_id'],
-                        'enroll_st' => $enroll_st,
-                        'token' => $jwt
-                    );
+                // print_r($result);die;
+                $token = array(
+                    'user_id' => $result['user_id'],
+                    'user_mail' => $result['user_mail'],
+                    'user_name' => $result['user_name'],
+                    'full_name' => $result['full_name'],
+                    'role_id' => $result['role_id'],
+                    "iat" => $iat,
+                    "exp" => $exp
+                );
+            
+                $jwt = JWT::encode($token, $key);
+                $data_response = array(
+                    'user_id' => $result['user_id'],
+                    'user_mail' => $result['user_mail'],
+                    'user_name' => $result['user_name'],
+                    'full_name' => $result['full_name'],
+                    'role_id' => $result['role_id'],
+                    'token' => $jwt
+                );
 
-                    $response = array(
-                        'status' => true,
-                        'message' => $message,
-                        'data' => $data_response
-                    );
-                    $this->response($response, 200);
-				}
+                $response = array(
+                    'status' => true,
+                    'message' => $message,
+                    'data' => $data_response
+                );
+                $this->response($response, 200);
                 // cek lock status
                 if ($result['user_st'] == 2) {
                     // default error

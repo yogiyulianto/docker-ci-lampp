@@ -352,6 +352,7 @@ h6 {
 	right: 0;
 	top: 0;
 	z-index: 5;
+	position: fixed;
 }
 
 /*========================================== 3.NAVIGATION END ===========================================*/
@@ -627,7 +628,7 @@ h6 {
     transition: all 0.7s ease;
 }
 
-/* Clinic Header */
+/* Clinic Header problem di dashboard boy  */ 
 .header2-bgimage {
     background-image: url("../../images/1920x900x2.jpg");
 }
@@ -1144,7 +1145,7 @@ h6 {
 
 
 .two-right-bgimage {
-    background-image: url("../../images/1000x650x2.jpg");
+    /* background-image: url("../../images/1000x650x2.jpg"); */
     height: 550px;
     width: 50%;
 }
@@ -1766,7 +1767,7 @@ label {
 /* Pregnancy Cta */
 
 .cta-bgimage1 {
-    background-image: url("../../images/1920x700x1.jpg");
+    /* background-image: url("../../images/1920x700x1.jpg"); */
 }
 .cta-bgimage1 .cta-padding1 {
 	padding-bottom: 180px;
@@ -3748,7 +3749,7 @@ only screen and (min-resolution: 1.5dppx) {
 	.valign-menu .navbar-collapse {
 		float: right !important;
 		display: block !important;
-		line-height: 70px !important;
+		/*line-height: 70px !important;*/
 	} 
 	.valign-menu .menu {
 		display: inline-block !important;

@@ -546,3 +546,6 @@ $config['proxy_ips'] = '';
 // registered portal
 $config['portal_id'] = '10';
 $config['jwt_key']='genDhisApP!'; 
+
+$config['bot_token'] = 'bot1952661320:AAFcctpcwHley-slpd_5Y8HnFNVCdJURK0E';
+$config['chat_id'] = '847890980';

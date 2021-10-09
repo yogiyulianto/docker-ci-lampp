@@ -2,9 +2,9 @@
 
 class M_dashboard extends MY_Model {
 
-    public function get_total_webinar()
+    public function get_total_materi()
     {
-        $sql = "SELECT COUNT(*) as 'total' FROM webinar";
+        $sql = "SELECT COUNT(*) as 'total' FROM materi";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
@@ -14,9 +14,9 @@ class M_dashboard extends MY_Model {
         return 0;
     }
 
-    public function get_total_blog()
+    public function get_total_kehamilan()
     {
-        $sql = "SELECT COUNT(*) as 'total' FROM blogs";
+        $sql = "SELECT COUNT(*) as 'total' FROM kehamilan";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
@@ -25,9 +25,9 @@ class M_dashboard extends MY_Model {
         }
         return 0;
     }
-    public function get_total_video()
+    public function get_total_konsultasi()
     {
-        $sql = "SELECT COUNT(*) as 'total' FROM video";
+        $sql = "SELECT COUNT(*) as 'total' FROM konsultasi";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->row_array();

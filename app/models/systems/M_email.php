@@ -99,9 +99,9 @@ class M_email extends CI_Model {
         $data['details'] = !empty($email['message']['details']) ? $email['message']['details'] : '';
         $data['actions']['title'] = !empty($email['message']['actions']['title']) ? $email['message']['actions']['title'] : '';
         $data['actions']['link'] = !empty($email['message']['actions']['link']) ? $email['message']['actions']['link'] : '';
-        $data['footer'] = !empty($email['message']['footer']) ? $email['message']['footer'] : 'Best Regards, <br /> Gendhis';
-        $data['disclaimer'] = !empty($email['message']['disclaimer']) ? $email['message']['disclaimer'] : 'You got this email because you are using the Integrated Gendhis App  [ No Reply ]';
-        $data['copyright'] = !empty($email['message']['copyright']) ? $email['message']['copyright'] : '© ' . date('Y') . ' IT Team. Gendhis.';
+        $data['footer'] = !empty($email['message']['footer']) ? $email['message']['footer'] : 'Best Regards, <br /> Busevid';
+        $data['disclaimer'] = !empty($email['message']['disclaimer']) ? $email['message']['disclaimer'] : 'You got this email because you are using the Integrated Busevid App  [ No Reply ]';
+        $data['copyright'] = !empty($email['message']['copyright']) ? $email['message']['copyright'] : '© ' . date('Y') . ' IT Team. Busevid.';
         // parse message
         $this->mail_message = $this->slice->view('base.email.default', $data, true);
     }

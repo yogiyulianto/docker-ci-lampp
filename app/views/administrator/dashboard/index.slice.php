@@ -45,8 +45,8 @@ Dashboard
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Total Blog</p>
-                                <h4 class="card-title">{{$total_blog}}</h4>
+                                <p class="card-category">Total Materi</p>
+                                <h4 class="card-title">{{$total_materi}}</h4>
                             </div>
                         </div>
                     </div>
@@ -64,8 +64,8 @@ Dashboard
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Total Webinar</p>
-                                <h4 class="card-title">{{$total_webinar}}</h4>
+                                <p class="card-category">Total Konsultasi</p>
+                                <h4 class="card-title">{{$total_konsultasi}}</h4>
                             </div>
                         </div>
                     </div>
@@ -83,8 +83,8 @@ Dashboard
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Total Video</p>
-                                <h4 class="card-title">{{$total_video}}</h4>
+                                <p class="card-category">Total Kehamilan</p>
+                                <h4 class="card-title">{{$total_kehamilan}}</h4>
                             </div>
                         </div>
                     </div>

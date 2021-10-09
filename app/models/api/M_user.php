@@ -30,8 +30,10 @@ class M_user extends MY_Model {
     }
     //generate id terakhir
     public function generate_uniq_number() {
+        $date = date('Y-m-d');
         $sql = "SELECT RIGHT(unique_number, 2) as 'last_number'
                 FROM user_enroll
+                WHERE LEFT(enroll_date,10) = '$date'
                 ORDER BY unique_number DESC
                 LIMIT 1";
         $query = $this->db->query($sql);
