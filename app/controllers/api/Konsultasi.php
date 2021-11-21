@@ -44,6 +44,7 @@ class Konsultasi extends RestController {
         $this->form_validation->set_rules('email','Email','trim|required');
         $this->form_validation->set_rules('description','Deskripsi','trim|required');
         $this->form_validation->set_rules('name','Name','trim|required');
+        $this->form_validation->set_rules('nomer_wa','Nomer WA','trim|required');
         
         if($this->form_validation->run() !== FALSE){
             $user = $this->user_data;
@@ -53,6 +54,7 @@ class Konsultasi extends RestController {
                 'name' => $this->post('name'),
                 'email' => $this->post('email'),
                 'description' => $this->post('description'),
+                'nomer_wa' => $this->post('nomer_wa'),
                 'mdb' => $user->user_id,
                 'mdb_name' => $this->post('name'),
                 'mdd' => date('Y-m-d H:i:s'),

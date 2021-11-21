@@ -46,11 +46,42 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-lg-12">
+								<label>Kategori Materi *</label>
+								<select name="id_kategori" class="select-2 " style="width:100%">
+									<option value="0"> * Pilih Kategori Materi </option>
+									@foreach ($rs_category as $item)
+									<option value="{{$item['id_kategori']}}"
+										{{ set_select(old_input('id_kategori') , $item['id_kategori']) }}>{{$item['deskripsi']}}
+									</option>
+									@endforeach
+								</select>
+								<div class="error text-danger">{{error_form('id_kategori') ?? ''}}</div>
+							</div>
+						</div>	
+						<div class="form-group row">
+							<div class="col-lg-12">
 								<label>Konten *</label>
-								<textarea class="form-control {{error_form_class('content')}}" id="summernote" name="content" cols="30" rows="10" placeholder="Masukan Konten Blog" >{{old_input('content') ?? ''}}</textarea>
+								<textarea class="form-control {{error_form_class('content')}}" name="content" cols="30" rows="10" placeholder="Masukan Konten Blog" >{{old_input('content') ?? ''}}</textarea>
 								<div class="error text-danger">{{error_form('content') ?? ''}}</div>
 							</div>
 						</div>
+						<div class="form-group row">
+							<div class="col-md-12">
+								<label>Urutan*</label>
+								<input type="text" name="order_no" class="form-control {{error_form_class('order_no')}}"
+									placeholder="Urutan" value="{{old_input('order_no') ?? ''}}">
+								<div class="error text-danger">{{error_form('order_no') ?? ''}}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-6">
+								<label>Gambar*</label><small> Hanya gambar jpeg, jpg, atau png</small>
+								<input type="file" class="dropify {{error_form_class('video')}}" name="img"
+									data-show-errors="true" data-allowed-file-extensions="jpeg, jpg, png" data-max-file-size="20M">
+								<div class="error text-danger">{{error_form('video') ?? ''}}</div>
+							</div>
+						</div>
+						
 						<div class="card-action">
 							<button type="submit" class="btn btn-primary">Simpan</button>
 							<button type="reset" class="btn btn-warning">Reset</button>

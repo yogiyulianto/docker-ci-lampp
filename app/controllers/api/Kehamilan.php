@@ -42,11 +42,7 @@ class Kehamilan extends RestController {
         $user = $this->user_data;
         $base_url = base_url();
         $this->form_validation->set_rules('tanggal_hpht','tanggal_hpht','trim|required');
-        $this->form_validation->set_rules('bulan_hpht','bulan_hpht','trim|required');
-        $this->form_validation->set_rules('tahun_hpht','tahun_hpht','trim|required');
         $this->form_validation->set_rules('tanggal_hpl','tanggal_hpl','trim|required');
-        $this->form_validation->set_rules('bulan_hpl','bulan_hpl','trim|required');
-        $this->form_validation->set_rules('tahun_hpl','tahun_hpl','trim|required');
         
         if($this->form_validation->run() !== FALSE){
             $user = $this->user_data;
@@ -54,11 +50,7 @@ class Kehamilan extends RestController {
             if($response){
                 $params = array(
                     'tanggal_hpht' => $this->post('tanggal_hpht'),
-                    'bulan_hpht' => $this->post('bulan_hpht'),
-                    'tahun_hpht' => $this->post('tahun_hpht'),
                     'tanggal_hpl' => $this->post('tanggal_hpl'),
-                    'bulan_hpl' => $this->post('bulan_hpl'),
-                    'tahun_hpl' => $this->post('tahun_hpl'),
                     'mdb' => $user->user_id,
                     'mdb_name' => $user->full_name,
                     'mdd' => date('Y-m-d H:i:s'),
@@ -91,11 +83,7 @@ class Kehamilan extends RestController {
                 $params = array(
                     'user_id' => $user->user_id,
                     'tanggal_hpht' => $this->post('tanggal_hpht'),
-                    'bulan_hpht' => $this->post('bulan_hpht'),
-                    'tahun_hpht' => $this->post('tahun_hpht'),
                     'tanggal_hpl' => $this->post('tanggal_hpl'),
-                    'bulan_hpl' => $this->post('bulan_hpl'),
-                    'tahun_hpl' => $this->post('tahun_hpl'),
                     'mdb' => $user->user_id,
                     'mdb_name' => $user->full_name,
                     'mdd' => date('Y-m-d H:i:s'),

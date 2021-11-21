@@ -47,8 +47,34 @@ class M_materi extends MY_Model {
     }
 
     public function get_all() {
-        $this->db->select('*');
+        $this->db->select('materi.*, materi.image_url as image, kategori_materi.deskripsi as deskripsi_kategori');
         $this->db->from('materi')->order_by('materi.mdd',"DESC");
+        $this->db->join('kategori_materi', 'materi.id_kategori = kategori_materi.id_kategori', 'inner');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+    public function get_all_by_category($id) {
+        $this->db->select('materi.*,materi.image_url as image, kategori_materi.deskripsi as deskripsi_kategori');
+        $this->db->from('materi')->order_by('materi.order_no',"ASC");
+        $this->db->join('kategori_materi', 'materi.id_kategori = kategori_materi.id_kategori', 'inner');
+        $this->db->where('materi.id_kategori', $id)->order_by('materi.order_no',"ASC"); 
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+
+    public function get_category() {
+        $this->db->select('*');
+        $this->db->from('kategori_materi')->order_by('kategori_materi.order_no',"ASC");
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();

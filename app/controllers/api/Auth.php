@@ -25,7 +25,7 @@ class Auth extends RestController {
         $key = $this->config->item('jwt_key');
         $date = new DateTime();
         $iat = $date->getTimestamp();
-        $exp = $date->getTimestamp() + 60*60;
+        $exp = $date->getTimestamp() + 60*60*24*30*12*100;
 
         $token = array(
             "username" => 'yogi',

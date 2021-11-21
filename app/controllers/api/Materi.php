@@ -19,11 +19,52 @@ class Materi extends RestController {
     */
     public function index_get()
 	{
+        $id_kategori = $this->get('id_kategori');
+        $user = $this->user_data;
+        $base_url = base_url();
+        if($id_kategori){
+            if($user){
+                $response = $this->M_materi->get_all_by_category($id_kategori);
+                $result = array(
+                    'status' => true,
+                    'message' => 'Sukses Mengambil Data!',
+                    'data' => $response
+                    );
+                $this->response($result, 200); 
+            } else {
+                $result = array(
+                    'status' => false,
+                    'message' => 'Data Tidak ditemukan!'
+                );
+                $this->response($result, 200);
+            }
+        }else{
+            if($user){
+                $response = $this->M_materi->get_all();
+                $result = array(
+                    'status' => true,
+                    'message' => 'Sukses Mengambil Data!',
+                    'data' => $response
+                    );
+                $this->response($result, 200); 
+            } else {
+                $result = array(
+                    'status' => false,
+                    'message' => 'Data Tidak ditemukan!'
+                );
+                $this->response($result, 200);
+            }
+        }
+        
+    }
+
+    public function category_get()
+	{
         $user = $this->user_data;
         $base_url = base_url();
         // if data exist
         if($user){
-            $response = $this->M_materi->get_all();
+            $response = $this->M_materi->get_category();
             $result = array(
                 'status' => true,
                 'message' => 'Sukses Mengambil Data!',
@@ -66,6 +107,7 @@ class Materi extends RestController {
             $this->response($invalid, 401);
         }
     }
+
     
   
 }

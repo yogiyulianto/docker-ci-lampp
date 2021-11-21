@@ -46,11 +46,41 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-lg-12">
+								<label>Kategori Materi *</label>
+								<select name="id_kategori" class="select-2" style="width:100%" >
+									<option value="0"> * </option>
+									@foreach ($rs_category as $item)
+									<option value="{{$item['id_kategori']}}"
+										{{ set_select($result['id_kategori'] , $item['id_kategori']) }}>{{$item['deskripsi']}}
+									</option>
+									@endforeach
+								</select>
+								<div class="error text-danger">{{error_form('id_kategori') ?? ''}}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-12">
 								<label>Konten *</label>
-								<textarea class="form-control {{error_form_class('content')}}" id="summernote" name="content"
+								<textarea class="form-control {{error_form_class('content')}}" name="content"
 									cols="30" rows="10"
 									placeholder="Masukan Konten Blog">{{$result['description'] ?? ''}}</textarea>
 								<div class="error text-danger">{{error_form('content') ?? ''}}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-6">
+								<label>Gambar*</label><small> Hanya Gambar (jpg, jpeg, png) maks. 3MB Resolusi
+									1000x1000px</small>
+								<input type="file" class="dropify {{error_form_class('img')}}" name="img"
+									data-show-errors="true" data-allowed-file-extensions="jpeg jpg png" data-max-file-size="10M"
+									data-max-width="3000" data-max-height="3000" data-default-file="{{$result['image_url']}}">
+								<div class="error text-danger">{{error_form('img') ?? ''}}</div>
+							</div>
+							<div class="col-md-6">
+								<label>Urutan*</label>
+								<input type="text" name="order_no" class="form-control {{error_form_class('order_no')}}"
+									placeholder="Urutan" value="{{$result['order_no'] ?? ''}}">
+								<div class="error text-danger">{{error_form('order_no') ?? ''}}</div>
 							</div>
 						</div>
 						<div class="card-action">

@@ -1,6 +1,6 @@
 <?php
 
-class M_materi extends MY_Model {
+class M_kategori_materi extends MY_Model {
 
     //generate id terakhir
     public function generate_id($prefixdate) {
@@ -96,10 +96,7 @@ class M_materi extends MY_Model {
 
     //get all
     public function get_all($from ,$page) {
-        $sql = "SELECT a.*, b.deskripsi as deskripsi_kategori FROM materi a
-        INNER JOIN kategori_materi b ON a.id_kategori = b.id_kategori
-        ORDER BY a.order_no ASC
-        LIMIT $from ,$page";
+        $sql = "SELECT * FROM kategori_materi LIMIT $from ,$page";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -127,8 +124,8 @@ class M_materi extends MY_Model {
     public function get_by_id($id) {
         $base_url = base_url();
         $this->db->select("*");
-        $this->db->from('materi');
-        $this->db->where('materi.id', $id);
+        $this->db->from('kategori_materi');
+        $this->db->where('kategori_materi.id_kategori', $id);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
@@ -141,7 +138,7 @@ class M_materi extends MY_Model {
     //count all
     public function count_all() {
         $this->db->select('*');
-        $this->db->from('materi');
+        $this->db->from('kategori_materi');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -153,7 +150,7 @@ class M_materi extends MY_Model {
     // get all parent
     public function get_all_category() {
         $this->db->select('*');
-        $this->db->from('kategori_materi');
+        $this->db->from('category');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();

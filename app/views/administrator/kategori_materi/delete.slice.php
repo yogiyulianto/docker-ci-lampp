@@ -23,47 +23,17 @@
         <!--begin::Form-->
         <form class="" method="POST" action="{{$PAGE_URL.'delete_process'}}" onsubmit="return confirm('Apakah anda yakin akan menghapus data dibawah ini?');">
             {{ csrf_token() }}
-            <input type="hidden" name="id" value="{{$result['id']}}">
+            <input type="hidden" name="id_kategori" value="{{$result['id_kategori']}}">
             <div class="card-body">
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group row">
 							<div class="col-lg-12">
-								<label>Judul*</label>
-								<input type="text" disabled name="title" class="form-control {{error_form_class('title')}}"
-									placeholder="Masukan Judul" value="{{$result['title'] ?? ''}}">
-								<div class="error text-danger">{{error_form('title') ?? ''}}</div>
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-lg-12">
-								<label>Sub Judul*</label>
-								<input type="text" disabled name="title" class="form-control {{error_form_class('subtitle')}}"
-									placeholder="Masukan Sub Judul" value="{{$result['subtitle'] ?? ''}}">
-								<div class="error text-danger">{{error_form('subitle') ?? ''}}</div>
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-lg-12">
 								<label>Kategori Materi *</label>
-								<select disabled name="id_kategori" class="select-2" style="width:100%" >
-									<option value="0"> * </option>
-									@foreach ($rs_category as $item)
-									<option value="{{$item['id_kategori']}}"
-										{{ set_select($result['id_kategori'] , $item['id_kategori']) }}>{{$item['deskripsi']}}
-									</option>
-									@endforeach
-								</select>
-								<div class="error text-danger">{{error_form('id_kategori') ?? ''}}</div>
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-lg-12">
-								<label>Konten *</label>
-								<textarea disabled class="form-control {{error_form_class('content')}}" name="content"
+								<textarea disabled class="form-control {{error_form_class('content')}}" id="summernote" name="deskripsi"
 									cols="30" rows="10"
-									placeholder="Masukan Konten Blog">{{$result['description'] ?? ''}}</textarea>
-								<div class="error text-danger">{{error_form('content') ?? ''}}</div>
+									placeholder="Masukan Konten Blog">{{$result['deskripsi'] ?? ''}}</textarea>
+								<div class="error text-danger">{{error_form('deskripsi') ?? ''}}</div>
 							</div>
 						</div>
 					</div>

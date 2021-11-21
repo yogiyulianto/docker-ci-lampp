@@ -28,8 +28,8 @@
                         @forelse ($rs_id as $item)
                         <tr>
                             <td>{{$no++}}</td>
-                            <td>{{date('j', strtotime($item['tanggal_hpht']))}} {{date('F', strtotime($item['bulan_hpht']))}} {{$item['tahun_hpht']}}</td>
-                            <td>{{date('j', strtotime($item['tanggal_hpl']))}} {{date('F', strtotime($item['bulan_hpl']))}} {{$item['tahun_hpl']}}</td>
+                            <td>{{date('j F, Y', strtotime($item['tanggal_hpht']))}}</td>
+                            <td>{{date('j F, Y', strtotime($item['tanggal_hpl']))}}</td>
                             <td>{{$item['mdb_name']}}</td>
                             <td>{{date('j F, Y H:i', strtotime($item['mdd']))}}</td>
                         </tr>

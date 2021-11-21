@@ -22,11 +22,8 @@
                 <table class="table table-head-bg-primary mt-1">
                     <thead >
                         <tr>
-                            <th width="10%">Nomor</th>
-                            <th width="10%">Judul</th>
-                            <th width="10%">Sub Judul</th>
-                            <th width="15%">Deskripsi</th>
-                            <th width="10%">Kategori</th>
+                            <th width="5%">No</th>
+                            <th width="50%">Deksripsi</th>
                             <th width="10%">Di ubah oleh</th>
                             <th width="10%">Di ubah tanggal</th>
                             <th width="15%">Aksi</th>
@@ -36,18 +33,15 @@
                         @php $no = 1; @endphp
                         @forelse ($rs_id as $item)
                         <tr>
-                            <td>{{$item['order_no']}}</td>
-                            <td>{{$item['title']}}</td>
-                            <td>{{$item['subtitle']}}</td>
-                            <td>{{$item['description']}}</td>
-                            <td>{{$item['deskripsi_kategori']}}</td>
+                            <td>{{$no++}}</td>
+                            <td>{{$item['deskripsi']}}</td>
                             <td>{{$item['mdb_name']}}</td>
                             <td>{{date('j F, Y H:i', strtotime($item['mdd']))}}</td>
                             <td class="text-left">
-                                <a href="{{ $PAGE_URL.'edit/'.$item['id']}}" class="btn"  data-toggle="tooltip" data-placement="top" title="Ubah {{$PAGE_TITLE}}">
+                                <a href="{{ $PAGE_URL.'edit/'.$item['id_kategori']}}" class="btn"  data-toggle="tooltip" data-placement="top" title="Ubah {{$PAGE_TITLE}}">
                                     <i class="fas fa-pencil-alt" ></i>
                                 </a>
-                                <a href="{{ $PAGE_URL.'delete/'.$item['id']}}" class="btn" data-toggle="tooltip" data-placement="top" title="Hapus {{$PAGE_TITLE}}" >
+                                <a href="{{ $PAGE_URL.'delete/'.$item['id_kategori']}}" class="btn" data-toggle="tooltip" data-placement="top" title="Hapus {{$PAGE_TITLE}}" >
                                     <i class="fas fa-trash" ></i>
                                 </a>
                             </td>

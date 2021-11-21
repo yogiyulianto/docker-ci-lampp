@@ -48,8 +48,11 @@ class Materi extends PrivateBase {
     }
     public function add() {
         $this->_set_page_rule('C');
+        $data = array(
+            'rs_category' => $this->M_materi->get_all_category(), 
+        );
         // render view
-        view(self::PAGE_URL . 'add');
+        view(self::PAGE_URL . 'add', $data);
     }
     // add process
     public function add_process() {
@@ -58,13 +61,30 @@ class Materi extends PrivateBase {
         $this->form_validation->set_rules('title','Title','trim|required');
         $this->form_validation->set_rules('subtitle','Subtitle','trim|required');
         $this->form_validation->set_rules('content','Konten','trim|required');
+        $this->form_validation->set_rules('id_kategori','Kategori','trim|required');
         // process
         if ($this->form_validation->run() !== FALSE) {
+            if(!empty($_FILES['img']['tmp_name'])) {
+                // upload config
+                $config['upload_path'] = 'assets/images/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['file_name'] = 'images_' . date('Ymdhis');
+                $this->tupload->initialize($config);
+                // process upload images
+                if ($this->tupload->do_upload_image('img', 128, false)) {
+                    $data_upload = $this->tupload->data();
+                    $file_name = base_url() . 'assets/images/'.$data_upload['file_name'];
+                }
+                $this->notification->send(self::PAGE_URL.'add', 'error',  $this->tupload->display_errors());
+            }
             // update params
             $params = array(
                 'title' => $this->input->post('title',TRUE), 
                 'subtitle' => $this->input->post('subtitle',TRUE), 
                 'description' => $this->input->post('content',TRUE), 
+                'id_kategori' => $this->input->post('id_kategori',TRUE), 
+                'image_url' => (isset($file_name)) ? $file_name : '',
+                'order_no' => $this->input->post('order_no',TRUE), 
                 'mdb' => $this->com_user('user_id'),
                 'mdb_name' => $this->com_user('user_name'),
                 'mdd' => now(),
@@ -91,6 +111,7 @@ class Materi extends PrivateBase {
         //parsing
         $data = array(
             'result' => $this->M_materi->get_by_id($id),
+            'rs_category' => $this->M_materi->get_all_category(),
         );
         //parsing and view content
         view(self::PAGE_URL.'edit', $data);
@@ -102,7 +123,8 @@ class Materi extends PrivateBase {
         // cek input
         $this->form_validation->set_rules('title','Title','trim|required');
         $this->form_validation->set_rules('subtitle','Subtitle','trim|required');
-        $this->form_validation->set_rules('content','Konten','trim|required');
+        $this->form_validation->set_rules('content','Konten','trim');
+        $this->form_validation->set_rules('id_kategori','Kategori','trim|required');
         // check data
         $id = $this->input->post('id',TRUE);
         if (empty($id)) {
@@ -111,11 +133,27 @@ class Materi extends PrivateBase {
         }
         // process
         if ($this->form_validation->run() !== FALSE) {
+            if(!empty($_FILES['img']['tmp_name'])) {
+                // upload config
+                $config['upload_path'] = 'assets/images/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['file_name'] = 'images_' . date('Ymdhis');
+                $this->tupload->initialize($config);
+                // process upload images
+                if ($this->tupload->do_upload_image('img', 128, false)) {
+                    $data_upload = $this->tupload->data();
+                    $file_name = base_url() . 'assets/images/'.$data_upload['file_name'];
+                }
+                $this->notification->send(self::PAGE_URL.'add', 'error',  $this->tupload->display_errors());
+            }
             // update params
             $params = array(
                 'title' => $this->input->post('title',TRUE), 
                 'subtitle' => $this->input->post('subtitle',TRUE), 
-                'description' => $this->input->post('content',TRUE), 
+                'description' => $this->input->post('content',TRUE),
+                'id_kategori' => $this->input->post('id_kategori',TRUE), 
+                'image_url' => (isset($file_name)) ? $file_name : '',
+                'order_no' => $this->input->post('order_no',TRUE), 
                 'mdb' => $this->com_user('user_id'),
                 'mdb_name' => $this->com_user('user_name'),
                 'mdd' => now(),
@@ -148,6 +186,7 @@ class Materi extends PrivateBase {
         //parsing
         $data = array(
             'result' => $this->M_materi->get_by_id($id),
+            'rs_category' => $this->M_materi->get_all_category(),
         );
         //parsing and view content
         view(self::PAGE_URL . 'delete', $data);

@@ -20,10 +20,10 @@
                             <th width="10%">User ID</th>
                             <th width="10%">Email</th>
                             <th width="10%">Nama</th>
-                            <th width="30%">Deskripsi</th>
+                            <th width="20%">Deskripsi</th>
                             <th width="10%">Di ubah oleh</th>
                             <th width="10%">Di ubah tanggal</th>
-                            <th width="10%">Aksi</th>
+                            <th width="20%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,8 +37,12 @@
                             <td>{{$item['description']}}</td>
                             <td>{{$item['mdb_name']}}</td>
                             <td>{{date('j F, Y H:i', strtotime($item['mdd']))}}</td>
-                            <td><a href="mailto:{{$item['email']}}?subject=Balasan Konsultasi Busevid"class="btn"  data-toggle="tooltip" data-placement="top" title="">
+                            <td>
+                                <a href="mailto:{{$item['email']}}?subject=Balasan Konsultasi Busevid"class="btn"  data-toggle="tooltip" data-placement="top" title="">
                                     <i class="fas fa-paper-plane" ></i>
+                                </a>
+                                <a href="https://api.whatsapp.com/send?phone={{$item['nomer_wa']}}"class="btn"  data-toggle="tooltip" data-placement="top" title="">
+                                    <i class="fas fa-comments" ></i>
                                 </a>
                             </td>
                         </tr>
