@@ -1,869 +1,1530 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>BUSEVID</title>
-		<!-- FAVICON LINK -->
-		<link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicons/favicon.ico" type="image/x-icon">
-		<!-- STYLESHEETS -->
-		<!-- BOOTSTRAP CSS -->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>template/html/css/vendor/bootstrap.min.css">
-		<!-- FONT AWESOME -->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>template/html/css/vendor/font-awesome/css/font-awesome.min.css" />
-		<!-- MAGNIFIC LIGHT BOX -->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>template/html/css/vendor/magnific/magnific-popup.css">
-		<!-- CAROUSEL STYLE LINK -->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>template/html/css/vendor/owl-carousel/owl.carousel.css">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>template/html/css/vendor/owl-carousel/owl.theme.css">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>template/html/css/vendor/owl-carousel/carousel.css">
-		<!-- DATEPICKER -->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>template/html/css/vendor/datepicker.css">
-		<!-- CUSTOM CSS -->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>template/html/css/custom/style.css">
-	</head>
-	<body data-spy="scroll" data-target="#navbarSupportedContent" data-offset="132" >
-		
-		<!--===== PREGNANCY START =====-->
-		
-		<!--================================= NAVIGATION START ==========================================-->
-		<header>
-			<div class="header3-bgimage bgimage-property" id="home">
-				<nav class="topbar navbar navbar-default valign-menu simple-menu-3 navbar-toggleable-md navbar-expand-lg clearfix navbar-dark bg-dark clearfix">
-					<div class="container">
-						<div class="logo-image">
-							<a href="#"><img src="<?php echo base_url(); ?>assets/images/logo-text.png" alt="logo-image" data-at2x="<?php echo base_url(); ?>assets/images/logo-text.png" width="150px" height="50px" /></a>
-						</div>
-						<div class="navbar-right nav">
-							<div class="navbar-header">
-								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-								  <span class="navbar-toggler-icon"></span>
-								</button>				
-							</div>
-							<div class="collapse navbar-collapse" id="navbarSupportedContent">
-								<ul class="nav navbar-nav" id="menu_1" >
-									<li class="menu">
-										<a href="#home" class="pagescroll nav-link">
-										HOME
-										</a>
-									</li>
-									<li class="menu">
-										<a href="#services" class="pagescroll nav-link">
-										SERVICES
-										</a>
-									</li>
-									<li class="menu">
-										<a href="#team" class="pagescroll nav-link">
-										TEAM
-										</a>
-									</li>
+<!DOCTYPE html>
+<html lang="zxx">
 
-									<li class="menu">
-										<a href="#testimonial" class="pagescroll nav-link">
-										TESTIMONIAL
-										</a>
-									</li>
-									<li class="menu">
-										<a href="#subscribe" class="pagescroll nav-link">
-										SUBSCRIBE
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<!-- /.navbar-collapse -->
-					</div>
-				</nav>
-		<!--================================= NAVIGATION END ==========================================-->
-		
-		<!--=================================  HEADER START ==========================================-->
-		
-				<div class="container heading-ff-3">
-					<div class="row rowsafari">
-						<div class="col-sm-12 col-lg-12">
-							<div class="header-div-1 heading-padding text-center">
-								<h1>WE CARE FOR YOUR HEALTH</h1>
-								<p class="header-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae semper nulla. Nunc tempus consequat blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-								<div class="btn1-div top-space">	
-									<button class="btn btn-1" type="submit"><span>LEARN MORE</span></button>
-								</div>
-							</div>
-						
-						</div>						
-					</div>
-				</div>
-			</div>
-		</header>
-		<!--================================= HEADER ENDS ============================================-->	
-		
-		<!--================================= SERVICES START ==========================================-->
-		<section class="section-padding section-1-bg" id="services">
-			<div class="container heading-ff-3">
-				<div class="heading-div-1 text-center services-col-bottom">
-					<h2>OUR SERVICES</h2>
-					<img src="<?php echo base_url(); ?>template/html/images/110x32.png" alt="110x32"  data-at2x="<?php echo base_url(); ?>template/html/images/110x32@2x.png"/>
-				</div>
-				<div class="row rowsafari">					
-					<div class="col-sm-7 col-md-7 col-lg-4 res-mar-center">							
-						<div class="services-col-2 text-center">
-							<div class="services-col-img1">
-								<img src="<?php echo base_url(); ?>template/html/images/80x80x11.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/80x80x11@2x.png"/>
-							</div>
-							<div class="services-col-content1">
-								<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-								<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-							</div>
-						</div>
-					
-					</div>
-					<div class="col-sm-7 col-md-7 col-lg-4 res-mar-center res-services-col-top-pad">							
-						<div class="services-col-2 text-center">
-							<div class="services-col-img1">
-								<img src="<?php echo base_url(); ?>template/html/images/80x80x12.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/80x80x12@2x.png"/>
-							</div>
-							<div class="services-col-content1">
-								<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-								<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-							</div>
-						</div>
-					
-					</div>
-					<div class="col-sm-7 col-md-7 col-lg-4 res-mar-center res-services-col-top-pad">							
-						<div class="services-col-2 text-center">
-							<div class="services-col-img1">
-								<img src="<?php echo base_url(); ?>template/html/images/80x80x13.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/80x80x13@2x.png"/>
-							</div>
-							<div class="services-col-content1">
-								<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-								<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-							</div>
-						</div>
-					
-					</div>
-				</div>
-				<div class="row rowsafari">		
-					<div class="col-sm-7 col-md-7 col-lg-4 res-mar-center services-col-top res-services-col-top-pad">							
-						<div class="services-col-2 text-center">
-							<div class="services-col-img1">
-								<img src="<?php echo base_url(); ?>template/html/images/80x80x14.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/80x80x14@2x.png"/>
-							</div>
-							<div class="services-col-content1">
-								<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-								<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-							</div>
-						</div>
-					
-					</div>
-					<div class="col-sm-7 col-md-7 col-lg-4 res-mar-center services-col-top res-services-col-top-pad">							
-						<div class="services-col-2 text-center">
-							<div class="services-col-img1">
-								<img src="<?php echo base_url(); ?>template/html/images/80x80x15.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/80x80x15@2x.png"/>
-							</div>
-							<div class="services-col-content1">
-								<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-								<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-							</div>
-						</div>
-					
-					</div>
-					<div class="col-sm-7 col-md-7 col-lg-4 res-mar-center services-col-top res-services-col-top-pad">							
-						<div class="services-col-2 text-center">
-							<div class="services-col-img1">
-								<img src="<?php echo base_url(); ?>template/html/images/80x80x16.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/80x80x16@2x.png"/>
-							</div>
-							<div class="services-col-content1">
-								<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-								<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-							</div>
-						</div>
-					
-					</div>
-				</div>				
-			</div>				
-		</section>
-		<!--================================= SERVICES ENDS ==========================================-->
-		
-		<!--=================================  ABOUT START ==========================================-->
-		<section class="section-2-bg">
-			<div class="container-fluid heading-ff-3">
-				<div class="row rowsafari">
-					<div class="col-sm-12 col-md-12 col-lg-6 order-2 order-lg-1 two-right-div">
-						<div class="container no-pad">
-							<div class="two-right-col">
-								<h3><a href="#">WELCOME TO CARE CENTER</a></h3>
-								<img src="<?php echo base_url(); ?>template/html/images/50x6.png" alt="uline"  data-at2x="<?php echo base_url(); ?>template/html/images/50x6@2x.png"/>
-								<p class="content-top-space">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae semper nulla. Nunc tempus consequat blandit. Lorem ipsum dolor sit amet. Nunc tempus consequat blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae semper nulla. Nunc tempus consequat blandit, lorem ipsum dolor amet.</p>
-								<ul class="content-ul top-space15 about-points1">
-									<li>
-										<div class="about-div1 distab">
-											<div class="distab-cell-middle list-img1">
-												<img src="<?php echo base_url(); ?>template/html/images/32x32x1.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x1@2x.png"/>
-											</div>
-											<div class="distab-cell-middle list-content1">
-												<p>Phasellus nunc tempus consequat blandit dolor sit amet, consectetur adipiscing</p>
-											</div>
-										</div>
-									</li>
-									<li class="top-space10">
-										<div class="about-div1 distab">
-											<div class="distab-cell-middle list-img1">
-												<img src="<?php echo base_url(); ?>template/html/images/32x32x1.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x1@2x.png"/>
-											</div>
-											<div class="distab-cell-middle list-content1">										
-												<p>Consequat blandit vitae semper tempus dolor sit amet</p>
-											</div>
-										</div>
-									</li>
-									<li class="top-space10">
-										<div class="about-div1 distab">
-											<div class="distab-cell-middle list-img1">
-												<img src="<?php echo base_url(); ?>template/html/images/32x32x1.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x1@2x.png"/>
-											</div>
-											<div class="distab-cell-middle list-content1">										
-												<p>Phasellus nunc tempus consequat blandit consectetur dolor, adipiscing elit</p>
-											</div>
-										</div>
-									</li>
-									<li class="top-space10">
-										<div class="about-div1 distab">
-											<div class="distab-cell-middle list-img1">
-												<img src="<?php echo base_url(); ?>template/html/images/32x32x1.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x1@2x.png"/>
-											</div>
-											<div class="distab-cell-middle list-content1">
-												<p>Nunc consequat blandit vitae semper</p>
-											</div>
-										</div>
-									</li>
-									<li class="top-space10">
-										<div class="about-div1 distab">
-											<div class="distab-cell-middle list-img1">
-												<img src="<?php echo base_url(); ?>template/html/images/32x32x1.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x1@2x.png"/>
-											</div>
-											<div class="distab-cell-middle list-content1">										
-												<p>Phasellus nunc tempus consequat blandit dolor sit amet</p>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-12 col-lg-6 order-1 order-lg-2 two-right-bgimage bgimage-property">
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--=================================  ABOUT ENDS ==========================================-->
-		
-		<!--================================= OUR TEAM START ==========================================-->
-			<section class="section-padding section-1-bg" id="team">
-				<div class="container heading-ff-3">
-					<div class="heading-div-1 text-center">
-						<h2>MEET OUR DOCTORS</h2>
-						<img src="<?php echo base_url(); ?>template/html/images/110x32.png" alt="uline"  data-at2x="<?php echo base_url(); ?>template/html/images/110x32@2x.png"/>
-					</div>
-					<div class="row rowsafari">					
-						<div class="col-sm-7 col-md-7 col-lg-4 res-mar-center res-team2-col">							
-							<div class="team-col-2 text-center">
-								<div class="team-col-img1">
-									<img src="<?php echo base_url(); ?>template/html/images/480x600x4.jpg" alt="image"  data-at2x="<?php echo base_url(); ?>template/html/images/480x600x4@2x.jpg" class="img-fluid"/>
-								</div>
-								<div class="team-col-content1">
-									<h5>MARK EDMUND</h5>
-									<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-								</div>
-							</div>
-							<div class="text-center team-top-space-2">
-								<ul class="content-ul team-icon-2">
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x2.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x2@2x.png"/>
-										</a>
-									</li>
 
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x3.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x3@2x.png"/>
-										</a>
-									</li>
+<!-- Mirrored from demo.epic-webdesign.com/tf-essentials/v1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Oct 2021 15:25:19 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
 
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x4.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x4@2x.png"/>
-										</a>
-									</li>
-									
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x5.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x5@2x.png"/>
-										</a>
-									</li>
-								</ul>
-							</div>
-						
-						</div>
-						<div class="col-sm-7 col-md-7 col-lg-4 res-mar-center res-pad-top30 res-team2-col">							
-							<div class="team-col-2 text-center">
-								<div class="team-col-img1">
-									<img src="<?php echo base_url(); ?>template/html/images/480x600x5.jpg" alt="image"  data-at2x="<?php echo base_url(); ?>template/html/images/480x600x5@2x.jpg" class="img-fluid"/>
-								</div>
-								<div class="team-col-content1">
-									<h5>LAURA CAROL</h5>
-									<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-								</div>
-							</div>
-							<div class="text-center team-top-space-2">
-								<ul class="content-ul team-icon-2">
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x2.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x2@2x.png"/>
-										</a>
-									</li>
+    <title>Fishee - Solusi Makan Ikan Otomatis</title>
+    
+    <!-- Loading Bootstrap -->
+    <link href="<?php echo base_url() ?>template/landing//css/bootstrap.min.css" rel="stylesheet">
 
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x3.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x3@2x.png"/>
-										</a>
-									</li>
+    <!-- Loading Template CSS -->
+    <link href="<?php echo base_url() ?>template/landing//css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>template/landing//css/animate.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>template/landing//css/style-magnific-popup.css" rel="stylesheet">
 
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x4.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x4@2x.png"/>
-										</a>
-									</li>
-									
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x5.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x5@2x.png"/>
-										</a>
-									</li>
-								</ul>
-							</div>
-						
-						</div>
-						<div class="col-sm-7 col-md-7 col-lg-4 res-mar-center res-pad-top30 res-team2-col">							
-							<div class="team-col-2 text-center">
-								<div class="team-col-img1">
-									<img src="<?php echo base_url(); ?>template/html/images/480x600x6.jpg" alt="image"  data-at2x="<?php echo base_url(); ?>template/html/images/480x600x6@2x.jpg" class="img-fluid"/>
-								</div>
-								<div class="team-col-content1">
-									<h5>JOHN FEDERAL</h5>
-									<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-								</div>
-							</div>
-							<div class="text-center team-top-space-2">
-								<ul class="content-ul team-icon-2">
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x2.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x2@2x.png"/>
-										</a>
-									</li>
+    <!-- Awsome Fonts -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>template/landing//css/all.min.css">
 
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x3.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x3@2x.png"/>
-										</a>
-									</li>
+    <!-- Fonts -->
+    <link href="<?php echo base_url() ?>template/landing/fonts.googleapis.com/cssdc37.css?family=Dosis:500,600" rel="stylesheet">
+    <link href="<?php echo base_url() ?>template/landing/fonts.googleapis.com/css44ae.css?family=Open+Sans:300i,400,400i,600,700" rel="stylesheet">
 
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x4.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x4@2x.png"/>
-										</a>
-									</li>
-									
-									<li>
-										<a href="#">
-											<img src="<?php echo base_url(); ?>template/html/images/32x32x5.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x5@2x.png"/>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>				
-				</div>				
-			</section>
+    <!-- Font Favicon -->
+    <link rel="shortcut icon" href="<?php echo base_url() ?>template/landing/images/favicon.ico">
+    
+</head>
+
+<body>
+
+    <!--begin header -->
+    <header class="header">
+
+        <!--begin navbar-fixed-top -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            
+            <!--begin container -->
+            <div class="container">
+
+                <!--begin navbar -->
+                <nav class="navbar navbar-expand-lg">
+
+                    <!--begin logo -->
+                    <a class="navbar-brand" href="#">Fishee</a>
+                    <!--end logo -->
+
+                    <!--begin navbar-toggler -->
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+                    </button>
+                    <!--end navbar-toggler -->
+
+                    <!--begin navbar-collapse -->
+                    <div class="navbar-collapse collapse" id="navbarCollapse">
+                        
+                        <!--begin navbar-nav -->
+                        <ul class="navbar-nav ml-auto">
+
+                            <li><a href="#home">Home</a></li>
+
+                            <li><a href="#about">Tentang</a></li>
+
+                            <!-- <li><a href="#pricing">Pricing</a></li> -->
+
+                            <!-- <li><a href="#team">Team</a></li> -->
+
+                            <!-- <li><a href="#showcase">Showcase</a></li> -->
+
+                            <li><a href="#features">Fitur</a></li>
+
+                            <!-- <li><a href="#blog">Blog</a></li> -->
+
+                            <li><a href="#contact">Kontak Kami</a></li>
+
+                            <li class="discover-link"><a href="<?php echo base_url() ?>auth/login" class="external discover-btn">Login</a></li>
+
+                        </ul>
+                        <!--end navbar-nav -->
+
+                    </div>
+                    <!--end navbar-collapse -->
+
+                </nav>
+                <!--end navbar -->
+
+            </div>
+    		<!--end container -->
+            
+        </nav>
+    	<!--end navbar-fixed-top -->
+        
+    </header>
+    <!--end header -->
+
+    <!--begin home section -->
+    <section class="home-section" id="home">
+
+		<!--begin container -->
+		<div class="container">
+
+	        <!--begin row -->
+	        <div class="row">
+	          
+	            <!--begin col-md-6-->
+	            <div class="col-md-6 padding-top-80">
+
+	          		<h1>Hallo, &nbsp;Fishee - Solusi Terbaik Pengelolaan Kolam Ikan Anda</h1>
+
+	          		<p>Pemberi pakan ikan otomatis, presisi dan real-time notifikasi yang dapat membantu pemantauan segala kondisi kolam ikan Anda untuk hasil maksimal.</p>
+
+	        		<a href="#" class="btn-blue scrool">Lihat kami lebih dekat</a>
+
+	            </div>
+	            <!--end col-md-6-->
+	       
+				<!--begin col-md-6-->
+	            <div class="col-md-6">
+
+	          		<img src="<?php echo base_url() ?>template/landing//images/website-development.jpg" class="hero-image width-100" alt="pic">
+
+	            </div>
+	            <!--end col-md-6-->
+
+	        </div>
+	        <!--end row -->
+
+		</div>
+		<!--end container -->
+
+    </section>
+    <!--end home section -->
+
+    <!--begin section-grey -->
+    <section class="section-grey section-top-border" id="about">
+
+        <!--begin container -->
+        <div class="container">
+
+            <!--begin row -->
+            <div class="row">
+
+                <!--begin col-md-12 -->
+                <div class="col-md-12 text-center">
+
+                    <h2 class="section-title">Apa itu Fishee?</h2>
+
+                    <p class="section-subtitle">Memberi makan ikan otomatis dan monitoring kondisi kolam secara efisien.</p>
+                    
+                </div>
+                <!--end col-md-12 -->
+
+                <!--begin col-md-4 -->
+                <div class="col-md-4">
+
+                    <div class="main-services">
+
+                        <img src="<?php echo base_url() ?>template/landing//images/main-service1.png" class="width-100" alt="pic">
+
+                        <h3>Budidaya lebih mudah</h3>
+
+                        <p>Pemberi pakan otomatis secara presisi membantu Anda dalam mengelola budidaya ikan lele menjadi lebih mudah.</p>
+
+                        <a href="#about" class="btn-blue-line small scrool">Pelajari lebih lanjut</a>
+                        
+                    </div>
+
+                </div>
+                <!--end col-md-4 -->
+
+                <!--begin col-md-4 -->
+                <div class="col-md-4">
+
+                    <div class="main-services">
+
+                        <img src="<?php echo base_url() ?>template/landing//images/main-service2.png" class="width-100" alt="pic">
+
+                        <h3>Pemantauan Kondisi Kolam</h3>
+
+                        <p>Membantu Anda dalam memaksimalkan hasil yang bagus dengan memperhatikan kondisi habitat yang tepat untuk ikan.</p>
+
+                        <a href="#about" class="btn-blue-line small scrool">Pelajari lebih lanjut</a>
+                        
+                    </div>
+
+                </div>
+                <!--end col-md-4 -->
+
+                <!--begin col-md-4 -->
+                <div class="col-md-4">
+
+                    <div class="main-services">
+
+                        <img src="<?php echo base_url() ?>template/landing//images/main-service3.png" class="width-100" alt="pic">
+
+                        <h3>Efektif Waktu</h3>
+
+                        <p>Tanpa harus melakukan cek kolam berkala, notifikasi kondisi kolam akan Anda dapatkan secara real-time.</p>
+
+                        <a href="#about" class="btn-blue-line small scrool">Pelajari lebih lanjut</a>
+                        
+                    </div>
+
+                </div>
+                <!--end col-md-4 -->
+           
+            </div>
+            <!--end row -->
+            
+        </div>
+        <!--end container -->
+
+    </section>
+    <!--end section-grey -->
+
+    <!--begin section-white -->
+    <section class="section-white section-top-border">
+
+        <!--begin container -->
+        <div class="container">
+
+            <!--begin row -->
+            <div class="row">
+
+                <!--begin col-md-6 -->
+                <div class="col-md-6 padding-top-30">
+
+                    <!--begin features-second -->
+                    <div class="features-second">
+                        
+                        <div class="dropcaps-circle">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+
+                        <h4 class="margin-bottom-5">Customize your workflow.</h4>
+
+                        <p>Manage any process and be ready to address any challenge with total ease.</p>
+
+                    </div>
+                    <!--end features-second-->
+
+                    <!--begin features-second-->
+                    <div class="features-second">
+
+                        <div class="dropcaps-circle">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+
+                        <h4 class="margin-bottom-5">Easy onboarding, fast adoption.</h4>
+
+                        <p>With Essentials getting your team on board is as simple as sending an email.</p>
+
+                    </div>
+                    <!--end features-second-->
+
+                    <!--begin features-second-->
+                    <div class="features-second">
+
+                        <div class="dropcaps-circle">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+
+                        <h4 class="margin-bottom-5">Improve subscriber retention.</h4>
+
+                        <p>Analyze customers by region, discounts and more and put a plan in place to improve subscriber retention.</p>
+
+                    </div>
+                    <!--end features-second-->
+
+                </div>
+                <!--end col-md-6-->
+           
+                <!--begin col-md-6-->
+                <div class="col-md-6 wow slideInRight" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: slideInRight;">
+
+                    <img src="<?php echo base_url() ?>template/landing//images/img10.png" class="width-100 box-shadow" alt="pic">
+
+                </div>
+                <!--end col-md-6-->
+
+            </div>
+            <!--end row -->
+            
+        </div>
+        <!--end container -->
+
+    </section>
+    <!--end section-white -->
+
+    <!--begin section-blue -->
+    <section class="section-blue">
+
+        <!--begin container -->
+        <div class="container">
+
+            <!--begin row -->
+            <div class="row">
+
+                <!--begin col-md-6-->
+                <div class="col-md-6">
+                    
+                    <!--begin video-popup-wrapper-->
+                    <div class="video-popup-wrapper">
+
+                        <!--begin popup-gallery-->
+                        <div class="popup-gallery">
+                            
+                            <img src="<?php echo base_url() ?>template/landing//images/img2.jpg" class="width-100 video-popup-image" alt="pic">
+
+                            <a class="popup4 video-play-icon" href="https://www.youtube.com/watch?v=FPfQMVf4vwQ">
+                                <i class="fas fa-play"></i>
+                            </a>
+
+                        </div>
+                        <!--end popup-gallery-->
+
+                    </div>
+                    <!--end video-popup-wrapper-->
+
+                </div>
+                <!--end col-md-6-->
+
+                <!--begin col-md-6-->
+                <div class="col-md-6 padding-top-30 padding-left-20">
+
+                    <h2 class="white-text">Real-time reporting on your most important metrics.</h2>
+
+                    <p class="white-text">Work is completely different today. Teams are more agile, more collaborative and drive innovation faster than ever — and the most successful companies have a digital workplace to match.</p>
+
+                    <p class="white-text">Essentials is designed with your customers in mind, so you can track and analyze all your data in one central location. Essentials offer a better experience for your customers.</p>
+
+                </div>
+                <!--end col-md-6-->
+           
+            </div>
+            <!--end row -->
+            
+        </div>
+        <!--end container -->
+
+    </section>
+    <!--end section-blue -->
+
+    <!--begin pricing section -->
+    <section class="section-grey" id="pricing">
+
+        <!--begin container -->
+        <div class="container">
+
+            <!--begin row -->
+            <div class="row">
+
+                <!--begin col-md-12 -->
+                <div class="col-md-12 text-center padding-bottom-40">
+
+                    <h2 class="section-title">Pricing for every business, at any stage</h2>
+
+                    <p class="section-subtitle">All pricing packages are backed up by a 30-day money back guarantee.</p>
+                    
+                </div>
+                <!--end col-md-12 -->
+
+                <!--begin col-md-4-->
+                <div class="col-md-4">
+
+                    <div class="price-box">
+
+                        <ul class="pricing-list">
+
+                            <li class="price-title">BASIC</li>
+
+                            <li class="price-value">$25</li>
+
+                            <li class="price-subtitle">Per Month</li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>Custom Charts</li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>5 Mailboxes, 10 Gb Storage</li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>Unlimited Free Dashboards</li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>Access to all APIs</li>
+
+                            <li class="price-tag-line"><a href="#">FREE 15-DAY TRIAL</a></li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                <!--end col-md-4 -->
+
+                <!--begin col-md-4-->
+                <div class="col-md-4">
+
+                    <div class="price-box">
+
+                    <div class="ribbon blue"><span>Popular</span></div>
+
+                        <ul class="pricing-list">
+
+                            <li class="price-title">STANDARD</li>
+
+                            <li class="price-value">$99</li>
+
+                            <li class="price-subtitle">Per Month</li>
+
+                            <li class="price-text strong"><i class="fas fa-check blue"></i><strong>All Basic features</strong></li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>15 Mailboxes, 50 Gb Storage</li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>Interactive Screen Sharing</li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>Full Reports History</li>
+
+                            <li class="price-tag"><a href="#">FREE 15-DAY TRIAL</a></li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                <!--end col-md-4 -->
+
+                <!--begin col-md-4-->
+                <div class="col-md-4">
+
+                    <div class="price-box">
+
+                        <ul class="pricing-list">
+
+                            <li class="price-title white-text">PRO</li>
+
+                            <li class="price-value white-text">$199</li>
+
+                            <li class="price-subtitle white-text">Per Month</li>
+
+                            <li class="price-text white-text"><i class="fas fa-check blue"></i><strong>All Standard Features</strong></li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>50 Mailboxes, 90 Gb Storage</li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>Dedicated Account Manager</li>
+
+                            <li class="price-text"><i class="fas fa-check blue"></i>24/7 Priority Support</li>
+
+                            <li class="price-tag-line"><a href="#">FREE 15-DAY TRIAL</a></li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                <!--end col-md-4 -->
+
+            </div>
+            <!--end row -->
+
+        </div>
+        <!--end container -->
+
+    </section>
+    <!--end pricing section -->
+
+    <!--begin section-white -->
+    <section class="section-white no-padding-bottom section-top-border">
+
+		<!--begin container -->
+		<div class="container">
+
+	        <!--begin row -->
+	        <div class="row">
+
+                <!--begin col-md-6-->
+                <div class="col-md-6 padding-top-120 text-center">
+
+                    <p class="testimonial-single">“People who succeed in business aren't afraid to hear feedback from their customers - they actually thrive from it.”</p>
+
+                    <h5 class="margin-bottom-5">Johanna S. Richardson</h5>
+
+                    <p class="blue">CEO Essentials</p>
+
+                </div>
+                <!--end col-md-6-->
+           
+                <!--begin col-md-6-->
+                <div class="col-md-6">
+
+                    <img src="<?php echo base_url() ?>template/landing/images/testimonials-woman.jpg" class="width-100" alt="pic">
+
+                </div>
+                <!--end col-md-6-->
+
+	        </div>
+	        <!--end row -->
 			
-		<!--================================= OUR TEAM ENDS ==========================================-->
-		
-		<!--================================= TWO COLUMN START ==========================================-->
-			<section class="section-padding section-2-bg">
-				<div class="container heading-ff-3">
-					<div class="row rowsafari">
-						<div class="col-sm-12 col-md-12 col-lg-6"> 
-							<img src="<?php echo base_url(); ?>template/html/images/750x450x4.jpg" alt="image" class="img-fluid" data-at2x="<?php echo base_url(); ?>template/html/images/750x450x4@2x.jpg"/>
-						</div>						
-						<div class="col-sm-12 col-md-12 col-lg-6 top-space10 res-top0 res-top20">
-							<h3>LOREM IPSUM DOLOR MAGNA ALIQUA</h3>
-							<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. vitae semper nulla. Lorem ipsum dolor sit amet, eirmod tempor invidunt ut labore et dolore diam nonumy eirmod.</p>
-							<p class="content-top-space1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit vitae semper nulla. Lorem ipsum dolor sit amet, eirmod tempor invidunt ut labore et dolore diam nonumy eirmod. Duis vehicula dui sit amet ligula vitae semper nulla tempus consequat.</p>
-							<p class="readmore-top">
-								<a href="#" class="readmore">READ MORE <i class="fa fa-user-md" aria-hidden="true"></i></a>
-							</p>
-						</div>
-					</div>				
-				</div>			
-			</section>
-			
-		<!--================================= TWO COLUMN ENDS ==========================================-->
-		
-		<!--=================================  CTA START ==========================================-->
-		<section>
-			<div class="cta-bgimage1 bgimage-property">
-				<div class="container heading-ff-3">
-					<div class="row rowsafari">
-						<div class="col-sm-12 col-md-7 col-lg-6 offset-lg-6 offset-md-5">
-							<div class="cta-div1 cta-padding1 text-left">
-								<h1>EMERGENCY TOLLFREE</h1>
-								<p class="cta-content">24/7 customer support, feel free to call us for emergency case</p>
-								<p class="cta-tollno">+048-0548-0121
-								</p>
-							</div>
-						</div>						
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--================================= CTA ENDS ============================================-->	
-		
-		<!--================================= WHY CHOOSE US START ==========================================-->
-		<section class="section-padding section-2-bg">
-			<div class="container heading-ff-3">
-				<div class="heading-div-1 text-center">
-					<h2>WHY CHOOSE US</h2>
-					<img src="<?php echo base_url(); ?>template/html/images/110x32.png" alt="110x32"  data-at2x="<?php echo base_url(); ?>template/html/images/110x32@2x.png"/>
-				</div>
-				<div class="row rowsafari">					
-					<div class="col-sm-12 col-md-12 col-lg-6">	
-						<div class="row rowsafari">
-							<div class="col-sm-6 col-md-6 col-lg-6 res-team2-col"> 
-								<div class="choose-col-2 text-center">
-									<div class="choose-col-img1">
-										<img src="<?php echo base_url(); ?>template/html/images/360x250x1.jpg" alt="image" data-at2x="<?php echo base_url(); ?>template/html/images/360x250x1@2x.jpg" class="img-fluid"/>
-									</div>
-									<div class="choose-col-content1">
-										<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-6 col-lg-6 res-team2-col"> 
-								<div class="choose-col-2 text-center res-top30-1">
-									<div class="choose-col-img1">
-										<img src="<?php echo base_url(); ?>template/html/images/360x250x2.jpg" alt="image" data-at2x="<?php echo base_url(); ?>template/html/images/360x250x2@2x.jpg" class="img-fluid"/>
-									</div>
-									<div class="choose-col-content1">
-										<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row rowsafari">
-							<div class="col-sm-6 col-md-6 col-lg-6 res-team2-col"> 
-								<div class="choose-col-2 text-center content-top-space3">
-									<div class="choose-col-img1">
-										<img src="<?php echo base_url(); ?>template/html/images/360x250x3.jpg" alt="image" data-at2x="<?php echo base_url(); ?>template/html/images/360x250x3@2x.jpg" class="img-fluid"/>
-									</div>
-									<div class="choose-col-content1">
-										<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-6 col-lg-6 res-team2-col"> 
-								<div class="choose-col-2 text-center content-top-space3">
-									<div class="choose-col-img1">
-										<img src="<?php echo base_url(); ?>template/html/images/360x250x4.jpg" alt="image" data-at2x="<?php echo base_url(); ?>template/html/images/360x250x4@2x.jpg" class="img-fluid"/>
-									</div>
-									<div class="choose-col-content1">
-										<h5><a href="#">LOREM IPSUM DOLOR</a></h5>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-12 col-lg-6">	
-						<div class="faq-accord">
-							<div class="col-md-12 col-lg-12 no-pad">							
-								<div class="faq-col text-left">
-									<div class="faq-ques">
-										<p>PHASELLUS NUNC TEMPUS CONSEQUAT?</p>
-									</div>
-									<div class="faq-ans clearfix">
-										<div class="faq-ans-img">
-											<img src="<?php echo base_url(); ?>template/html/images/100x100x1.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/100x100x1@2x.png"/>
-										</div>
-										<div class="faq-ans-content">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12 col-lg-12 no-pad">							
-								<div class="faq-col text-left faq-top">
-									<div class="faq-ques">
-										<p>PHASELLUS NUNC CONSEQUAT BLANDIT?</p>
-									</div>
-									<div class="faq-ans clearfix">
-										<div class="faq-ans-img">
-											<img src="<?php echo base_url(); ?>template/html/images/100x100x2.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/100x100x2@2x.png"/>
-										</div>
-										<div class="faq-ans-content">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12 col-lg-12 no-pad">							
-								<div class="faq-col text-left faq-top">
-									<div class="faq-ques">
-										<p>CONSEQUAT NUNC TEMPUS PHASELLUS?</p>
-									</div>
-									<div class="faq-ans clearfix">
-										<div class="faq-ans-img">
-											<img src="<?php echo base_url(); ?>template/html/images/100x100x3.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/100x100x3@2x.png"/>
-										</div>
-										<div class="faq-ans-content">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12 col-lg-12 no-pad">							
-								<div class="faq-col text-left faq-top">
-									<div class="faq-ques">
-										<p>BLANDIT NUNC TEMPUS CONSEQUAT?</p>
-									</div>
-									<div class="faq-ans clearfix">
-										<div class="faq-ans-img">
-											<img src="<?php echo base_url(); ?>template/html/images/100x100x4.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/100x100x4@2x.png"/>
-										</div>
-										<div class="faq-ans-content">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12 col-lg-12 no-pad">							
-								<div class="faq-col text-left faq-top">
-									<div class="faq-ques">
-										<p>PHASELLUS NUNC CONSEQUAT BLANDIT?</p>
-									</div>
-									<div class="faq-ans clearfix">
-										<div class="faq-ans-img">
-											<img src="<?php echo base_url(); ?>template/html/images/100x100x5.png" alt="icon"  data-at2x="<?php echo base_url(); ?>template/html/images/100x100x5@2x.png"/>
-										</div>
-										<div class="faq-ans-content">
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus Nunc tempus consequat blandit. </p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>				
-			</div>				
-		</section>
-		<!--================================= WHY CHOOSE US ENDS ==========================================-->
-		
-		<!--================================= TESTIMONIAL START ==========================================-->		
-		<section class="section-padding section-1-bg" id="testimonial">
-			<div class="container heading-ff-3">
-				<div class="heading-div-1 text-center">
-					<h2>OUR TESTIMONIAL</h2>
-					<img src="<?php echo base_url(); ?>template/html/images/110x32.png" alt="uline"  data-at2x="<?php echo base_url(); ?>template/html/images/110x32@2x.png"/>
-				</div>
-				<div class="row rowsafari text-left">
-					<div class="col-sm-12 col-md-12 col-lg-12 res-top no-pad">
-						<div id="owl-demo3" class="owl-carousel owl-theme">
-							<div class="item">
-								<div class="container no-pad">
-									<div class="col-sm-12 col-md-12 col-lg-12 text-left no-pad">
-										<div class="testimonial-div-2 clearfix">
-											<div class="client-img-2 clearfix">
-												<img src="<?php echo base_url(); ?>template/html/images/150x250x1.png" alt="image" data-at2x="<?php echo base_url(); ?>template/html/images/150x250x1@2x.png"/>
-											</div>
-											<div class="testimonial-content-2 clearfix">
-												<p>Lorem ipsum dolor sit amet, consectetur cursus adipiscing elit. Duis vehicula dui sit amet ligula, eget molestie diam accumsan.
-												</p>
-												<h5 class="text-right">- LAURA KENNY, <span class="testimonial-name-1">Manager</span></h5>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="container no-pad">
-									<div class="col-sm-12 col-md-12 col-lg-12 no-pad">
-										<div class="testimonial-div-2 clearfix">
-											<div class="client-img-2 clearfix">
-												<img src="<?php echo base_url(); ?>template/html/images/150x250x2.png" alt="image" data-at2x="<?php echo base_url(); ?>template/html/images/150x250x2@2x.png"/>
-											</div>
-											<div class="testimonial-content-2 clearfix">
-												<p>Lorem ipsum dolor sit amet, consectetur cursus adipiscing elit. Duis vehicula dui sit amet ligula, eget molestie diam accumsan.
-												</p>
-												<h5 class="text-right">- JOHN PAULY, <span class="testimonial-name-2">Manager</span></h5>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="container no-pad">
-									<div class="col-sm-12 col-md-12 col-lg-12 no-pad">
-										<div class="testimonial-div-2 clearfix">
-											<div class="client-img-2 clearfix">
-												<img src="<?php echo base_url(); ?>template/html/images/150x250x3.png" alt="image" data-at2x="<?php echo base_url(); ?>template/html/images/150x250x3@2x.png"/>
-											</div>
-											<div class="testimonial-content-2 clearfix">
-												<p>Lorem ipsum dolor sit amet, consectetur cursus adipiscing elit. Duis vehicula dui sit amet ligula, eget molestie diam accumsan.
-												</p>
-												<h5 class="text-right">- LOUIS CAROL, <span class="testimonial-name-2">Manager</span></h5>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--================================= TESTIMONIAL ENDS ============================================-->
-		
-		<!--================================= SUBSCRIBE STRIP START ==========================================-->
-		<section class="subscribe-padding section-1-bg section-3-bg" id="subscribe">
-			<div class="container">
-				<div class="row rowsafari heading-ff-3">
-					<div class="col-sm-6 col-md-6 col-lg-6">
-						<div class="subscribe-head text-center">
-							<h3>TO KNOW MORE SUBSCRIBE US</h3>
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-6 col-lg-6 my-auto res-btn-top20">
-						<div class="subscribe-section">
-							<div id="mc_embed_signup">
-								<!--================= YOUR MAILCHIMP ACCOUNT URL HERE ====================-->
-								<form action="http://evethemes.us11.list-manage.com/subscribe/post?u=a795532c55a578843e04b09c0&amp;id=fa362f029a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"  novalidate>
-									<div class="row subscribe-row">
-										<!--================= EMAIL INPUT BOX HERE ====================-->
-										<div class="form2-div col-sm-12 col-md-12">										
-											<input class="form-input" type="email" name="EMAIL"  value="" id="mce-EMAIL" placeholder="Enter Your Email">
-										</div>
-										<!--================= SUBSCRIBE BUTTON HERE ====================-->
-										<div class="col-sm-12 col-md-12">
-											<div class="text-center subs-btn">
-												<input type="submit" id="mc-embedded-subscribe" class="btn subscribe-btn" name="submit" value="SUBSCRIBE">
-											</div>
-										</div>
-										<!--================= SUCCESS AND FAILURE MESSAGE HERE =================-->
-										<div class="col-sm-12 col-md-12 text-center subs-error-top" id="ResultMsg"><span id="SuccessMsg" class="email-success SuccessMsg"></span><span id="FailureMsg" class="email-failure FailureMsg"></span>
-										</div>
+		</div>
+		<!--end container -->
 
-										<div id="mce-responses">
-											<div class="response response-msg" id="mce-error-response"></div>
-											<div class="response response-msg" id="mce-success-response"></div>
-										</div>
-										
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--================================= SUBSCRIBE STRIP ENDS ==========================================-->
-		
-		<!--================================= FOOTER START =============================================-->
-		<section class="section-padding footer-bg">
-			<div class="container heading-ff-3">
-				<div class="row rowsafari res-footer-center">
-					<!--==========  COLUMN-1 ===============-->
-					<div class="col-md-6 col-sm-6 col-lg-4">
-						<h5>LATEST NEWS</h5>
-						<div class="res-footer-posts-col">
-							<div class="distab posts-bottom">
-								<div class="distab-cell-middle">
-									<a href="#"><img src="<?php echo base_url(); ?>template/html/images/80x80x9.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/80x80x9@2x.png"/>
-									</a>
-								</div>
-								<div class="text-left distab-cell-middle left-pad">
-									<p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit per inceptos himenaeos.</p>
-								</div>
-							</div>
+    </section>
+    <!--end section-white -->
 
-							<div class="distab">
-								<div class="text-left distab-cell-middle">
-									<a href="#"><img src="<?php echo base_url(); ?>template/html/images/80x80x10.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/80x80x10@2x.png"/>
-									</a>
-								</div>
-								<div class="text-left distab-cell-middle left-pad">
-									<p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit per inceptos himenaeos.</p>
-								</div>
-							</div>
-						</div>
-						
-					</div>
+    <!--begin partners section -->
+    <section class="section-grey partners-paddings section-top-border section-bottom-border">
+        
+        <!--begin container -->
+        <div class="container">
+            
+            <!--begin row -->
+            <div class="row">
+                
+                <!--begin col-md-12 -->
+                <div class="col-md-12 text-center">
+
+                    <h3 class="section-title">Trusted by over 250 great businesses</h3>
+
+                </div>
+                <!--end col-md-12 -->
+
+                <!--begin col-md-12 -->
+                <div class="col-md-12 text-center">
+
+                    <!--begin partners-mentions -->
+                    <ul class="partners-mentions">
+
+                        <li><img src="<?php echo base_url() ?>template/landing//images/award4a.png" alt="CSS Awards"></li>
+
+                        <li><img src="<?php echo base_url() ?>template/landing//images/award1a.png" alt="Awwwards"></li>
+
+                        <li><img src="<?php echo base_url() ?>template/landing//images/award5.png" alt="CSS Winner"></li>
+
+                        <li><img src="<?php echo base_url() ?>template/landing//images/award3a.png" alt="CSS Design Awards"></li>
+
+                    </ul>
+                    <!--end partners-mentions -->
+
+                </div>
+                <!--end col-md-12 -->
+
+            </div>
+            <!--end row -->
+
+        </div>
+        <!--end container -->
+
+    </section>
+    <!--end partners section -->
+
+    <!--begin faq section -->
+	<section class="section-white small-padding-bottom">
+        
+        <!--begin container-->
+        <div class="container">
+
+            <!--begin row-->
+            <div class="row">
+            
+                <!--begin col-md-6-->
+                <div class="col-md-6 margin-top-10">
+
+                    <img src="<?php echo base_url() ?>template/landing/images/img4.jpg" class="width-100 box-shadow" alt="picture">
+
+                </div>
+                <!--end col-sm-6-->
+                
+                <!--begin col-md-6-->
+                <div class="col-md-6 margin-top-20">
+
+                	<h3>Frequently Asked Questions</h3>
+
+                    <!--begin accordion -->
+                    <div class="accordion" id="accordionFAQ">
+
+                        <!--begin card -->
+                        <div class="card">
+                            
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  Email and user settings
+                                </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionFAQ">
+                                <div class="card-body">
+                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur netsum loris fugit, sed quia magni dolores eos qui ratione sequi nesciunt, neque et quis autem velis reprehenderit ets quis velit.
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--end card -->
+
+                        <!--begin card -->
+                        <div class="card">
+
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  Import new billing system data
+                                </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionFAQ">
+                                <div class="card-body">
+                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur netsum loris fugit, sed quia magni dolores eos qui ratione sequi nesciunt, neque et quis autem velis reprehenderit ets quis velit.
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--end card -->
+
+                        <!--begin card -->
+                        <div class="card">
+
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                  Working with integrated apps
+                                </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionFAQ">
+                                <div class="card-body">
+                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur netsum loris fugit, sed quia magni dolores eos qui ratione sequi nesciunt, neque et quis autem velis reprehenderit ets quis velit.
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--end card -->
+
+                        <!--begin card -->
+                        <div class="card">
+
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                  Two-factor authentication
+                                </button>
+                                </h5>
+                            </div>
+                            
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionFAQ">
+                                <div class="card-body">
+                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur netsum loris fugit, sed quia magni dolores eos qui ratione sequi nesciunt, neque et quis autem velis reprehenderit ets quis velit.
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--end card -->
+
+                    </div>
+                    <!--end accordion -->
+
+                </div>
+                <!--end col-sm-6-->
+            
+            </div>
+            <!--end row-->
+    
+        </div>
+        <!--end container-->
+    
+    </section>
+    <!--end faq section -->
+
+  	<!--begin team section -->
+  	<section class="section-grey section-top-border" id="team">
+
+	    <!--begin container-->
+        <div class="container">
+
+            <!--begin row-->
+            <div class="row">
+          
+				<!--begin col-md-12 -->
+				<div class="col-md-12 text-center">
+
+					<h2 class="section-title">The Team Behind Essentials</h2>
+
+					<p class="section-subtitle">There are many variations of passages of Lorem Ipsum available, but the majority<br>have suffered alteration, by injected humour, or new randomised words.</p>
 					
-					<!--==========  COLUMN-2 ===============-->
-					
-					<div class="col-sm-6 col-md-6 col-lg-2 res-top30-1">
-						<h5>QUICK LINKS</h5>
-						<div class="res-footer-services-col">
-							<ul class="footer-list-bk footer-list-bottom content-ul no-padding no-margin">
-								<li class="footer-services-li">
-									<a href="#"><p class="text-left distab"><img src="<?php echo base_url(); ?>template/html/images/12x12.png" alt="icon" class="footer-dot-right distab-cell-middle" data-at2x="<?php echo base_url(); ?>template/html/images/12x12@2x.png"/><span class="footer-dot-content distab-cell-middle">About</span>
-									</p></a>
-								</li>
-								<li class="footer-services-li">
-									<a href="#"><p class="text-left distab ls"><img src="<?php echo base_url(); ?>template/html/images/12x12.png" alt="icon" class="footer-dot-right distab-cell-middle" data-at2x="<?php echo base_url(); ?>template/html/images/12x12@2x.png"/><span class="footer-dot-content distab-cell-middle">Find a doctor</span>
-									</p></a>
-								</li>
-								<li class="footer-services-li">
-									<a href="#"><p class="text-left distab ls"><img src="<?php echo base_url(); ?>template/html/images/12x12.png" alt="icon" class="footer-dot-right distab-cell-middle" data-at2x="<?php echo base_url(); ?>template/html/images/12x12@2x.png"/><span class="footer-dot-content distab-cell-middle">Emergency care</span>
-									</p></a>
-								</li>
-								<li class="footer-services-li">
-									<a href="#"><p class="text-left distab ls"><img src="<?php echo base_url(); ?>template/html/images/12x12.png" alt="icon" class="footer-dot-right distab-cell-middle" data-at2x="<?php echo base_url(); ?>template/html/images/12x12@2x.png"/><span class="footer-dot-content distab-cell-middle">Careers</span>
-									</p></a>
-								</li>
-								<li class="footer-services-li">
-									<a href="#"><p class="text-left distab ls"><img src="<?php echo base_url(); ?>template/html/images/12x12.png" alt="icon" class="footer-dot-right distab-cell-middle" data-at2x="<?php echo base_url(); ?>template/html/images/12x12@2x.png"/><span class="footer-dot-content distab-cell-middle">Contact</span>
-									</p></a>
-								</li>
-								<li class="footer-services-li">
-									<a href="#"><p class="text-left distab ls"><img src="<?php echo base_url(); ?>template/html/images/12x12.png" alt="icon" class="footer-dot-right distab-cell-middle" data-at2x="<?php echo base_url(); ?>template/html/images/12x12@2x.png"/><span class="footer-dot-content distab-cell-middle">Help</span>
-									</p></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-
-					<!--==========  COLUMN-3 ===============-->
-					
-					<div class="col-sm-6 col-md-6 col-lg-3 footer-services res-top30">
-						<h5>OPENING HOURS</h5>
-						<div class="res-footer-posts-col">
-							<div class="distab footer-contact-bottom-1">
-								<div class="distab-cell-middle">
-									<img src="<?php echo base_url(); ?>template/html/images/25x25x4.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/25x25x4@2x.png"/>
-								</div>
-								<div class="text-left left-pad open-hrs">
-									<p class="text-left">Monday - Friday</p>
-									<p class="footer-open-time">08.00AM - 11.00PM</p>
-								</div>
-							</div>
-
-							<div class="distab footer-contact-bottom-1">
-								<div class="text-left distab-cell-middle">
-									<img src="<?php echo base_url(); ?>template/html/images/25x25x4.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/25x25x4@2x.png"/>
-									
-								</div>
-								<div class="text-left left-pad open-hrs">
-									<p class="text-left">Saturday</p>
-									<p class="footer-open-time">10.00AM - 10.00PM</p>
-								</div>
-							</div>
-							<div class="distab">
-								<div class="text-left distab-cell-middle">
-									<img src="<?php echo base_url(); ?>template/html/images/25x25x4.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/25x25x4@2x.png"/>
-									
-								</div>
-								<div class="text-left left-pad open-hrs">
-									<p class="text-left">Sunday</p>
-									<p class="footer-open-time">10.00AM - 03.00PM</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<!--==========  COLUMN-4 ===============-->
-					
-					<div class="col-sm-6 col-md-6 col-lg-3 footer-contact res-top30">
-						<h5>CONTACT US</h5>
-						<div class="res-footer-contact-col footer-contact-col">
-							<div class="distab footer-contact-bottom-1">
-								<div class="distab-cell-middle">
-									<img src="<?php echo base_url(); ?>template/html/images/25x25x1.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/25x25x1@2x.png"/>
-								</div>
-								<div class="distab-cell-middle footer-contact-left">
-									<p class="text-left">15, Brasil Town, New York, USA</p>
-								</div>
-							</div>
-
-							<div class="distab footer-contact-bottom-1">
-								<div class="distab-cell-middle">
-									<img src="<?php echo base_url(); ?>template/html/images/25x25x2.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/25x25x2@2x.png"/>
-								</div>
-								<div class="distab-cell-middle footer-contact-left">
-									<p class="text-left"><a href="#">mailid@domain.com</a>
-									</p>
-								</div>
-							</div>
-
-							<div class="distab">
-								<div class="distab-cell-middle">
-									<img src="<?php echo base_url(); ?>template/html/images/25x25x3.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/25x25x3@2x.png"/>
-								</div>
-								<div class="distab-cell-middle footer-contact-left">
-									<p class="text-left">+012-345-6789 </p>
-								</div>
-							</div>
-						</div>
-						<div class="text-left res-footer-center">
-							<ul class="no-padding no-margin footer-icon footer-left-pad">
-								<li>
-									<a href="#">
-										<img src="<?php echo base_url(); ?>template/html/images/32x32x2.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x2@2x.png"/>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="<?php echo base_url(); ?>template/html/images/32x32x3.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x3@2x.png"/>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="<?php echo base_url(); ?>template/html/images/32x32x4.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x4@2x.png"/>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="<?php echo base_url(); ?>template/html/images/32x32x5.png" alt="icon" data-at2x="<?php echo base_url(); ?>template/html/images/32x32x5@2x.png"/>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
 				</div>
-				<div class="footer-br footer-br-bottom"></div>
-				<p class="text-center footer-copyright">&copy; 2018, All Rights Reserved</p>
+				<!--end col-md-12 -->
+                
+                <!--begin team-item -->
+                <div class="col-sm-12 col-md-4">
+
+	                <div class="team-item">
+	                
+	                    <img src="<?php echo base_url() ?>template/landing/images/team1.jpg" class="team-img" alt="pic">
+	                   
+	                    <h3>CHRISTINA HAWKINS</h3>
+	                    
+	                    <div class="team-info"><p>Head of SEO</p></div>
+
+	                    <p>Johnathan is our  co-founder and has developed search strategies for a variety of clients for over 5 years.</p>
+	                
+	                    <ul class="team-icon">
+	                    
+	                        <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
+	                        
+	                        <li><a href="#" class="pinterest"><i class="fab fa-pinterest"></i></a></li>
+	                        
+	                        <li><a href="#" class="facebook"><i class="fab fa-linkedin-in"></i></a></li>
+	                        
+	                        <li><a href="#" class="dribble"><i class="fab fa-dribbble"></i></a></li>
+	                        
+	                    </ul>
+	                    
+                	</div>
+
+                </div>
+                <!--end team-item -->
+                 
+                <!--begin team-item -->
+                <div class="col-sm-12 col-md-4">
+
+	                <div class="team-item">
+	                
+	                    <img src="<?php echo base_url() ?>template/landing/images/team4.jpg" class="team-img" alt="pic">
+	                   
+                        <h3>ANDRES JOHANSON</h3>
+                        
+                        <div class="team-info"><p>Marketing Manager</p></div>
+
+                        <p>Andres fell in love with marketing at the school and looks forward to being part of the industry for years.</p>
+                    
+	                    <ul class="team-icon">
+	                    
+	                        <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
+	                        
+	                        <li><a href="#" class="pinterest"><i class="fab fa-pinterest"></i></a></li>
+	                        
+	                        <li><a href="#" class="facebook"><i class="fab fa-linkedin-in"></i></a></li>
+	                        
+	                        <li><a href="#" class="dribble"><i class="fab fa-dribbble"></i></a></li>
+	                        
+	                    </ul>
+	                    
+	                </div>
+
+                </div>
+                <!--end team-item -->
+                               
+                <!--begin team-item -->
+                <div class="col-sm-12 col-md-4">
+
+	                <div class="team-item">
+	                
+	                    <img src="<?php echo base_url() ?>template/landing/images/team3.jpg" class="team-img" alt="pic">
+	                   
+                        <h3>ALEXANDRA SMITHS</h3>
+                        
+                        <div class="team-info"><p>SEO Specialist</p></div>
+
+                        <p>Graduating with a degree in Spanish, English and French, she has always loved writing.</p>
+                    
+	                    <ul class="team-icon">
+	                    
+	                        <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
+	                        
+	                        <li><a href="#" class="pinterest"><i class="fab fa-pinterest"></i></a></li>
+	                        
+	                        <li><a href="#" class="facebook"><i class="fab fa-linkedin-in"></i></a></li>
+	                        
+	                        <li><a href="#" class="dribble"><i class="fab fa-dribbble"></i></a></li>
+	                        
+	                    </ul>
+	                    
+	                </div>
+
+                </div>
+                <!--end team-item -->
+            
+            </div>
+            <!--end row-->
+        
+        </div>
+        <!--end container-->
+
+  	</section>
+  	<!--end team section-->
+
+	<!--begin showcase section-->
+  	<section class="section-blue" id="showcase">
+
+		<!--begin container-->
+		<div class="container-fluid">
+
+			<!--begin row-->
+			<div class="row">
 				
+				<!--begin col md 12-->
+				<div class="col-md-12 text-center">
+
+					<h2 class="section-title white-text">Explore Latest Projects</h2>
+
+					<p class="section-subtitle white">There are many variations of passages of Lorem Ipsum available, but the majority<br>have suffered alteration, by injected humour, or new randomised words.</p>
+					
+				</div>
+				<!--end col md 12-->
+
+				<!--begin col md 12-->
+				<div class="col-md-12 padding-top-20">
+
+                    <!--begin carousel-->
+                    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                        
+                        <!--begin carousel-indicators-->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                        </ol>
+                        <!--end carousel-indicators-->
+
+                        <!--begin carousel-inner-->
+                        <div class="carousel-inner">
+
+                            <!--begin carousel-item-->
+                            <div class="carousel-item active">
+                                
+                                <div class="row">
+
+                                    <div class="col-sm-3">
+                                        <img src="<?php echo base_url() ?>template/landing//images/showcase1.jpg" alt="showcase" class="gallery-show">
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <img src="<?php echo base_url() ?>template/landing//images/showcase2.jpg" alt="showcase" class="gallery-show">
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <img src="<?php echo base_url() ?>template/landing//images/showcase3.jpg" alt="showcase" class="gallery-show">
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <img src="<?php echo base_url() ?>template/landing//images/showcase4.jpg" alt="showcase" class="gallery-show">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--end carousel-item-->
+
+                            <!--begin carousel-item-->
+                            <div class="carousel-item">
+                                
+                                <div class="row">
+
+                                    <div class="col-sm-3">
+                                        <img src="<?php echo base_url() ?>template/landing//images/showcase5.jpg" alt="showcase" class="gallery-show">
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <img src="<?php echo base_url() ?>template/landing//images/showcase6.jpg" alt="showcase" class="gallery-show">
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <img src="<?php echo base_url() ?>template/landing//images/showcase7.jpg" alt="showcase" class="gallery-show">
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <img src="<?php echo base_url() ?>template/landing//images/showcase8.jpg" alt="showcase" class="gallery-show">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--end carousel-item-->
+
+                        </div>
+                        <!--end carousel-inner-->
+
+                        <!--begin carousel-control-prev-->
+                        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <!--end carousel-control-prev-->
+
+                        <!--begin carousel-control-next-->
+                        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <!--end carousel-control-next-->
+
+                    </div>
+                    <!--end carousel-->
+
+				</div>
+				<!--end col md 12-->
+
 			</div>
-			<a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
-		</section>
-		<!--================================= FOOTER END =============================================-->
-		
-		<!-- JQUERY LIBRARY -->
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/jquery.min.js"></script>	
-		<!-- BOOTSTRAP -->
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/bootstrap.min.js"></script>	
-		<!-- SLIDER JS FILES -->
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/slider/owl.carousel.min.js"></script>
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/slider/owl-slider.js"></script>			
-		<!-- MAGNIFIC LIGHT BOX -->
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/magnific/jquery.magnific-popup.js"></script>	
-		<!-- SUBSCRIBE VALIDATION -->
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/subscribe/subscribe_validate.js"></script>					
-		<!-- FORM VALIDATION -->
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/validate/jquery.validate.min.js"></script>		
-		<!-- IMAGE COMPARISON SLIDER -->
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/comparison-slider.js"></script>
-		<!-- THEME JS -->
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/custom/custom.js"></script>	
-		<!-- DATEPICKER JS -->		
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/datepicker.js"></script>
-		<!-- RETINA JS FILES -->		
-		<script type="text/javascript" src="<?php echo base_url(); ?>template/html/js/vendor/retina.js"></script>
-	</body>
+			<!--end row -->
+
+		</div>
+		<!--end container -->
+
+	</section>
+	<!--end gallery section -->
+
+  	<!--begin services section -->
+  	<section class="section-white section-bottom-border" id="features">
+
+	    <!--begin container -->
+	    <div class="container">
+
+	      	<!--begin row -->
+	      	<div class="row">
+
+		        <!--begin col-md-12-->
+		        <div class="col-md-12 text-center padding-bottom-10">
+
+					<h2 class="section-title">Amazing Features</h2>
+
+					<p class="section-subtitle">There are many variations of passages of Lorem Ipsum available, but the majority<br>have suffered alteration, by injected humour, or new randomised words.</p>
+
+		        </div>
+		        <!--end col-md-12 -->
+
+	        </div>
+	        <!--end row -->
+
+	      	<!--begin row -->
+	      	<div class="row">
+
+		        <!--begin col-md-4-->
+		        <div class="col-md-4">
+
+		        	<div class="feature-box wow fadeIn" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeIn;">
+
+		        		<i class="fas fa-tachometer-alt"></i>
+
+		        		<h4>Powerful Dashboard</h4>
+
+                        <p>Utise wisi enim minim veniam, quis et stationes ullamcorper suscipit ets lobotis nisle consequat nihis etim.</p>
+
+		        	</div>
+		        </div>
+		        <!--end col-md-4 -->
+
+		        <!--begin col-md-4-->
+		        <div class="col-md-4">
+
+		        	<div class="feature-box wow fadeIn" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+
+		        		<i class="fas fa-chart-line"></i>
+
+                        <h4>User Friendly</h4>
+
+                        <p>Utise wisi enim minim veniam, quis et stationes ullamcorper suscipit ets lobotis nisle consequat nihis etim.</p>
+
+		        	</div>
+		        </div>
+		        <!--end col-md-4 -->
+
+		        <!--begin col-md 4-->
+		        <div class="col-md-4">
+
+		        	<div class="feature-box wow fadeIn" data-wow-delay="0.75s" style="visibility: visible; animation-delay: 0.75s; animation-name: fadeIn;">
+
+		        		<i class="fas fa-bell"></i>
+
+                        <h4>Smart Notifications</h4>
+
+                        <p>Utise wisi enim minim veniam, quis et stationes ullamcorper suscipit ets lobotis nisle consequat nihis etim.</p>
+
+		        	</div>
+		        </div>
+		        <!--end col-md-4 -->
+
+	        </div>
+	        <!--end row -->
+
+	      	<!--begin row -->
+	      	<div class="row">
+
+                <!--begin col-md-4-->
+                <div class="col-md-4">
+
+                    <div class="feature-box wow fadeIn" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: fadeIn;">
+
+                        <i class="fas fa-hand-holding-usd"></i>
+
+                        <h4>Cost Control</h4>
+
+                        <p>Utise wisi enim minim veniam, quis et stationes ullamcorper suscipit ets lobotis nisle consequat nihis etim.</p>
+
+                    </div>
+                </div>
+                <!--end col-md-4 -->
+
+		        <!--begin col-md-4-->
+		        <div class="col-md-4">
+
+		        	<div class="feature-box wow fadeIn" data-wow-delay="1.25s" style="visibility: visible; animation-delay: 1.25s; animation-name: fadeIn;">
+
+		        		<i class="fas fa-rocket"></i>
+
+                        <h4>Unique Features</h4>
+
+                        <p>Utise wisi enim minim veniam, quis et stationes ullamcorper suscipit ets lobotis nisle consequat nihis etim.</p>
+
+		        	</div>
+		        </div>
+		        <!--end col-md-4 -->
+
+		        <!--begin col-md-4-->
+		        <div class="col-md-4">
+
+		        	<div class="feature-box wow fadeIn" data-wow-delay="1.5s" style="visibility: visible; animation-delay: 1.5s; animation-name: fadeIn;">
+
+		        		<i class="fab fa-rocketchat"></i>
+
+                        <h4>Support 24/7</h4>
+
+                        <p>Utise wisi enim minim veniam, quis et stationes ullamcorper suscipit ets lobotis nisle consequat nihis etim.</p>
+
+		        	</div>
+		        </div>
+		        <!--end col-md-4 -->
+
+	      	</div>
+	      	<!--end row -->
+
+	    </div>
+	    <!--end container -->
+
+  	</section>
+  	<!--end services section -->
+
+    <!--begin testimonials section -->
+    <section class="section-grey medium-paddings section-bottom-border">
+
+        <!--begin container -->
+        <div class="container">
+
+            <!--begin row -->
+            <div class="row">
+
+                <!--begin col md 12 -->
+                <div class="col-md-8 mx-auto padding-bottom-40">
+
+                    <!--begin testimonials carousel -->
+                    <div id="carouselIndicators2" class="carousel slide" data-ride="carousel">
+                        
+                        <!--begin carousel-indicators -->
+                        <ol class="carousel-indicators testimonials-indicators">
+                            <li data-target="#carouselIndicators2" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselIndicators2" data-slide-to="1"></li>
+                            <li data-target="#carouselIndicators2" data-slide-to="2"></li>
+                        </ol>
+                        <!--end carousel-indicators -->
+
+                        <!--begin carousel-inner -->
+                        <div class="carousel-inner">
+
+                            <!--begin carousel-item -->
+                            <div class="carousel-item active">
+                                    
+                                <!--begin testim-inner -->
+                                <div class="testim-inner">
+
+                                    <img src="<?php echo base_url() ?>template/landing/images/testimonials1.jpg" alt="testimonials" class="testim-img">
+                                    
+                                    <p>The attention of a traveller, should be particularly turned to the various works of nature, to mark the distinctions of the climates he may explore, and to offer such useful observations on the different productions as may occur.</p>
+
+                                    <h6>Jennifer Smith<span class="job-text"> - Web Designer</span></h6>
+
+                                </div>
+                                <!--end testim-inner -->
+
+                            </div>
+                            <!--end carousel-item -->
+
+                            <!--begin carousel-item -->
+                            <div class="carousel-item">
+                                
+                                <!--begin testim-inner -->
+                                <div class="testim-inner">
+
+                                    <img src="<?php echo base_url() ?>template/landing/images/testimonials2.jpg" alt="testimonials" class="testim-img">
+                                    
+                                    <p>The attention of a traveller, should be particularly turned to the various works of nature, to mark the distinctions of the climates he may explore, and to offer such useful observations on the different productions as may occur.</p>
+
+                                    <h6>John Doe<span class="job-text"> -  General Manager</span></h6>
+
+                                </div>
+                                <!--end testim-inner -->
+
+                            </div>
+                            <!--end carousel-item -->
+
+                            <!--begin carousel-item -->
+                            <div class="carousel-item">
+                                
+                                <!--begin testim-inner -->
+                                <div class="testim-inner">
+
+                                    <img src="<?php echo base_url() ?>template/landing/images/testimonials3.jpg" alt="testimonials" class="testim-img">
+                                    
+                                    <p>The attention of a traveller, should be particularly turned to the various works of nature, to mark the distinctions of the climates he may explore, and to offer such useful observations on the different productions as may occur.</p>
+
+                                    <h6>Alexandra Smith<span class="job-text"> - App Magazine Editor</span></h6>
+
+                                </div>
+                                <!--end testim-inner -->
+            
+                            </div>
+                            <!--end carousel-item -->
+
+                        </div>
+                        <!--end carousel-inner -->
+
+                    </div>
+                    <!--end testimonials carousel -->
+
+                </div>
+                <!--end col md 12-->
+
+            </div>
+            <!--end row -->
+
+        </div>
+        <!--end container -->
+
+    </section>
+    <!--end testimonials section -->
+
+	<!--begin section-white -->
+    <section class="section-white section-bottom-border">
+        
+        <!--begin container-->
+        <div class="container">
+
+            <!--begin row-->
+            <div class="row">
+            
+                <!--begin col-md-6-->
+                <div class="col-md-6 padding-top-20">
+
+                	<h3>Get ready to discover all the benefits and secrets of our amazing software.</h3>
+
+                	<p>Velis demo enim ipsam voluptatem quia voluptas sit aspernatur netsum lorem fugit, sed quia magni dolores eos qui ratione sequi nesciunt neque et poris ratione sequi enim quia tempor magni.</p>
+                    
+                	<ul class="benefits">
+						<li><i class="fa fa-check"></i> Quia magni netsum eos qui ratione sequi.</li>
+						<li><i class="fa fa-check"></i> Venis ratione sequi enim quia tempor magni.</li>
+						<li><i class="fa fa-check"></i> Enim ipsam voluptatem quia voluptas.</li>
+					</ul>
+
+					<a href="#contact" class="btn-blue scrool">Get Started</a>
+                    
+                </div>
+                <!--end col-md-6-->
+            
+                <!--begin col-md-6-->
+                <div class="col-md-6">
+
+                    <img src="<?php echo base_url() ?>template/landing/images/img0.png" class="hero-image width-100 box-shadow" alt="pic">
+
+                </div>
+                <!--end col-sm-6-->
+                
+            </div>
+            <!--end row-->
+    
+        </div>
+        <!--end container-->
+    
+    </section>
+    <!--end section-white-->
+
+    <!--begin newsletter section -->
+    <section class="section-blue small-paddings" id="newsletter-section">
+
+        <!--begin container -->
+        <div class="container">
+
+            <!--begin row -->
+            <div class="row">
+
+                <!--begin col-md-12 -->
+                <div class="col-md-12 text-center padding-top-50 padding-bottom-20">
+
+                    <h3 class="white-text">Seen enough? We are currently in the closed beta.<br>
+                    Please enter your email to join the waiting list.</h3>
+
+                </div>
+                <!--end col-md-12 -->
+
+                <!--begin col-md-12-->
+                <div class="col-md-12 padding-bottom-40">
+
+                    <!--begin newsletter_form_wrapper -->
+                    <div class="newsletter_form_wrapper wow bounceIn" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: bounceIn;">
+                        
+                        <!--begin newsletter_form_box -->
+                        <div class="newsletter_form_box">
+                            
+                            <!--begin success_box -->
+                            <p class="newsletter_success_box" style="display:none;">We received your message and you'll hear from us soon. Thank You!</p>
+                            <!--end success_box -->
+                            
+                            <!--begin newsletter-form -->
+                            <form id="newsletter-form" class="newsletter-form" action="https://demo.epic-webdesign.com/tf-essentials/v1/php/newsletter.php" method="post">
+
+                                <input id="email_newsletter" type="email" name="nf_email" placeholder="Enter Your Email Address">  
+
+                                <input type="submit" value="GET STARTED!" id="submit-button-newsletter">
+
+                            </form>
+                            <!--end newsletter-form -->
+                        
+                        </div>
+                        <!--end newsletter_form_box -->
+            
+                    </div>
+                    <!--end newsletter_form_wrapper -->
+
+                </div>
+                <!--end col-md-12 -->
+
+            </div>
+            <!--end row -->
+
+        </div>
+        <!--end container -->
+
+    </section>
+    <!--end newsletter section -->
+
+    <!--begin blog -->
+    <section class="section-grey" id="blog">
+        
+        <!--begin container-->
+        <div class="container">
+
+            <!--begin row-->
+            <div class="row">
+            
+                <!--begin col-md-12-->
+                <div class="col-md-12 text-center">
+                    <h2 class="section-title">Our Blog</h2>
+                    
+                    <p class="section-subtitle">Latest news, tips and best practices.</p>
+                </div>
+                <!--end col-md-12-->
+            
+            </div>
+            <!--end row-->
+            
+            <!--begin row-->
+            <div class="row">
+
+                <!--begin col-sm-4 -->
+                <div class="col-md-4">
+                    
+                    <!--begin blog-item -->
+                    <div class="blog-item">
+                        
+                        <!--begin popup image -->
+                        <div class="popup-wrapper">
+                            <div class="popup-gallery">
+                                <a href="#">
+                                    <img src="<?php echo base_url() ?>template/landing/images/blog1.jpg" class="width-100" alt="pic">
+                                    <span class="eye-wrapper2"><i class="fa fa-link eye-icon"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <!--end popup image -->
+                            
+                        <!--begin blog-item_inner -->
+                        <div class="blog-item-inner">
+                        
+                            <h3 class="blog-title"><a href="#">The Guide To LinkedIn Ads</a></h3>
+                            
+                            <a href="#" class="blog-icons"><i class="fa fa-user"></i> Paul Smith</a>
+                            
+                            <a href="#" class="blog-icons last"><i class="fa fa-tags"></i> WordPress</a>
+                            
+                            <p>Quis autem velis ets reprehender net etid quiste voluptate velite esse quam nihis etsa sedit netsid varias.</p>
+                                                  
+                        </div>
+                        <!--end blog-item-inner -->
+                        
+                    </div>
+                    <!--end blog-item -->
+                        
+                </div>
+                <!--end col-sm-4-->
+                
+                <!--begin col-sm-4 -->
+                <div class="col-md-4">
+                    
+                    <!--begin blog-item -->
+                    <div class="blog-item">
+                        
+                        <!--begin popup image -->
+                        <div class="popup-wrapper">
+                            <div class="popup-gallery">
+                                <a href="#">
+                                    <img src="<?php echo base_url() ?>template/landing/images/blog2.jpg" class="width-100" alt="pic">
+                                    <span class="eye-wrapper2"><i class="fa fa-link eye-icon"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <!--end popup image -->
+                            
+                        <!--begin blog-item_inner -->
+                        <div class="blog-item-inner">
+                        
+                            <h3 class="blog-title"><a href="#">Affinity Designer Quick Start</a></h3>
+                            
+                            <a href="#" class="blog-icons"><i class="fa fa-user"></i> By John Doe</a>
+                            
+                            <a href="#" class="blog-icons last"><i class="fa fa-tags"></i> Marketing</a>
+                            
+                            <p>Quis autem velis ets reprehender net etid quiste voluptate velite esse quam nihis etsa sedit netsid varias.</p>
+                             
+                        </div>
+                        <!--end blog-item-inner -->
+                        
+                    </div>
+                    <!--end blog-item -->
+                        
+                </div>
+                <!--end col-sm-4-->
+                
+                <!--begin col-sm-4 -->
+                <div class="col-md-4">
+                    
+                    <!--begin blog-item -->
+                    <div class="blog-item">
+                        
+                        <!--begin popup image -->
+                        <div class="popup-wrapper">
+                            <div class="popup-gallery">
+                                <a href="#">
+                                    <img src="<?php echo base_url() ?>template/landing/images/blog3.jpg" class="width-100" alt="pic">
+                                    <span class="eye-wrapper2"><i class="fa fa-link eye-icon"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <!--end popup image -->
+                            
+                        <!--begin blog-item_inner -->
+                        <div class="blog-item-inner">
+                        
+                            <h3 class="blog-title"><a href="#">Our Happy Team</a></h3>
+                            
+                            <a href="#" class="blog-icons"><i class="fa fa-user"></i> By John Doe</a>
+                            
+                            <a href="#" class="blog-icons last"><i class="fa fa-tags"></i> Design</a>
+                            
+                            <p>Quis autem velis ets reprehender net etid quiste voluptate velite esse quam nihis etsa sedit netsid varias.</p>
+                             
+                        </div>
+                        <!--end blog-item-inner -->
+                        
+                    </div>
+                    <!--end blog-item -->
+                        
+                </div>
+                <!--end col-sm-4-->
+             
+            </div>
+            <!--end row-->
+    
+        </div>
+        <!--end container-->
+    
+    </section>
+    <!--end blog -->
+   
+  	<!--begin contact -->
+    <section class="section-white section-top-border" id="contact">
+        
+        <!--begin container-->
+        <div class="container">
+    
+            <!--begin row-->
+            <div class="row">
+        
+                <!--begin col-md-6 -->
+				<div class="col-md-6">
+
+					<h4>Mengenal kami lebih jauh</h4>
+
+	                <!--begin success message -->
+	                <p class="contact_success_box" style="display:none;">We received your message and you'll hear from us soon. Thank You!</p>
+	                <!--end success message -->
+	                
+	                <!--begin contact form -->
+	                <form id="contact-form" class="contact" action="https://demo.epic-webdesign.com/tf-essentials/v1/php/contact.php" method="post">
+                    
+                        <input class="contact-input white-input" required="" name="contact_names" placeholder="Nama Lengkap*" type="text">
+
+                        <input class="contact-input white-input" required="" name="contact_email" placeholder="Email*" type="email">
+
+                        <input class="contact-input white-input" required="" name="contact_phone" placeholder="Nomor HP*" type="text">
+
+                        <textarea class="contact-commnent white-input" rows="2" cols="20" name="contact_message" placeholder="Tulis Pesan Di sini..."></textarea>
+
+                    	<input value="Kirim Pesan" id="submit-button" class="contact-submit" type="submit">
+
+	                </form>
+	                <!--end contact form -->
+	            	
+				</div>
+				<!--end col-md-6 -->
+
+                <!--begin col-md-6 -->
+				<div class="col-md-6">
+
+					<h4>Alamat</h4>
+
+                    <iframe class="contact-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.299792798804!2d110.40700729990077!3d-7.757995298222622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5999554118dd%3A0xb17068f8f02b5179!2sJl.%20Kamboja%20I%20No.90%2C%20Perumnas%20Condong%20Catur%2C%20Condongcatur%2C%20Kec.%20Depok%2C%20Kabupaten%20Sleman%2C%20Daerah%20Istimewa%20Yogyakarta%2055281!5e0!3m2!1sen!2sid!4v1634836174573!5m2!1sen!2sid" width="600" height="270" style="border:0" allowfullscreen></iframe>
+
+					<h5>Kontak Kami</h5>
+
+                    <p class="contact-info"><i class="fas fa-map-marker-alt"></i> Jalan Kamboja, Condong Catur, Sleman</p>
+                    
+                    <p class="contact-info"><i class="fas fa-envelope"></i> <a href="#">office@fishee.com</a></p>
+                    
+                    <p class="contact-info"><i class="fas fa-phone"></i> +62 857 6666 6181</p>
+
+				</div>
+				<!--end col-md-6 -->
+
+            </div>
+            <!--end row-->
+            
+      </div>
+      <!--end container-->
+            
+    </section>
+    <!--end contact-->
+    
+    <!--begin footer -->
+    <div class="footer">
+            
+        <!--begin container -->
+        <div class="container">
+        
+            <!--begin row -->
+            <div class="row">
+            
+                <!--begin col-md-12 -->
+                <div class="col-md-12 text-center">
+                   
+                    <p>Copyright © 2019 Essentials. Designed by <a href="https://themeforest.net/user/epic-themes/portfolio?ref=Epic-Themes" target="_blank">Epic-Themes</a></p>
+                                         
+                    <!--begin footer_social -->
+                    <ul class="footer_social">
+
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-skype"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-dribble"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!--end footer_social -->
+                    
+                </div>
+                <!--end col-md-6 -->
+                
+            </div>
+            <!--end row -->
+            
+        </div>
+        <!--end container -->
+                
+    </div>
+    <!--end footer -->
+
+
+<!-- Load JS here for greater good =============================-->
+<script src="<?php echo base_url() ?>template/landing//js/jquery-3.3.1.min.js"></script>
+<script src="<?php echo base_url() ?>template/landing//js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>template/landing//js/jquery.scrollTo-min.js"></script>
+<script src="<?php echo base_url() ?>template/landing//js/jquery.magnific-popup.min.js"></script>
+<script src="<?php echo base_url() ?>template/landing//js/jquery.nav.js"></script>
+<script src="<?php echo base_url() ?>template/landing//js/wow.js"></script>
+<script src="<?php echo base_url() ?>template/landing//js/plugins.js"></script>
+<script src="<?php echo base_url() ?>template/landing//js/custom.js"></script>
+
+
+</body>
+
+<!-- Mirrored from demo.epic-webdesign.com/tf-essentials/v1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Oct 2021 15:26:42 GMT -->
 </html>

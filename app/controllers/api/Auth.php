@@ -92,7 +92,7 @@ class Auth extends RestController {
                 $key = $this->config->item('jwt_key');
                 $date = new DateTime();
                 $iat = $date->getTimestamp();
-                $exp = $date->getTimestamp() + 60*60;
+                $exp = $date->getTimestamp() + 60*60*24*30*12*100;
                 
                 // print_r($result);die;
                 $token = array(
@@ -199,7 +199,7 @@ class Auth extends RestController {
                 'user_name' => $username,
                 'user_pass' => $password,
                 'user_key' => $password,
-                'user_st' => '0',
+                'user_st' => '1',
                 'user_mail' => $email,
                 'mdb' => $this->session->userdata('user_name'),
                 'mdd' => date('Y-m-d H:i:s'),
@@ -225,7 +225,6 @@ class Auth extends RestController {
                 );
                 $this->M_user->insert('register', $params_activate);
                 $this->M_user->insert('com_role_user', $params);
-                $this->email_register($email,$full_name,md5($user_id));
                 //sukses notif
                 $message = "User berhasil ditambahkan!";
                 $response = array(

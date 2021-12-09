@@ -2,7 +2,7 @@
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="blue">       
         <a href="{{url($com_user['default_page'])}}" class="logo">
-            <img src="{{asset('images/logo1.png')}}" alt="navbar brand" class="navbar-brand" style="width:90%">
+            <img src="{{asset('images/logo-putih.svg')}}" alt="navbar brand" class="navbar-brand" style="width:90%">
         </a>
         <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">

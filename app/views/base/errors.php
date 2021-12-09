@@ -7,7 +7,7 @@ $CI->load->helper('url');
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title><?= $error_code ?> - Busevid system</title>
+	<title><?= $error_code ?> - Fishee system</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="<?= image_url('favicon.ico')?>" type="image/x-ico"/>
 	<!-- Fonts and icons -->

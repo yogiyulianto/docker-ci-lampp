@@ -16,7 +16,7 @@ class Welcome extends CI_Controller {
         $this->slice->with('PAGE_HEADER', self::PAGE_HEADER);
         $this->slice->with('PAGE_URL', base_url(self::PAGE_URL));
 
-        $this->load->model('api/M_blogs');
+        // $this->load->model('api/M_blogs');
     }
 
     public function index() {

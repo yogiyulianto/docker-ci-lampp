@@ -7,7 +7,7 @@
 <html lang="en">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<title>{{(!empty($page['nav_title'])) ? $page['nav_title'] : 'Selamat Datang'}} - BUSEVID</title>
+		<title>{{(!empty($page['nav_title'])) ? $page['nav_title'] : 'Selamat Datang'}} - FISHEE</title>
 		<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 		<link rel="icon" href="{{asset('images/favicons/favicon.ico')}}" type="image/x-ico"/>
 		<link rel="apple-touch-icon" sizes="57x57" href="{{asset('images/favicons/apple-icon-57x57.png')}}">

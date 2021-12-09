@@ -11,7 +11,7 @@ Login
 <div class="login-aside w-50 d-flex align-items-center justify-content-center bg-white">
 	<div class="container container-login container-transparent animated fadeIn">
 		<div class="row mb-2">
-			<img src="{{asset('images/favicon.png')}}" alt="navbar brand" class="navbar-brand mx-auto" style="width:30%">
+			<img src="{{asset('images/logo-pucat-2.svg')}}" alt="navbar brand" class="navbar-brand mx-auto" style="width:80%">
 		</div>
 		@include('base.default.notification')
 		<form action="{{url('auth/login_process')}}" method="post" id="form">	

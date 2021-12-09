@@ -23,10 +23,10 @@ class Dashboard extends PrivateBase {
         // set page rules
         $this->_set_page_rule('R');
         // get data
-        $total_materi      = $this->M_dashboard->get_total_materi();
-        $total_kehamilan        = $this->M_dashboard->get_total_kehamilan();
-        $total_konsultasi        = $this->M_dashboard->get_total_konsultasi();
-        $total_users       = $this->M_dashboard->get_total_users();
+        $total_materi      = 0;
+        $total_kehamilan        = 0;
+        $total_konsultasi        = 0;
+        $total_users       = 0;
         // render view
         return view(self::PAGE_URL.'index',compact(['total_materi','total_kehamilan','total_konsultasi','total_users']));
     }

@@ -38,7 +38,7 @@
                             <td>{{$item['mdb_name']}}</td>
                             <td>{{date('j F, Y H:i', strtotime($item['mdd']))}}</td>
                             <td>
-                                <a href="mailto:{{$item['email']}}?subject=Balasan Konsultasi Busevid"class="btn"  data-toggle="tooltip" data-placement="top" title="">
+                                <a href="mailto:{{$item['email']}}?subject=Balasan Konsultasi Fishee"class="btn"  data-toggle="tooltip" data-placement="top" title="">
                                     <i class="fas fa-paper-plane" ></i>
                                 </a>
                                 <a href="https://api.whatsapp.com/send?phone={{$item['nomer_wa']}}"class="btn"  data-toggle="tooltip" data-placement="top" title="">
