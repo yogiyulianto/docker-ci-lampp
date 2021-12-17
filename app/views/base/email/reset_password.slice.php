@@ -16,7 +16,7 @@
 												    <img src="" style="display:block; width:48px; height:48px" width="48" height="48" />
 											    </td>
 											    <td align="right">
-                                                <b style="font-family:Roboto-Regular,Helvetica,Arial,sans-serif; font-size:24px;" > Codeinaj</b> 
+                                                <b style="font-family:Roboto-Regular,Helvetica,Arial,sans-serif; font-size:24px;" ></b> 
                                             </td>
                                         </tr>
                                     </tbody>

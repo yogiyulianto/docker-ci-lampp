@@ -63,7 +63,7 @@
 
                             <li><a href="#home">Home</a></li>
 
-                            <li><a href="#about">Tentang</a></li>
+                            <li><a href="#about">Tentang Kami</a></li>
 
                             <!-- <li><a href="#pricing">Pricing</a></li> -->
 
@@ -71,12 +71,13 @@
 
                             <!-- <li><a href="#showcase">Showcase</a></li> -->
 
-                            <li><a href="#features">Fitur</a></li>
+                            <li><a href="#features">Artikel</a></li>
 
                             <!-- <li><a href="#blog">Blog</a></li> -->
 
-                            <li><a href="#contact">Kontak Kami</a></li>
+                            <li><a href="#contact">Produk</a></li>
 
+                            <li class="discover-link"><a href="<?php echo base_url() ?>auth/login" class="external discover-btn">Daftar</a></li>
                             <li class="discover-link"><a href="<?php echo base_url() ?>auth/login" class="external discover-btn">Login</a></li>
 
                         </ul>
@@ -109,9 +110,9 @@
 	            <!--begin col-md-6-->
 	            <div class="col-md-6 padding-top-80">
 
-	          		<h1>Hallo, &nbsp;Fishee - Solusi Terbaik Pengelolaan Kolam Ikan Anda</h1>
+	          		<h1>Solusi #mudahtanpatapi pengelolaan Kolam Bibit Ikan Anda</h1>
 
-	          		<p>Pemberi pakan ikan otomatis, presisi dan real-time notifikasi yang dapat membantu pemantauan segala kondisi kolam ikan Anda untuk hasil maksimal.</p>
+	          		<p>4.Platform 3P (Pengecekan, Pemantauan & Pengelolaan) kolam bibit ikan lele secara digital dengan visualisasi Dashboard berbasiskan Internet Of Things (IoT), didukung dengan fitur 3F (Fish Presition Feeder), Fish Care dan Fish Commerce).</p>
 
 	        		<a href="#" class="btn-blue scrool">Lihat kami lebih dekat</a>
 
@@ -149,7 +150,7 @@
 
                     <h2 class="section-title">Apa itu Fishee?</h2>
 
-                    <p class="section-subtitle">Memberi makan ikan otomatis dan monitoring kondisi kolam secara efisien.</p>
+                    <p class="section-subtitle">Platform dashboard digital berbasis website yang datanya terintegrasi langsung dengan IoT produk Fishee, sehingga Anda dapat memantau kolam bibit ikan dimanapun dan kapanpun.</p>
                     
                 </div>
                 <!--end col-md-12 -->
@@ -161,9 +162,9 @@
 
                         <img src="<?php echo base_url() ?>template/landing//images/main-service1.png" class="width-100" alt="pic">
 
-                        <h3>Budidaya lebih mudah</h3>
+                        <h3>Fish Presition Feeder</h3>
 
-                        <p>Pemberi pakan otomatis secara presisi membantu Anda dalam mengelola budidaya ikan lele menjadi lebih mudah.</p>
+                        <p>Platform Fishee dilengkapi dengan alat pakan otomatis yang dapat Anda setting melalui smartphone via chatbot telegram. Pakan diberikan dengan takaran yang presisi berdasarkan data ahli perikanan dan ahli teknikal pembudidaya ikan dan diintegrasikan dengan AI (Artificial Intelligence tools.</p>
 
                         <a href="#about" class="btn-blue-line small scrool">Pelajari lebih lanjut</a>
                         
@@ -179,9 +180,9 @@
 
                         <img src="<?php echo base_url() ?>template/landing//images/main-service2.png" class="width-100" alt="pic">
 
-                        <h3>Pemantauan Kondisi Kolam</h3>
+                        <h3>Fishee Care</h3>
 
-                        <p>Membantu Anda dalam memaksimalkan hasil yang bagus dengan memperhatikan kondisi habitat yang tepat untuk ikan.</p>
+                        <p>Platform Fishee dilengkapi dengan produk fishee care diantaranya: Ph Sensor Water, Temperature Sensor Water, Wheater Forecast</p>
 
                         <a href="#about" class="btn-blue-line small scrool">Pelajari lebih lanjut</a>
                         
@@ -197,9 +198,9 @@
 
                         <img src="<?php echo base_url() ?>template/landing//images/main-service3.png" class="width-100" alt="pic">
 
-                        <h3>Efektif Waktu</h3>
+                        <h3>Fishee Commerce</h3>
 
-                        <p>Tanpa harus melakukan cek kolam berkala, notifikasi kondisi kolam akan Anda dapatkan secara real-time.</p>
+                        <p>Bisnis B2B antara mitra Fishee (peternak pembibitan lele) dengan peternak pembesaran lele. Fishee commerce siap menjembatani transaksi dan pendistribusian hasil panen mitra kepada konsumennya..</p>
 
                         <a href="#about" class="btn-blue-line small scrool">Pelajari lebih lanjut</a>
                         
@@ -236,9 +237,9 @@
                             <i class="fas fa-chart-line"></i>
                         </div>
 
-                        <h4 class="margin-bottom-5">Customize your workflow.</h4>
+                        <h4 class="margin-bottom-5">Perkembangan bibit.</h4>
 
-                        <p>Manage any process and be ready to address any challenge with total ease.</p>
+                        <p>Pantau perkembangan bibit dengan peduli kolamnya sebelum jatuh sakit.</p>
 
                     </div>
                     <!--end features-second-->
@@ -250,9 +251,9 @@
                             <i class="fas fa-network-wired"></i>
                         </div>
 
-                        <h4 class="margin-bottom-5">Easy onboarding, fast adoption.</h4>
+                        <h4 class="margin-bottom-5">Keseimbangan pakan.</h4>
 
-                        <p>With Essentials getting your team on board is as simple as sending an email.</p>
+                        <p>Perhatikan keseimbangan pemberian pakan bibit secara presisi.</p>
 
                     </div>
                     <!--end features-second-->
@@ -264,9 +265,9 @@
                             <i class="fas fa-rocket"></i>
                         </div>
 
-                        <h4 class="margin-bottom-5">Improve subscriber retention.</h4>
+                        <h4 class="margin-bottom-5">Panen maksimal.</h4>
 
-                        <p>Analyze customers by region, discounts and more and put a plan in place to improve subscriber retention.</p>
+                        <p>Panen bibit maksimal, hasil penjualan optimal.</p>
 
                     </div>
                     <!--end features-second-->
@@ -327,11 +328,9 @@
                 <!--begin col-md-6-->
                 <div class="col-md-6 padding-top-30 padding-left-20">
 
-                    <h2 class="white-text">Real-time reporting on your most important metrics.</h2>
+                    <h2 class="white-text">Mau kenal lebih dekat, bagaimana sistem kerja produk Fishee?</h2>
 
-                    <p class="white-text">Work is completely different today. Teams are more agile, more collaborative and drive innovation faster than ever — and the most successful companies have a digital workplace to match.</p>
-
-                    <p class="white-text">Essentials is designed with your customers in mind, so you can track and analyze all your data in one central location. Essentials offer a better experience for your customers.</p>
+                    <p class="white-text">Pemantauan & Pengelolaan) kolam bibit ikan lele secara digital dengan visualisasi Dashboard berbasiskan Internet Of Things (IoT), didukung dengan fitur 3F (Fish Presition Feeder), Fish Care dan Fish.</p>
 
                 </div>
                 <!--end col-md-6-->
@@ -357,100 +356,55 @@
                 <!--begin col-md-12 -->
                 <div class="col-md-12 text-center padding-bottom-40">
 
-                    <h2 class="section-title">Pricing for every business, at any stage</h2>
+                    <h2 class="section-title">Kenapa Harus Fisheee?</h2>
 
-                    <p class="section-subtitle">All pricing packages are backed up by a 30-day money back guarantee.</p>
                     
                 </div>
                 <!--end col-md-12 -->
 
-                <!--begin col-md-4-->
+                <!--begin col-md-4 -->
                 <div class="col-md-4">
 
-                    <div class="price-box">
+                    <div class="main-services">
 
-                        <ul class="pricing-list">
+                        <img src="<?php echo base_url() ?>template/landing//images/main-service1.png" class="width-100" alt="pic">
 
-                            <li class="price-title">BASIC</li>
+                        <p>Solusi Mudah Tanpa Tapi Anda dapat memantau kondisi kolam pembibitan dimanapun dan kapanpun secara berkala dan tersumber dari data Standar Nasional Indonesia.</p>
 
-                            <li class="price-value">$25</li>
-
-                            <li class="price-subtitle">Per Month</li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>Custom Charts</li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>5 Mailboxes, 10 Gb Storage</li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>Unlimited Free Dashboards</li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>Access to all APIs</li>
-
-                            <li class="price-tag-line"><a href="#">FREE 15-DAY TRIAL</a></li>
-
-                        </ul>
-
+                        <a href="#about" class="btn-blue-line small scrool">Pelajari lebih lanjut</a>
+                        
                     </div>
 
                 </div>
                 <!--end col-md-4 -->
 
-                <!--begin col-md-4-->
+                <!--begin col-md-4 -->
                 <div class="col-md-4">
 
-                    <div class="price-box">
+                    <div class="main-services">
 
-                    <div class="ribbon blue"><span>Popular</span></div>
+                        <img src="<?php echo base_url() ?>template/landing//images/main-service2.png" class="width-100" alt="pic">
 
-                        <ul class="pricing-list">
+                        <p>Memangkas Biaya Resource,Apa jadinya jika Anda harus stand by di lingkungan kolam pembibitan tanpa bantuan orang lain? Dengan Fishee Anda dapat melakukannya tanpa adanya campur tangan banyak pihak. Minimalis bukan?</p>
 
-                            <li class="price-title">STANDARD</li>
-
-                            <li class="price-value">$99</li>
-
-                            <li class="price-subtitle">Per Month</li>
-
-                            <li class="price-text strong"><i class="fas fa-check blue"></i><strong>All Basic features</strong></li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>15 Mailboxes, 50 Gb Storage</li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>Interactive Screen Sharing</li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>Full Reports History</li>
-
-                            <li class="price-tag"><a href="#">FREE 15-DAY TRIAL</a></li>
-
-                        </ul>
-
+                        <a href="#about" class="btn-blue-line small scrool">Pelajari lebih lanjut</a>
+                        
                     </div>
 
                 </div>
                 <!--end col-md-4 -->
 
-                <!--begin col-md-4-->
+                <!--begin col-md-4 -->
                 <div class="col-md-4">
 
-                    <div class="price-box">
+                    <div class="main-services">
 
-                        <ul class="pricing-list">
+                        <img src="<?php echo base_url() ?>template/landing//images/main-service3.png" class="width-100" alt="pic">
 
-                            <li class="price-title white-text">PRO</li>
+                        <p>Bibit berkualitas, Profit Tanpa Batas Kolam sebagai media utama dalam tumbuh kembang bibit ikan. Tips menghasilkan profit tanpa batas adalah seimbangkan kolam yang selaras dengan begitu bibit akan berkualitas</p>
 
-                            <li class="price-value white-text">$199</li>
-
-                            <li class="price-subtitle white-text">Per Month</li>
-
-                            <li class="price-text white-text"><i class="fas fa-check blue"></i><strong>All Standard Features</strong></li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>50 Mailboxes, 90 Gb Storage</li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>Dedicated Account Manager</li>
-
-                            <li class="price-text"><i class="fas fa-check blue"></i>24/7 Priority Support</li>
-
-                            <li class="price-tag-line"><a href="#">FREE 15-DAY TRIAL</a></li>
-
-                        </ul>
-
+                        <a href="#about" class="btn-blue-line small scrool">Pelajari lebih lanjut</a>
+                        
                     </div>
 
                 </div>
@@ -477,7 +431,7 @@
                 <!--begin col-md-6-->
                 <div class="col-md-6 padding-top-120 text-center">
 
-                    <p class="testimonial-single">“People who succeed in business aren't afraid to hear feedback from their customers - they actually thrive from it.”</p>
+                    <p class="testimonial-single">“Mulai fokus menggarap industri perikanan budidaya. Tentu ini harus kita tangkap dengan mendorong strategi bagaimana menjadikan budidaya sebagai sebuah industri. Konkritnya berarti kita harus mulai membangun sistem produksi yang berbasis industri mulai dari industrialisasi benih, pakan, sarana dan prasarana produksi dan lainnya. Demikian halnya dengan teknologi, kita akan dorong ke arah teknologi yang menjamin produktivitas tinggi, adaptif, efisien dan ramah lingkungan.”</p>
 
                     <h5 class="margin-bottom-5">Johanna S. Richardson</h5>
 
@@ -1146,15 +1100,7 @@
                 <!--begin col-md-6-->
                 <div class="col-md-6 padding-top-20">
 
-                	<h3>Get ready to discover all the benefits and secrets of our amazing software.</h3>
-
-                	<p>Velis demo enim ipsam voluptatem quia voluptas sit aspernatur netsum lorem fugit, sed quia magni dolores eos qui ratione sequi nesciunt neque et poris ratione sequi enim quia tempor magni.</p>
-                    
-                	<ul class="benefits">
-						<li><i class="fa fa-check"></i> Quia magni netsum eos qui ratione sequi.</li>
-						<li><i class="fa fa-check"></i> Venis ratione sequi enim quia tempor magni.</li>
-						<li><i class="fa fa-check"></i> Enim ipsam voluptatem quia voluptas.</li>
-					</ul>
+                	<h3>26.Segera daftarkan diri Anda sebagai Mitra Fishee dan rasakan kebermanfaatan solusi #mudahtanpatapi.</h3>
 
 					<a href="#contact" class="btn-blue scrool">Get Started</a>
                     
@@ -1190,8 +1136,7 @@
                 <!--begin col-md-12 -->
                 <div class="col-md-12 text-center padding-top-50 padding-bottom-20">
 
-                    <h3 class="white-text">Seen enough? We are currently in the closed beta.<br>
-                    Please enter your email to join the waiting list.</h3>
+                    <h3 class="white-text">Tertarik untuk berlangganan artikel terupdate Kami? Tinggalkan email Anda untuk mendapatkan notifikasi artikel terbaru secara gratis!</h3>
 
                 </div>
                 <!--end col-md-12 -->
@@ -1248,9 +1193,9 @@
             
                 <!--begin col-md-12-->
                 <div class="col-md-12 text-center">
-                    <h2 class="section-title">Our Blog</h2>
+                    <h2 class="section-title">Artikel Fishee</h2>
                     
-                    <p class="section-subtitle">Latest news, tips and best practices.</p>
+                    <p class="section-subtitle">Tips dan Trick Budidaya Pembibitan Lele dengan hasil Maksimal</p>
                 </div>
                 <!--end col-md-12-->
             
@@ -1280,7 +1225,7 @@
                         <!--begin blog-item_inner -->
                         <div class="blog-item-inner">
                         
-                            <h3 class="blog-title"><a href="#">The Guide To LinkedIn Ads</a></h3>
+                            <h3 class="blog-title"><a href="#">Panen bibit hanya dalam waktu 3 bulan?</a></h3>
                             
                             <a href="#" class="blog-icons"><i class="fa fa-user"></i> Paul Smith</a>
                             
@@ -1317,7 +1262,7 @@
                         <!--begin blog-item_inner -->
                         <div class="blog-item-inner">
                         
-                            <h3 class="blog-title"><a href="#">Affinity Designer Quick Start</a></h3>
+                            <h3 class="blog-title"><a href="#">Apa saja parameter penentu kualitas kolam bibit menurut SNI benih lele?</a></h3>
                             
                             <a href="#" class="blog-icons"><i class="fa fa-user"></i> By John Doe</a>
                             
@@ -1354,7 +1299,7 @@
                         <!--begin blog-item_inner -->
                         <div class="blog-item-inner">
                         
-                            <h3 class="blog-title"><a href="#">Our Happy Team</a></h3>
+                            <h3 class="blog-title"><a href="#">Jangan lakukan ini untuk menghindari bibit yang stress.</a></h3>
                             
                             <a href="#" class="blog-icons"><i class="fa fa-user"></i> By John Doe</a>
                             
@@ -1456,7 +1401,7 @@
                 <!--begin col-md-12 -->
                 <div class="col-md-12 text-center">
                    
-                    <p>Copyright © 2019 Essentials. Designed by <a href="https://themeforest.net/user/epic-themes/portfolio?ref=Epic-Themes" target="_blank">Epic-Themes</a></p>
+                    <p>Copyright © 2021 Fishee.</a></p>
                                          
                     <!--begin footer_social -->
                     <ul class="footer_social">

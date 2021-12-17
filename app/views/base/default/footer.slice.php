@@ -3,7 +3,7 @@
         <nav class="pull-left">
             <ul class="nav">
                 <li class="nav-item">
-                    {{date('Y')}} © BUSEVID &nbsp;<br>
+                    {{date('Y')}} © FISHEE &nbsp;<br>
                 </li>
             </ul>
         </nav>
