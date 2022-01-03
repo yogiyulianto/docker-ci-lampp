@@ -1,6 +1,6 @@
 <?php
 
-class M_kehamilan extends MY_Model {
+class M_sensor extends MY_Model {
 
     //generate id terakhir
     public function generate_id($prefixdate) {
@@ -95,8 +95,33 @@ class M_kehamilan extends MY_Model {
     }
 
     //get all
-    public function get_all($from ,$page) {
-        $sql = "SELECT * FROM kehamilan LIMIT $from ,$page";
+    public function get_all_suhu() {
+        $sql = "SELECT * FROM sensor_suhu
+        LIMIT 5";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+    //get all
+    public function get_all_ph() {
+        $sql = "SELECT * FROM sensor_ph
+        LIMIT 5";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return $result;
+        }
+        return array();
+    }
+    //get all
+    public function get_all_ketinggian() {
+        $sql = "SELECT * FROM sensor_ketinggian
+        LIMIT 5";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -138,7 +163,18 @@ class M_kehamilan extends MY_Model {
     //count all
     public function count_all() {
         $this->db->select('*');
-        $this->db->from('kehamilan');
+        $this->db->from('materi');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            $result = $query->num_rows();
+            return $result;
+        }
+        return 0;
+    }
+    //count all
+    public function count_all_suhu() {
+        $this->db->select('*');
+        $this->db->from('sensor_suhu');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -150,7 +186,7 @@ class M_kehamilan extends MY_Model {
     // get all parent
     public function get_all_category() {
         $this->db->select('*');
-        $this->db->from('category');
+        $this->db->from('kategori_materi');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();

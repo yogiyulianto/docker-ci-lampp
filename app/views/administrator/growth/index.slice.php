@@ -23,49 +23,26 @@
                     <thead>
                         <tr>
                             <th>Tanggal</th>
-                            <th>Kolam ID</th>
+                            <th>Nama Kolam</th>
                             <th>Total Berat</th>
-                            <th>Di ubah oleh</th>
+                            <th>Jumlah ikan</th>
                             <th>Status</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($rs_id as $row)
                         <tr>
-                            <td>2021-12-10</td>
-                            <td>KLM762</td>
-                            <td>117 Kg</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
+                            <td>{{date('d-m-Y', strtotime($row['date_sampling']))}}</td>
+                            <td>{{$row['name']}}</td>
+                            <td>{{$row['total_kg']}} Kg</td>
+                            <td>{{$row['fish_count']}}</td>
+                            @if ($row['pembesaran_st'] == 'ongoing')
+                            <td><small class="badge badge-warning text-white">Masih Berjalan</small></td>
+                            @else
+                            <td><small class="badge badge-success text-white">Selesai</small></td>
+                            @endif
                         </tr>
-                        <tr>
-                            <td>2021-11-10</td>
-                            <td>KLM762</td>
-                            <td>107 Kg</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
-                        </tr>
-                        <tr>
-                            <td>2021-10-10</td>
-                            <td>KLM762</td>
-                            <td>90 Kg</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
-                        </tr>
-                        <tr>
-                            <td>2021-08-10</td>
-                            <td>KLM762</td>
-                            <td>70 Kg</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
-                        </tr>
-                        <tr>
-                            <td>2021-07-10</td>
-                            <td>KLM762</td>
-                            <td>80 Kg</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

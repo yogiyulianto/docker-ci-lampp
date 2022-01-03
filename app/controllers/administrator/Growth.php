@@ -20,7 +20,7 @@ class Growth extends PrivateBase {
         $this->slice->with('PAGE_HEADER', self::PAGE_HEADER);
         $this->slice->with('PAGE_URL', base_url(self::PAGE_URL));
         $this->load->model('systems/M_group');
-        $this->load->model('systems/M_role');
+        $this->load->model('administrator/M_growth');
     }
 
     public function index() {
@@ -29,180 +29,111 @@ class Growth extends PrivateBase {
         $this->load->library('pagination');
         $this->load->config('pagination');
         $config = $this->config->item('pagination_config');
-        $total_row = $this->M_role->count_all();
+        $total_row = $this->M_growth->count_all();
         $config['base_url'] = base_url(self::PAGE_URL.'index');
         $config['total_rows'] = $total_row;
         $config['per_page'] = $this->page_limit;
-        $from = $this->uri->segment(4);
+        $from = $this->uri->segment(3);
+        if(empty($from)){
+            $from = 0;
+        }
         $this->pagination->initialize($config);
         //get data
         $rs_search = $this->session->userdata(self::SESSION_SEARCH);
-        $rs_id = $this->M_role->get_all($rs_search, $config['per_page'], $from);
-        $rs_groups = $this->M_role->get_all_groups();
+        $rs_id = $this->M_growth->get_all($config['per_page'], $from);
         $data = array(
             'rs_search' => $rs_search,
             'rs_id' => $rs_id,
-            'rs_groups' => $rs_groups,
             'pagination' => $this->pagination->create_links(),
         );
         view(self::PAGE_URL . 'index', $data);
     }
 
-    public function add() {
+    public function add(){
         $this->_set_page_rule('C');
-        $rs_groups = $this->M_role->get_all_groups();
         $data = array(
-            'rs_groups' => $rs_groups,
+            'kolam' => $this->M_growth->get_all_kolam(),
         );
         view(self::PAGE_URL . 'add', $data);
     }
 
+    // add process
     public function add_process() {
         $this->_set_page_rule('C');
         // cek input
-        $this->form_validation->set_rules('group_id', 'Group ID', 'trim|required');
-        $this->form_validation->set_rules('role_name', 'Role Name', 'trim|required');
-        $this->form_validation->set_rules('role_desc', 'Role Desc', 'trim');
-        $this->form_validation->set_rules('default_page', 'Default Page', 'trim|required');
-
-        // get last di role
-        $group_id = $this->input->post('group_id');
-        $role_id = $this->M_role->get_last_id($group_id);
+        $this->form_validation->set_rules('device_id','Kolam','trim|required');
+        $this->form_validation->set_rules('total_kg','Total KG','trim|required');
+        $this->form_validation->set_rules('fish_count','Total Ikan','trim|required');
+        $this->form_validation->set_rules('pembesaran_st','Pembesaran Status','trim|required');
         // process
-        if ($this->form_validation->run() !== false) {
+        if ($this->form_validation->run() !== FALSE) {
+            // update params
             $params = array(
-                'group_id' => $group_id,
-                'role_id' => $role_id,
-                'role_name' => $this->input->post('role_name'),
-                'role_desc' => $this->input->post('role_desc'),
-                'default_page' => $this->input->post('default_page'),
+                'device_id' => $this->input->post('device_id',TRUE), 
+                'total_kg' => $this->input->post('total_kg',TRUE), 
+                'fish_count' => $this->input->post('fish_count', TRUE), 
+                'pembesaran_st' => $this->input->post('pembesaran_st',TRUE), 
+                'date_sampling' => now(), 
                 'mdb' => $this->com_user('user_id'),
                 'mdb_name' => $this->com_user('user_name'),
                 'mdd' => now(),
             );
             // insert
-            if ($this->M_role->insert('com_role', $params)) {
+            if ($this->M_growth->insert('sampling', $params)) {
+                if($this->input->post('pembesaran_st',TRUE) == 'finish'){
+                    // default error
+                    $this->notification->send(self::PAGE_URL.'add_history', 'success', 'Data Berhasil ditambakhkan! Silahkan isi data panen!');
+                }
                 //sukses notif
-
-                $this->notification->send(self::PAGE_URL.'', 'success', 'Data added successfully !');
+                $this->notification->send(self::PAGE_URL, 'success', 'Data berhasil ditambahkan!');
             } else {
-                $this->notification->send(self::PAGE_URL.'add', 'error', 'Data failed to add !');
+                $this->notification->send(self::PAGE_URL.'add', 'error', 'Data gagal ditambahkan!');
             }
         } else {
             // default error
-            $this->notification->send(self::PAGE_URL.'add', 'error', 'Some Fields are Incorrect. !');
+            $this->notification->send(self::PAGE_URL.'add', 'error', 'Ada Field Yang Tidak Sesuai. !');
         }
     }
 
-    public function edit($role_id = '') {
-        $this->_set_page_rule('U');
-        //cek data
-        if (empty($role_id)) {
-            // default error
-            $this->notification->send(self::PAGE_URL, 'error', 'Data not Found !');
-        }
-
-        $rs_groups = $this->M_role->get_all_groups();
-        //parsing
-        $data = [
-            'rs_groups' => $rs_groups,
-            'result' => $this->M_role->get_by_id($role_id),
-        ];
-        //parsing and view content
-        view(self::PAGE_URL . 'edit', $data);
-    }
-    
-    public function edit_process() {
-        $this->_set_page_rule('U');
-        // cek input
-        $this->form_validation->set_rules('group_id', 'Group ID', 'trim|required');
-        $this->form_validation->set_rules('role_name', 'Role Name', 'trim|required');
-        $this->form_validation->set_rules('default_page', 'Role Desc', 'trim|required');
-        // check data
-        $role_id = $this->input->post('role_id');
-        if (empty($role_id)) {
-            //sukses notif
-            $this->notification->send(self::PAGE_URL.'edit', 'error', 'Data not found !');
-        }
-        // process
-        if ($this->form_validation->run() !== false) {
-            $params = array(
-                'group_id' => $this->input->post('group_id'),
-                'role_name' => $this->input->post('role_name'),
-                'role_desc' => $this->input->post('role_desc'),
-                'default_page' => $this->input->post('default_page'),
-                'mdb' => $this->com_user('user_id'),
-                'mdb_name' => $this->com_user('user_name'),
-                'mdd' => now(),
-            );
-            $where = array(
-                'role_id' => $role_id,
-            );
-            // insert
-            if ($this->M_group->update('com_role', $params, $where)) {
-                //sukses notif
-                $this->notification->send(self::PAGE_URL, 'success', 'Data edited successfully !');
-            } else {
-                // default error
-                $this->notification->send(self::PAGE_URL.'edit/' . $role_id, 'error', 'Data failed to edit !');
-            }
-        } else {
-            // default error
-            $this->notification->send(self::PAGE_URL.'edit/' . $role_id, 'error', 'Some Fields are Incorrect. !');
-        }
-    }
-
-    public function delete($role_id = '') {
-        $this->_set_page_rule('D');
-
-        //cek data
-        if (empty($role_id)) {
-            // default error
-            $this->notification->send(self::PAGE_URL, 'error', 'Data not Found !');
-        }
-
-        //parsing
-        $data = [
-            'rs_groups' => $this->M_role->get_all_groups(),
-            'result' => $this->M_role->get_by_id($role_id),
-        ];
-        //parsing and view content
-        view(self::PAGE_URL . 'delete', $data);
-    }
-
-    public function delete_process() {
-        $this->_set_page_rule('D');
-        $role_id = $this->input->post('role_id', true);
-        //cek data
-        if (empty($role_id)) {
-            // default error
-            $this->notification->send(self::PAGE_URL, 'error', 'Data not Found !');
-        }
-        $where = array(
-            'role_id' => $role_id,
+    public function add_history(){
+        $this->_set_page_rule('C');
+        $data = array(
+            'kolam' => $this->M_growth->get_all_kolam(),
         );
-        //process
-        if ($this->M_group->delete('com_role', $where)) {
-            //sukses notif
-
-            $this->notification->send(self::PAGE_URL, 'success', 'Data deleted successfully');
-        } else {
-            //default error
-            $this->notification->send(self::PAGE_URL.'delete/' . $role_id, 'error', 'Data failed to delete !');
-        }
+        view(self::PAGE_URL . 'add_history', $data);
     }
 
-    public function search_process() {
-        if ($this->input->post('search', true) == "submit") {
+    public function add_history_process(){
+        $this->_set_page_rule('C');
+        // cek input
+        $this->form_validation->set_rules('device_id','Kolam','trim|required');
+        $this->form_validation->set_rules('total_kg','Total KG','trim|required');
+        $this->form_validation->set_rules('total_feed','Total Feed','trim|required');
+        $this->form_validation->set_rules('time_growth','Time Growth','trim|required');
+        // process
+        if ($this->form_validation->run() !== FALSE) {
+            // update params
             $params = array(
-                'role_name' => $this->input->post('role_name', true),
-                'group_id' => $this->input->post('group_id', true),
+                'device_id' => $this->input->post('device_id',TRUE), 
+                'total_kg' => $this->input->post('total_kg',TRUE), 
+                'total_feed' => $this->input->post('total_feed', TRUE), 
+                'time_growth' => $this->input->post('time_growth',TRUE), 
+                'datetime' => now(), 
+                'mdb' => $this->com_user('user_id'),
+                'mdb_name' => $this->com_user('user_name'),
+                'mdd' => now(),
             );
-            $this->session->set_userdata(self::SESSION_SEARCH, $params);
+            // insert
+            if ($this->M_growth->insert('history_harvest', $params)) {
+                //sukses notif
+                $this->notification->send(self::PAGE_URL, 'success', 'Data berhasil ditambahkan!');
+            } else {
+                $this->notification->send(self::PAGE_URL.'add', 'error', 'Data gagal ditambahkan!');
+            }
         } else {
-            $this->session->unset_userdata(self::SESSION_SEARCH);
+            // default error
+            $this->notification->send(self::PAGE_URL.'add', 'error', 'Ada Field Yang Tidak Sesuai. !');
         }
-        redirect(self::PAGE_URL);
     }
 
 }

@@ -9,12 +9,6 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title">{{$PAGE_TITLE }} List
-                <a href="{{$PAGE_URL.'add'}}" class="float-right btn btn-info btn-border btn-round btn-sm">
-                    <span class="btn-label">
-                        <i class="las la-plus"></i>
-                    </span>
-                    Add {{$PAGE_HEADER}}
-                </a>
             </div>
         </div>
         <div class="card-body px-0">
@@ -22,50 +16,28 @@
                 <table class="table table-head-bg-primary mt-1">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Tanggal</th>
                             <th>Kolam ID</th>
-                            <th>Total Kotor</th>
-                            <th>Di ubah oleh</th>
-                            <th>Status</th>
-                            <th></th>
+                            <th>Total KG</th>
+                            <th>Total Pakan</th>
+                            <th>Lama Tumbuh (Dalam Hari)</th>
+                            <th>Di buat oleh</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php $no = 1; @endphp
+                        @foreach($rs_id as $row)
                         <tr>
-                            <td>2021-12-10</td>
-                            <td>KLM762</td>
-                            <td>Rp. 1.000.000</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
+                            <td>{{$no++}}</td>
+                            <td>{{date('d-m-Y', strtotime($row['datetime']))}}</td>
+                            <td>{{$row['name']}}</td>
+                            <td>{{$row['total_kg']}}</td>
+                            <td>{{$row['total_feed']}}</td>
+                            <td>{{$row['time_growth']}}</td>
+                            <td>{{$row['mdb_name']}}</td>
                         </tr>
-                        <tr>
-                            <td>2021-11-10</td>
-                            <td>KLM762</td>
-                            <td>Rp. 1.000.000</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
-                        </tr>
-                        <tr>
-                            <td>2021-10-10</td>
-                            <td>KLM762</td>
-                            <td>Rp. 1.000.000</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
-                        </tr>
-                        <tr>
-                            <td>2021-08-10</td>
-                            <td>KLM762</td>
-                            <td>Rp. 1.000.000</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
-                        </tr>
-                        <tr>
-                            <td>2021-07-10</td>
-                            <td>KLM762</td>
-                            <td>Rp. 1.000.000</td>
-                            <td>Yogi Yulianto</td>
-                            <td><small class="badge badge-success text-white">Active</small></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

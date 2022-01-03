@@ -1,6 +1,6 @@
 <?php
 
-class M_kategori_materi extends MY_Model {
+class M_growth extends MY_Model {
 
     //generate id terakhir
     public function generate_id($prefixdate) {
@@ -96,7 +96,8 @@ class M_kategori_materi extends MY_Model {
 
     //get all
     public function get_all($from ,$page) {
-        $sql = "SELECT * FROM kategori_materi LIMIT $from ,$page";
+        $sql = "SELECT * FROM sampling a
+        JOIN device b ON a.device_id = b.device_id";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -106,11 +107,8 @@ class M_kategori_materi extends MY_Model {
         return array();
     }
     //get all
-    public function get_all_blog($base_url) {
-        $sql = "SELECT a.blog_id, a.title as blog_title, 
-        a.slug, a.content, concat('$base_url', a.image) as image,
-        b.title as 'category_title' FROM blogs a JOIN category b ON a.category_id = b.category_id 
-        WHERE blog_st != 'draft'";
+    public function get_all_kolam() {
+        $sql = "SELECT * FROM device";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -124,8 +122,8 @@ class M_kategori_materi extends MY_Model {
     public function get_by_id($id) {
         $base_url = base_url();
         $this->db->select("*");
-        $this->db->from('kategori_materi');
-        $this->db->where('kategori_materi.id_kategori', $id);
+        $this->db->from('materi');
+        $this->db->where('materi.id', $id);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->row_array();
@@ -138,7 +136,7 @@ class M_kategori_materi extends MY_Model {
     //count all
     public function count_all() {
         $this->db->select('*');
-        $this->db->from('kategori_materi');
+        $this->db->from('sampling');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -150,7 +148,7 @@ class M_kategori_materi extends MY_Model {
     // get all parent
     public function get_all_category() {
         $this->db->select('*');
-        $this->db->from('category');
+        $this->db->from('kategori_materi');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();

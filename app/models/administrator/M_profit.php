@@ -1,6 +1,6 @@
 <?php
 
-class M_konsultasi extends MY_Model {
+class M_profit extends MY_Model {
 
     //generate id terakhir
     public function generate_id($prefixdate) {
@@ -95,8 +95,9 @@ class M_konsultasi extends MY_Model {
     }
 
     //get all
-    public function get_all($from ,$page) {
-        $sql = "SELECT * FROM konsultasi LIMIT $from ,$page";
+    public function get_all() {
+        $sql = "SELECT * FROM history_harvest a
+        JOIN device b ON a.device_id = b.device_id";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -105,12 +106,9 @@ class M_konsultasi extends MY_Model {
         }
         return array();
     }
-    //get all
-    public function get_all_blog($base_url) {
-        $sql = "SELECT a.blog_id, a.title as blog_title, 
-        a.slug, a.content, concat('$base_url', a.image) as image,
-        b.title as 'category_title' FROM blogs a JOIN category b ON a.category_id = b.category_id 
-        WHERE blog_st != 'draft'";
+    // get all
+    public function get_all_kolam() {
+        $sql = "SELECT * FROM device";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
@@ -138,7 +136,7 @@ class M_konsultasi extends MY_Model {
     //count all
     public function count_all() {
         $this->db->select('*');
-        $this->db->from('konsultasi');
+        $this->db->from('sampling');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->num_rows();
@@ -150,7 +148,7 @@ class M_konsultasi extends MY_Model {
     // get all parent
     public function get_all_category() {
         $this->db->select('*');
-        $this->db->from('category');
+        $this->db->from('kategori_materi');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $result = $query->result_array();

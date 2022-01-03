@@ -71,36 +71,15 @@
                         </tr>
                     </thead>
                     <tbody>
+						@php $no = 1; @endphp
+                        @foreach ($suhu as $item)
                         <tr>
-                            <td>1</td>
-                            <td>2021-12-12</td>
-                            <td>19:00</td>
-                            <td>20 C</td>
+                            <td>{{$no++}}</td>
+                            <td>{{date('d-m-Y', strtotime($item['datetime']))}}</td>
+                            <td>{{date('H:i:s', strtotime($item['datetime']))}}</td>
+                            <td>{{$item['celcius']}} C</td>
 						</tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2021-12-11</td>
-                            <td>19:00</td>
-                            <td>21 C</td>
-						</tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2021-12-10</td>
-                            <td>19:00</td>
-                            <td>20 C</td>
-						</tr>
-                        <tr>
-                            <td>4</td>
-                            <td>2021-12-09</td>
-                            <td>19:00</td>
-                            <td>21 C</td>
-						</tr>
-                        <tr>
-                            <td>5</td>
-                            <td>2021-12-08</td>
-                            <td>19:00</td>
-                            <td>21 C</td>
-						</tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -117,36 +96,15 @@
                         </tr>
                     </thead>
                     <tbody>
+						@php $no = 1; @endphp
+                        @foreach ($ph as $item)
                         <tr>
-                            <td>1</td>
-                            <td>2021-12-12</td>
-                            <td>19:00</td>
-                            <td>10</td>
+                            <td>{{$no++}}</td>
+                            <td>{{date('d-m-Y', strtotime($item['datetime']))}}</td>
+                            <td>{{date('d-m-Y', strtotime($item['datetime']))}}</td>
+                            <td>{{$item['ph']}}</td>
 						</tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2021-12-11</td>
-                            <td>19:00</td>
-                            <td>9</td>
-						</tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2021-12-10</td>
-                            <td>19:00</td>
-                            <td>8</td>
-						</tr>
-                        <tr>
-                            <td>4</td>
-                            <td>2021-12-09</td>
-                            <td>19:00</td>
-                            <td>7</td>
-						</tr>
-                        <tr>
-                            <td>5</td>
-                            <td>2021-12-08</td>
-                            <td>19:00</td>
-                            <td>10</td>
-						</tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -163,36 +121,15 @@
                         </tr>
                     </thead>
                     <tbody>
+						@php $no = 1; @endphp
+                        @foreach ($ketinggian as $item)
                         <tr>
-                            <td>1</td>
-                            <td>2021-12-12</td>
-                            <td>19:00</td>
-                            <td>10</td>
+							<td>{{$no++}}</td>
+                            <td>{{date('d-m-Y', strtotime($item['datetime']))}}</td>
+                            <td>{{date('d-m-Y', strtotime($item['datetime']))}}</td>
+                            <td>{{$item['ketinggian']}}</td>
 						</tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2021-12-11</td>
-                            <td>19:00</td>
-                            <td>9</td>
-						</tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2021-12-10</td>
-                            <td>19:00</td>
-                            <td>8</td>
-						</tr>
-                        <tr>
-                            <td>4</td>
-                            <td>2021-12-09</td>
-                            <td>19:00</td>
-                            <td>7</td>
-						</tr>
-                        <tr>
-                            <td>5</td>
-                            <td>2021-12-08</td>
-                            <td>19:00</td>
-                            <td>10</td>
-						</tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
