@@ -122,7 +122,7 @@
 				<!--begin col-md-6-->
 	            <div class="col-md-6">
 
-	          		<img src="<?php echo base_url() ?>template/landing//images/website-development.jpg" class="hero-image width-100" alt="pic">
+	          		<img src="<?php echo base_url() ?>template/landing//images/website-development.png" class="hero-image width-100" alt="pic">
 
 	            </div>
 	            <!--end col-md-6-->
@@ -419,6 +419,54 @@
     </section>
     <!--end pricing section -->
 
+    <!--begin testimonials section -->
+    <section class="section-grey" id="testimonials">
+
+        <!--begin container -->
+        <div class="container">
+            
+            <!--begin col-md-12 -->
+            <div class="col-md-12 text-center padding-bottom-40">
+
+                <h2 class="section-title">Testimonials</h2>
+
+                
+            </div>
+            <!--end col-md-12 -->
+
+            <!--begin row -->
+            <div class="row">
+
+            @foreach ($survey as $item)
+            <!--begin col-md -->
+            <div class="col-md">
+
+                <div class="main-services">
+
+                    <img src="<?php echo base_url()?>{{$item['image']}}" class="width-100" alt="pic">
+
+                    <h4 class="padding-top-30 padding-bottom-30">{{$item["name"]}}, {{$item["age"]}}
+                        <br>
+                        <small class="text-muted">{{$item["address"]}}</small>
+                    </h4>
+
+                    <p>{{$item['description']}}</p>
+                    
+                </div>
+
+            </div>
+            <!--end col-md -->
+            @endforeach
+
+            </div>
+            <!--end row -->
+
+        </div>
+        <!--end container -->
+
+    </section>
+    <!--end testimonials section -->
+
     <!--begin section-white -->
     <section class="section-white no-padding-bottom section-top-border">
 
@@ -429,7 +477,7 @@
 	        <div class="row">
 
                 <!--begin col-md-6-->
-                <div class="col-md-6 padding-top-120 text-center">
+                <div class="col-md-6 padding-top-40 text-center">
 
                     <p class="testimonial-single">“Mulai fokus menggarap industri perikanan budidaya. Tentu ini harus kita tangkap dengan mendorong strategi bagaimana menjadikan budidaya sebagai sebuah industri. Konkritnya berarti kita harus mulai membangun sistem produksi yang berbasis industri mulai dari industrialisasi benih, pakan, sarana dan prasarana produksi dan lainnya. Demikian halnya dengan teknologi, kita akan dorong ke arah teknologi yang menjamin produktivitas tinggi, adaptif, efisien dan ramah lingkungan.”</p>
 
@@ -441,9 +489,9 @@
                 <!--end col-md-6-->
            
                 <!--begin col-md-6-->
-                <div class="col-md-6">
+                <div class="col-md-6 padding-top-20">
 
-                    <img src="<?php echo base_url() ?>template/landing/images/testimonials-woman.jpg" class="width-100" alt="pic">
+                    <img src="<?php echo base_url() ?>template/landing/images/testimonials-man.jpg" class="width-100" alt="pic">
 
                 </div>
                 <!--end col-md-6-->
@@ -456,172 +504,6 @@
 
     </section>
     <!--end section-white -->
-
-    <!--begin partners section -->
-    <section class="section-grey partners-paddings section-top-border section-bottom-border">
-        
-        <!--begin container -->
-        <div class="container">
-            
-            <!--begin row -->
-            <div class="row">
-                
-                <!--begin col-md-12 -->
-                <div class="col-md-12 text-center">
-
-                    <h3 class="section-title">Trusted by over 250 great businesses</h3>
-
-                </div>
-                <!--end col-md-12 -->
-
-                <!--begin col-md-12 -->
-                <div class="col-md-12 text-center">
-
-                    <!--begin partners-mentions -->
-                    <ul class="partners-mentions">
-
-                        <li><img src="<?php echo base_url() ?>template/landing//images/award4a.png" alt="CSS Awards"></li>
-
-                        <li><img src="<?php echo base_url() ?>template/landing//images/award1a.png" alt="Awwwards"></li>
-
-                        <li><img src="<?php echo base_url() ?>template/landing//images/award5.png" alt="CSS Winner"></li>
-
-                        <li><img src="<?php echo base_url() ?>template/landing//images/award3a.png" alt="CSS Design Awards"></li>
-
-                    </ul>
-                    <!--end partners-mentions -->
-
-                </div>
-                <!--end col-md-12 -->
-
-            </div>
-            <!--end row -->
-
-        </div>
-        <!--end container -->
-
-    </section>
-    <!--end partners section -->
-
-    <!--begin faq section -->
-	<section class="section-white small-padding-bottom">
-        
-        <!--begin container-->
-        <div class="container">
-
-            <!--begin row-->
-            <div class="row">
-            
-                <!--begin col-md-6-->
-                <div class="col-md-6 margin-top-10">
-
-                    <img src="<?php echo base_url() ?>template/landing/images/img4.jpg" class="width-100 box-shadow" alt="picture">
-
-                </div>
-                <!--end col-sm-6-->
-                
-                <!--begin col-md-6-->
-                <div class="col-md-6 margin-top-20">
-
-                	<h3>Frequently Asked Questions</h3>
-
-                    <!--begin accordion -->
-                    <div class="accordion" id="accordionFAQ">
-
-                        <!--begin card -->
-                        <div class="card">
-                            
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                  Email and user settings
-                                </button>
-                                </h5>
-                            </div>
-
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionFAQ">
-                                <div class="card-body">
-                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur netsum loris fugit, sed quia magni dolores eos qui ratione sequi nesciunt, neque et quis autem velis reprehenderit ets quis velit.
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--end card -->
-
-                        <!--begin card -->
-                        <div class="card">
-
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                  Import new billing system data
-                                </button>
-                                </h5>
-                            </div>
-
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionFAQ">
-                                <div class="card-body">
-                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur netsum loris fugit, sed quia magni dolores eos qui ratione sequi nesciunt, neque et quis autem velis reprehenderit ets quis velit.
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--end card -->
-
-                        <!--begin card -->
-                        <div class="card">
-
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                  Working with integrated apps
-                                </button>
-                                </h5>
-                            </div>
-
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionFAQ">
-                                <div class="card-body">
-                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur netsum loris fugit, sed quia magni dolores eos qui ratione sequi nesciunt, neque et quis autem velis reprehenderit ets quis velit.
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--end card -->
-
-                        <!--begin card -->
-                        <div class="card">
-
-                            <div class="card-header" id="headingFour">
-                                <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                  Two-factor authentication
-                                </button>
-                                </h5>
-                            </div>
-                            
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionFAQ">
-                                <div class="card-body">
-                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur netsum loris fugit, sed quia magni dolores eos qui ratione sequi nesciunt, neque et quis autem velis reprehenderit ets quis velit.
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--end card -->
-
-                    </div>
-                    <!--end accordion -->
-
-                </div>
-                <!--end col-sm-6-->
-            
-            </div>
-            <!--end row-->
-    
-        </div>
-        <!--end container-->
-    
-    </section>
-    <!--end faq section -->
 
   	<!--begin team section -->
   	<section class="section-grey section-top-border" id="team">
@@ -740,125 +622,6 @@
 
   	</section>
   	<!--end team section-->
-
-	<!--begin showcase section-->
-  	<section class="section-blue" id="showcase">
-
-		<!--begin container-->
-		<div class="container-fluid">
-
-			<!--begin row-->
-			<div class="row">
-				
-				<!--begin col md 12-->
-				<div class="col-md-12 text-center">
-
-					<h2 class="section-title white-text">Explore Latest Projects</h2>
-
-					<p class="section-subtitle white">There are many variations of passages of Lorem Ipsum available, but the majority<br>have suffered alteration, by injected humour, or new randomised words.</p>
-					
-				</div>
-				<!--end col md 12-->
-
-				<!--begin col md 12-->
-				<div class="col-md-12 padding-top-20">
-
-                    <!--begin carousel-->
-                    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-                        
-                        <!--begin carousel-indicators-->
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselIndicators" data-slide-to="1"></li>
-                        </ol>
-                        <!--end carousel-indicators-->
-
-                        <!--begin carousel-inner-->
-                        <div class="carousel-inner">
-
-                            <!--begin carousel-item-->
-                            <div class="carousel-item active">
-                                
-                                <div class="row">
-
-                                    <div class="col-sm-3">
-                                        <img src="<?php echo base_url() ?>template/landing//images/showcase1.jpg" alt="showcase" class="gallery-show">
-                                    </div>
-
-                                    <div class="col-sm-3">
-                                        <img src="<?php echo base_url() ?>template/landing//images/showcase2.jpg" alt="showcase" class="gallery-show">
-                                    </div>
-
-                                    <div class="col-sm-3">
-                                        <img src="<?php echo base_url() ?>template/landing//images/showcase3.jpg" alt="showcase" class="gallery-show">
-                                    </div>
-
-                                    <div class="col-sm-3">
-                                        <img src="<?php echo base_url() ?>template/landing//images/showcase4.jpg" alt="showcase" class="gallery-show">
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <!--end carousel-item-->
-
-                            <!--begin carousel-item-->
-                            <div class="carousel-item">
-                                
-                                <div class="row">
-
-                                    <div class="col-sm-3">
-                                        <img src="<?php echo base_url() ?>template/landing//images/showcase5.jpg" alt="showcase" class="gallery-show">
-                                    </div>
-
-                                    <div class="col-sm-3">
-                                        <img src="<?php echo base_url() ?>template/landing//images/showcase6.jpg" alt="showcase" class="gallery-show">
-                                    </div>
-
-                                    <div class="col-sm-3">
-                                        <img src="<?php echo base_url() ?>template/landing//images/showcase7.jpg" alt="showcase" class="gallery-show">
-                                    </div>
-
-                                    <div class="col-sm-3">
-                                        <img src="<?php echo base_url() ?>template/landing//images/showcase8.jpg" alt="showcase" class="gallery-show">
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <!--end carousel-item-->
-
-                        </div>
-                        <!--end carousel-inner-->
-
-                        <!--begin carousel-control-prev-->
-                        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <!--end carousel-control-prev-->
-
-                        <!--begin carousel-control-next-->
-                        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                        <!--end carousel-control-next-->
-
-                    </div>
-                    <!--end carousel-->
-
-				</div>
-				<!--end col md 12-->
-
-			</div>
-			<!--end row -->
-
-		</div>
-		<!--end container -->
-
-	</section>
-	<!--end gallery section -->
 
   	<!--begin services section -->
   	<section class="section-white section-bottom-border" id="features">
@@ -1100,7 +863,7 @@
                 <!--begin col-md-6-->
                 <div class="col-md-6 padding-top-20">
 
-                	<h3>26.Segera daftarkan diri Anda sebagai Mitra Fishee dan rasakan kebermanfaatan solusi #mudahtanpatapi.</h3>
+                	<h3>Segera daftarkan diri Anda sebagai Mitra Fishee dan rasakan kebermanfaatan solusi #mudahtanpatapi.</h3>
 
 					<a href="#contact" class="btn-blue scrool">Get Started</a>
                     
